@@ -28,6 +28,8 @@ dependencies {
     runtimeOnly 'com.mysql:mysql-connector-j'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.0'  // mybatis
+    implementation 'com.baomidou:mybatis-plus-boot-starter:3.5.3.1'               // mybatis-plus
 }
 
 tasks.named('test') {
