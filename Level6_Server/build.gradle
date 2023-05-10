@@ -53,7 +53,6 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
     annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
 
-    implementation 'com.github.davidfantasy:mybatis-plus-generator-ui:2.0.1'  // mybatis
 }
 
 tasks.named('test') {
