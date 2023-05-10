@@ -1,0 +1,61 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '2.7.5'
+    id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+}
+
+group = 'live.baize'
+version = '0.1'
+sourceCompatibility = '1.8'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenLocal()
+    maven { url "https://maven.aliyun.com/repository/public/" }
+    mavenCentral()
+}
+
+ext {
+    mybatisPlusVersion = '3.5.3'
+}
+
+dependencies {
+    compileOnly 'org.projectlombok:lombok'
+
+    runtimeOnly 'com.mysql:mysql-connector-j'
+    implementation 'org.springframework.boot:spring-boot-starter-web'           // Web
+    implementation 'org.springframework.boot:spring-boot-starter-aop'           // AOP
+    implementation 'org.springframework.boot:spring-boot-starter-validation'    // 参数校验
+
+    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.0'  // mybatis
+    implementation "com.baomidou:mybatis-plus-boot-starter:$mybatisPlusVersion" // mybatis-plus
+    implementation 'com.alibaba:druid:1.2.15'                                   // druid数据源
+
+    implementation 'commons-io:commons-io:2.11.0'                               // io工具类
+    implementation 'javax.mail:mail:1.4.7'                                      // 邮件mail
+    implementation 'commons-codec:commons-codec'                                // 加解密
+    implementation 'com.aliyun:aliyun-java-sdk-dysmsapi:1.1.0'                  // 阿里云
+    implementation 'org.json:json:20220320'                                     // JSON
+
+    implementation 'io.jsonwebtoken:jjwt-api:0.11.2'
+    runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.2'
+    runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.2'
+
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    annotationProcessor 'org.projectlombok:lombok'
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+
+    implementation 'com.github.davidfantasy:mybatis-plus-generator-ui:2.0.1'  // mybatis
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
