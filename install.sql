@@ -86,15 +86,14 @@ CREATE TABLE `paper`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `registration`;
 CREATE TABLE `registration`  (
+  `registration_id` int NOT NULL,
   `exam_id` int NOT NULL,
   `stu_id` int NOT NULL,
   `register_time` datetime NOT NULL,
   `paid` bit(1) NOT NULL DEFAULT b'0',
   `score` int NULL DEFAULT 0,
-  PRIMARY KEY (`exam_id`, `stu_id`) USING BTREE,
-  INDEX `stu_id`(`stu_id` ASC) USING BTREE,
-  CONSTRAINT `exam_id` FOREIGN KEY (`exam_id`) REFERENCES `exam` (`exam_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  CONSTRAINT `stu_id` FOREIGN KEY (`stu_id`) REFERENCES `student` (`stu_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+  PRIMARY KEY (`registration_id`) USING BTREE,
+  INDEX `stu_id`(`stu_id` ASC) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
