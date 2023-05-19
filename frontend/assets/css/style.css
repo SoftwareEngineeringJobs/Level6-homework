@@ -3203,6 +3203,8 @@ textarea:-ms-input-placeholder {
   position: relative;
   margin-top: 30px;
   width: 300px;
+  margin-right: 15px; 
+  margin-left: 15px;
 }
 
 .single-offer .offer-images {
@@ -3242,7 +3244,7 @@ textarea:-ms-input-placeholder {
 }
 
 .single-offer .offer-content .btn {
-  margin-top: 35px;
+  margin-top: 55px;
 }
 
 @media only screen and (max-width: 1199px) {
@@ -11120,4 +11122,10 @@ textarea:-ms-input-placeholder {
 
 .footer-section{
   margin-top: 100px;
+}
+
+.header-btn {
+  height: 20px;
+  line-height: 30px;
+  padding: 0 80px;
 }
