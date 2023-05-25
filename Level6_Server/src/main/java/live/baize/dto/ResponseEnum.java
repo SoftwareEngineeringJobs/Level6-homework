@@ -20,6 +20,10 @@ public class ResponseEnum {
     public static final ResponseEnum Hello_World = new ResponseEnum(100000, "你好, 世界! 你好, 朋友!");
     public static final ResponseEnum TEST_TEST = new ResponseEnum(100001, "测试返回值");
 
+    public static final ResponseEnum Login_Failure = new ResponseEnum(200000, "登录失败");
+    public static final ResponseEnum Login_Success = new ResponseEnum(200001, "登录成功");
+
+
     // 客户端异常
     public static final ResponseEnum Not_ThisFile = new ResponseEnum(400050, "没有这样的文件");
     public static final ResponseEnum Param_Check = new ResponseEnum(400000, "参数有误, 请检查");

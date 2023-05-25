@@ -33,7 +33,7 @@ public class PasswdUtil {
     /**
      * 64 位
      */
-    public static String generatePassword(String password, String passwdSalt) {
-        return getEncryptStr(SHA_256, password + passwdSalt);
+    public static String generatePassword(String password) {
+        return getEncryptStr(SHA_256, password);
     }
 }

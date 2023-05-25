@@ -1,11 +1,16 @@
 package live.baize.controller;
 
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import live.baize.dto.Response;
+import live.baize.dto.ResponseEnum;
 import live.baize.entity.Student;
+import live.baize.service.PaperService;
 import live.baize.service.StudentService;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import live.baize.utils.PasswdUtil;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 
@@ -19,42 +24,34 @@ import javax.annotation.Resource;
 @RequestMapping("/student")
 public class StudentController {
 
-
+    @Resource
+    private PaperService paperService;
     @Resource
     private StudentService studentService;
 
-    @GetMapping(value = "/")
-    public ResponseEntity<Page<Student>> list(@RequestParam(required = false) Integer current, @RequestParam(required = false) Integer pageSize) {
-        if (current == null) {
-            current = 1;
+    @GetMapping(value = "/login")
+    public Response login(@RequestParam String idCard, @RequestParam String password) {
+        Student student = studentService.getOne(
+                new QueryWrapper<Student>()
+                        .eq("id_card", idCard)
+                        .eq("password", PasswdUtil.generatePassword(password))
+        );
+
+        if (student == null) {
+            return new Response(ResponseEnum.Login_Failure);
         }
-        if (pageSize == null) {
-            pageSize = 10;
-        }
-        Page<Student> aPage = studentService.page(new Page<>(current, pageSize));
-        return new ResponseEntity<>(aPage, HttpStatus.OK);
+
+        //
+        return new Response(ResponseEnum.Login_Success);
     }
 
-    @GetMapping(value = "/{id}")
-    public ResponseEntity<Student> getById(@PathVariable("id") String id) {
-        return new ResponseEntity<>(studentService.getById(id), HttpStatus.OK);
-    }
+//    - 注册
+//    - 登录
+//    - 退出
+//    - 查看考试场次 （查询exam 表，根据时间判断）
+//    - 报名并缴费（registration 随机一个paper_id）
+//    - 获得试卷信息（依据 registration 查看paper_id, 然后返回对应的试卷信息)
+//    - 上传答题结果 （自动算选择题的分数）
+//    - 查看分数（在时间上做拦截）
 
-    @PostMapping(value = "/create")
-    public ResponseEntity<Object> create(@RequestBody Student params) {
-        studentService.save(params);
-        return new ResponseEntity<>("created successfully", HttpStatus.OK);
-    }
-
-    @PostMapping(value = "/delete/{id}")
-    public ResponseEntity<Object> delete(@PathVariable("id") String id) {
-        studentService.removeById(id);
-        return new ResponseEntity<>("deleted successfully", HttpStatus.OK);
-    }
-
-    @PostMapping(value = "/update")
-    public ResponseEntity<Object> update(@RequestBody Student params) {
-        studentService.updateById(params);
-        return new ResponseEntity<>("updated successfully", HttpStatus.OK);
-    }
 }

@@ -29,5 +29,9 @@ public class Registration implements Serializable {
     private Integer stuId;
     private Date registerTime;
     private Boolean paid;
-    private Integer score;
+    private Integer scoreListen;
+    private Integer scoreRead;
+    private Integer scoreWrite;
+    private String writing;
+    private String translation;
 }

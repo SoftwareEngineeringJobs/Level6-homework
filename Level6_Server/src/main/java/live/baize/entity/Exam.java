@@ -24,7 +24,9 @@ public class Exam implements Serializable {
     private static final long serialVersionUID = 1L;
     @TableId(value = "exam_id", type = IdType.AUTO)
     private Integer examId;
-    private Date examTime;
+    private Date registerTime;
+    private Date testTime;
+    private Date scoreTime;
     private Integer paperA;
     private Integer paperB;
     private Integer paperC;

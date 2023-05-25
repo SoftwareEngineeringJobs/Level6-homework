@@ -1,11 +1,14 @@
 package live.baize.controller;
 
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import live.baize.entity.Admin;
+import live.baize.dto.Response;
+import live.baize.dto.ResponseEnum;
 import live.baize.service.AdminService;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import live.baize.service.PaperService;
+import live.baize.service.StudentService;
+import live.baize.service.TeacherService;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 
@@ -19,42 +22,35 @@ import javax.annotation.Resource;
 @RequestMapping("/admin")
 public class AdminController {
 
-
     @Resource
     private AdminService adminService;
+    @Resource
+    private PaperService paperService;
+    @Resource
+    private StudentService studentService;
+    @Resource
+    private TeacherService teacherService;
 
-    @GetMapping(value = "/")
-    public ResponseEntity<Page<Admin>> list(@RequestParam(required = false) Integer current, @RequestParam(required = false) Integer pageSize) {
-        if (current == null) {
-            current = 1;
-        }
-        if (pageSize == null) {
-            pageSize = 10;
-        }
-        Page<Admin> aPage = adminService.page(new Page<>(current, pageSize));
-        return new ResponseEntity<>(aPage, HttpStatus.OK);
+    /**
+     * 管理员登录
+     */
+    @GetMapping("/login")
+    public Response login() {
+        return new Response(ResponseEnum.TEST_TEST);
     }
 
-    @GetMapping(value = "/{id}")
-    public ResponseEntity<Admin> getById(@PathVariable("id") String id) {
-        return new ResponseEntity<>(adminService.getById(id), HttpStatus.OK);
+    @GetMapping("/logout")
+    public Response logout() {
+        return new Response(ResponseEnum.TEST_TEST);
     }
 
-    @PostMapping(value = "/create")
-    public ResponseEntity<Object> create(@RequestBody Admin params) {
-        adminService.save(params);
-        return new ResponseEntity<>("created successfully", HttpStatus.OK);
-    }
+//    依次实现这些功能
+//    - 管理员注册 （这里做权限校验）
+//    - 查看考生信息
+//    - 发布考试信息
+//    - 上传试卷信息
+//    - 增删 教师
+//    - 管理员登录
+//    - 管理员退出
 
-    @PostMapping(value = "/delete/{id}")
-    public ResponseEntity<Object> delete(@PathVariable("id") String id) {
-        adminService.removeById(id);
-        return new ResponseEntity<>("deleted successfully", HttpStatus.OK);
-    }
-
-    @PostMapping(value = "/update")
-    public ResponseEntity<Object> update(@RequestBody Admin params) {
-        adminService.updateById(params);
-        return new ResponseEntity<>("updated successfully", HttpStatus.OK);
-    }
 }

@@ -23,8 +23,7 @@ public class Paper implements Serializable {
     private static final long serialVersionUID = 1L;
     @TableId(value = "paper_id", type = IdType.AUTO)
     private Integer paperId;
-    private Integer article;
-    private Integer question;
-    private Integer answer;
-    private Integer listening;
+    private Integer questionId;
+    private String question;
+    private String answer;
 }

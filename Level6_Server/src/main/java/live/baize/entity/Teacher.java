@@ -27,5 +27,4 @@ public class Teacher implements Serializable {
     private String name;
     private Boolean gender;
     private String email;
-    private Integer authority;
 }
