@@ -5,11 +5,13 @@ import live.baize.dto.Response;
 import live.baize.dto.ResponseEnum;
 import live.baize.entity.Admin;
 import live.baize.entity.Student;
+import live.baize.exception.SystemException;
 import live.baize.service.AdminService;
 import live.baize.service.PaperService;
 import live.baize.service.StudentService;
 import live.baize.service.TeacherService;
 import live.baize.utils.PasswdUtil;
+import live.baize.utils.SessionUtil;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -26,6 +28,8 @@ import java.util.List;
 public class AdminController {
 
     @Resource
+    private SessionUtil sessionUtil;
+    @Resource
     private AdminService adminService;
     @Resource
     private PaperService paperService;
@@ -38,18 +42,48 @@ public class AdminController {
      * 管理员登录
      */
     @GetMapping("/login")
-    public Response login() {
-        return new Response(ResponseEnum.TEST_TEST);
+    public Response login(@RequestParam String email, @RequestParam String password) {
+        // 根据邮箱和密码(加密)查询
+        Admin admin = adminService.getOne(
+                new QueryWrapper<Admin>()
+                        .eq("email", email)
+                        .eq("password", PasswdUtil.generatePassword(password))
+                        .select("admin_id", "email", "authority")
+        );
+
+        // 登录失败
+        if (admin == null) {
+            return new Response(ResponseEnum.Admin_Login_Failure);
+        }
+
+        // 登录成功
+        sessionUtil.setAdminToSession(admin);
+        return new Response(ResponseEnum.Admin_Login_Success);
     }
 
+    /**
+     * 退出登录
+     */
     @GetMapping("/logout")
     public Response logout() {
-        return new Response(ResponseEnum.TEST_TEST);
+        sessionUtil.delAdminFromSession();
+        return new Response(ResponseEnum.Admin_Logout_Success);
     }
 
-    @PostMapping("/hasLogin/signup")
-    public Response signup(@RequestParam String email, @RequestParam String name, @RequestParam Boolean gender, @RequestParam String password, @RequestParam Integer authority) {
-        // Todo:只有权限为1的超级管理员可以注册其他管理员账号
+    /**
+     * 管理员注册
+     */
+    @PostMapping("/signup")
+    public Response signup(@RequestParam String email, @RequestParam String name, @RequestParam Boolean gender,
+                           @RequestParam String password, @RequestParam Integer authority) {
+        // 验证当前管理员权限 adminCurr只保存了 id和邮箱
+        Admin adminCurr = sessionUtil.getAdminFromSession();
+        if (adminCurr.getAuthority() != 1) {
+            // 权限不足
+            throw new SystemException(ResponseEnum.Admin_Authority_Low);
+        }
+
+        // 只有权限为1的超级管理员可以注册其他管理员账号
         Admin admin = new Admin(email, name, gender, PasswdUtil.generatePassword(password), authority);
         try {
             adminService.save(admin);
@@ -60,7 +94,10 @@ public class AdminController {
         return new Response(ResponseEnum.Signup_Success);
     }
 
-    @GetMapping("/hasLogin/stuInfo")
+    /**
+     * 查看考生信息
+     */
+    @GetMapping("/stuInfo")
     public Response stuInfo(Integer stuId, String idCard, String name, Boolean gender, String school) {
         QueryWrapper<Student> wrapper = new QueryWrapper<Student>();
         if (stuId != null)

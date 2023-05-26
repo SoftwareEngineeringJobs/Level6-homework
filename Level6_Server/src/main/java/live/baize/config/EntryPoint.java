@@ -14,7 +14,7 @@ public class EntryPoint implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
         // 在这里实现你想要做的事情，例如记录日志、鉴权等。
-        log.info(request.getRequestURI());
+        System.out.println(request.getRequestURI());
 
         return true;
     }

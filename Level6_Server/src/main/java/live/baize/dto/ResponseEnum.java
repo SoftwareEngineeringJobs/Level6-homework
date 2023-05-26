@@ -20,11 +20,24 @@ public class ResponseEnum {
     public static final ResponseEnum Hello_World = new ResponseEnum(100000, "你好, 世界! 你好, 朋友!");
     public static final ResponseEnum TEST_TEST = new ResponseEnum(100001, "测试返回值");
 
-    public static final ResponseEnum Login_Failure = new ResponseEnum(200000, "登录失败");
-    public static final ResponseEnum Login_Success = new ResponseEnum(200001, "登录成功");
+    // ============================================= AdminController ============================================= //
+    public static final ResponseEnum Admin_Login_Failure = new ResponseEnum(200000, "邮箱或密码错误");
+    public static final ResponseEnum Admin_Login_Success = new ResponseEnum(200001, "登录成功");
     public static final ResponseEnum Signup_Failure = new ResponseEnum(200010, "注册失败");
     public static final ResponseEnum Signup_Success = new ResponseEnum(200011, "注册成功");
     public static final ResponseEnum Stu_Info = new ResponseEnum(200101, "考生信息");
+    public static final ResponseEnum Admin_Logout_Success = new ResponseEnum(200031, "退出登录成功");
+    public static final ResponseEnum Admin_Not_Login = new ResponseEnum(200040, "管理员没有登录");
+    public static final ResponseEnum Admin_Authority_Low = new ResponseEnum(200040, "管理员权限不足");
+
+    // ============================================= StudentController ============================================ //
+    public static final ResponseEnum Student_Not_Login = new ResponseEnum(2001010, "学生没有登录");
+    public static final ResponseEnum Login_Failure = new ResponseEnum(2001020, "邮箱或密码错误");
+    public static final ResponseEnum Login_Success = new ResponseEnum(2001021, "登录成功");
+
+    // ============================================= TeacherController ============================================= //
+    public static final ResponseEnum Teacher_Not_Login = new ResponseEnum(2002010, "老师没有登录");
+
 
     // 客户端异常
     public static final ResponseEnum Not_ThisFile = new ResponseEnum(400050, "没有这样的文件");
