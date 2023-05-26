@@ -65,7 +65,7 @@ public class SessionUtil {
             if (Student_Cookie_Name.equals(cookie.getName())) {
                 String[] params = cookie.getValue().split("#");
                 student = new Student()
-                        .setEmail(new String(Base64.getDecoder().decode(params[0]), StandardCharsets.UTF_8))
+//                        .setEmail(new String(Base64.getDecoder().decode(params[0]), StandardCharsets.UTF_8))
                         .setPassword(new String(Base64.getDecoder().decode(params[1]), StandardCharsets.UTF_8));
             }
         }
