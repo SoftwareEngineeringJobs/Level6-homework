@@ -26,6 +26,7 @@ public class Registration implements Serializable {
     @TableId(value = "registration_id", type = IdType.AUTO)
     private Integer registrationId;
     private Integer examId;
+    private Integer paperId;
     private Integer stuId;
     private Date registerTime;
     private Boolean paid;

@@ -44,7 +44,11 @@ public class ResponseEnum {
     public static final ResponseEnum Student_Has_Registered = new ResponseEnum(2001032, "已经注册过");
     public static final ResponseEnum Student_Logout_Success = new ResponseEnum(2001041, "退出登录成功");
     public static final ResponseEnum Lookup_Exam_Success = new ResponseEnum(2001051, "查看场次成功");
-
+    public static final ResponseEnum Has_Registration = new ResponseEnum(2001050, "已经报过名了");
+    public static final ResponseEnum Registration_Success = new ResponseEnum(2001051, "报名成功");
+    public static final ResponseEnum Not_Registration = new ResponseEnum(2001061, "没有报名");
+    public static final ResponseEnum Test_Time_Not_Arrived = new ResponseEnum(2001062, "考试时间未到");
+    public static final ResponseEnum Get_PaperInfo_Success = new ResponseEnum(2001062, "获得试卷信息成功");
 
     // ============================================= TeacherController ============================================= //
     public static final ResponseEnum Teacher_Not_Login = new ResponseEnum(2002010, "老师没有登录");

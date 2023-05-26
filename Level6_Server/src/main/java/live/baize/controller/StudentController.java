@@ -4,9 +4,12 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import live.baize.dto.Response;
 import live.baize.dto.ResponseEnum;
 import live.baize.entity.Exam;
+import live.baize.entity.Paper;
+import live.baize.entity.Registration;
 import live.baize.entity.Student;
 import live.baize.service.ExamService;
 import live.baize.service.PaperService;
+import live.baize.service.RegistrationService;
 import live.baize.service.StudentService;
 import live.baize.utils.PasswdUtil;
 import live.baize.utils.SessionUtil;
@@ -15,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 /**
@@ -35,6 +39,8 @@ public class StudentController {
     private ExamService examService;
     @Resource
     private PaperService paperService;
+    @Resource
+    private RegistrationService registrationService;
 
     /**
      * 学生注册
@@ -126,8 +132,64 @@ public class StudentController {
      *
      * @param examId 考试场次
      */
+    @PostMapping(value = "/registration")
     public Response registration(String examId) {
-        return new Response(ResponseEnum.TEST_TEST);
+        // 考生信息
+        Student student = sessionUtil.getStudentFromSession();
+
+        // 考虑重复报名 简单起见 只要有信息 就认为报过名
+        if (registrationService.getOne(new QueryWrapper<Registration>().eq("stu_id", student.getStuId())) != null) {
+            return new Response(ResponseEnum.Has_Registration);
+        }
+
+        // 根据考试ID 获得三张试卷ID
+        Exam exam = examService.getById(examId);
+        // 随机一张试卷ID
+        int paperId;
+        switch (new Random().nextInt(3)) {
+            case 0:
+                paperId = exam.getPaperA();
+                break;
+            case 1:
+                paperId = exam.getPaperB();
+                break;
+            default:
+                paperId = exam.getPaperC();
+        }
+        // 构造报名信息 默认完成缴费
+        Registration registration = new Registration().setExamId(exam.getExamId()).setPaperId(paperId)
+                .setStuId(student.getStuId()).setRegisterTime(new Date()).setPaid(true);
+        registrationService.save(registration);
+        return new Response(ResponseEnum.Registration_Success);
+    }
+
+    /**
+     * 查看试卷题目
+     */
+    @GetMapping(value = "/getPaperInfo")
+    public Response getPaperInfo() {
+        // 考生信息
+        Student student = sessionUtil.getStudentFromSession();
+
+        Registration registration = registrationService.getOne(new QueryWrapper<Registration>().eq("stu_id", student.getStuId()));
+        if (registration == null) {
+            // 没有报名
+            return new Response(ResponseEnum.Not_Registration);
+        }
+
+        // 是否到了考试时间
+        Exam exam = examService.getById(registration.getExamId());
+        if (exam.getTestTime().after(new Date())) {
+            // 不到考试时间
+            return new Response(ResponseEnum.Test_Time_Not_Arrived);
+        }
+
+        // 试卷列表
+        List<Paper> list = paperService.list(
+                new QueryWrapper<Paper>().eq("paper_id", registration.getPaperId())
+                        .select("question_id", "question")
+        );
+        return new Response(ResponseEnum.Get_PaperInfo_Success, list);
     }
 
 //    - 注册
