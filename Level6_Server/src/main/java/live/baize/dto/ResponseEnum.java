@@ -37,8 +37,14 @@ public class ResponseEnum {
 
     // ============================================= StudentController ============================================ //
     public static final ResponseEnum Student_Not_Login = new ResponseEnum(2001010, "学生没有登录");
-    public static final ResponseEnum Login_Failure = new ResponseEnum(2001020, "邮箱或密码错误");
-    public static final ResponseEnum Login_Success = new ResponseEnum(2001021, "登录成功");
+    public static final ResponseEnum Student_Login_Failure = new ResponseEnum(2001020, "邮箱或密码错误");
+    public static final ResponseEnum Student_Login_Success = new ResponseEnum(2001021, "登录成功");
+    public static final ResponseEnum Register_Failure = new ResponseEnum(2001030, "注册失败");
+    public static final ResponseEnum Register_Success = new ResponseEnum(2001031, "注册成功");
+    public static final ResponseEnum Student_Has_Registered = new ResponseEnum(2001032, "已经注册过");
+    public static final ResponseEnum Student_Logout_Success = new ResponseEnum(2001041, "退出登录成功");
+    public static final ResponseEnum Lookup_Exam_Success = new ResponseEnum(2001051, "查看场次成功");
+
 
     // ============================================= TeacherController ============================================= //
     public static final ResponseEnum Teacher_Not_Login = new ResponseEnum(2002010, "老师没有登录");
