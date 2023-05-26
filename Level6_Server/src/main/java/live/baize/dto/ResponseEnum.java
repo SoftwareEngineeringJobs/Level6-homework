@@ -22,7 +22,9 @@ public class ResponseEnum {
 
     public static final ResponseEnum Login_Failure = new ResponseEnum(200000, "登录失败");
     public static final ResponseEnum Login_Success = new ResponseEnum(200001, "登录成功");
-
+    public static final ResponseEnum Signup_Failure = new ResponseEnum(200010, "注册失败");
+    public static final ResponseEnum Signup_Success = new ResponseEnum(200011, "注册成功");
+    public static final ResponseEnum Stu_Info = new ResponseEnum(200101, "考生信息");
 
     // 客户端异常
     public static final ResponseEnum Not_ThisFile = new ResponseEnum(400050, "没有这样的文件");
@@ -31,7 +33,7 @@ public class ResponseEnum {
     public static final ResponseEnum Method_Not_Supported = new ResponseEnum(400020, "请求方法不支持");
     public static final ResponseEnum Not_IsMultipart = new ResponseEnum(400030, "不是一个Multipart 请求");
     public static final ResponseEnum Request_Part_Missing = new ResponseEnum(400040, "请求体参数缺少, 请检查");
-    public static final ResponseEnum Res_Not_Found = new ResponseEnum(404010, "资源没有发现");
+    public static final ResponseEnum Res_Not_Found = new ResponseEnum(404010, "没有找到相关结果");
 
     public static final ResponseEnum File_Type_Error = new ResponseEnum(400010, "文件类型不支持");
     public static final ResponseEnum File_Is_Null = new ResponseEnum(400020, "文件为NULL");
