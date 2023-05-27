@@ -27,6 +27,7 @@ import java.util.stream.Collectors;
  * @author CodeXS
  * @since 2023-05-10
  */
+@CrossOrigin
 @RestController
 @RequestMapping("/student")
 public class StudentController {

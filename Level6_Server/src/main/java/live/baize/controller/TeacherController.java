@@ -2,6 +2,7 @@ package live.baize.controller;
 
 import live.baize.service.RegistrationService;
 import live.baize.service.TeacherService;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,6 +14,7 @@ import javax.annotation.Resource;
  * @author CodeXS
  * @since 2023-05-10
  */
+@CrossOrigin
 @RestController
 @RequestMapping("/teacher")
 public class TeacherController {

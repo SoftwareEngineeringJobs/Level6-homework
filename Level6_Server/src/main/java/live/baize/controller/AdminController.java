@@ -21,6 +21,7 @@ import java.util.List;
  * @author CodeXS
  * @since 2023-05-10
  */
+@CrossOrigin
 @RestController
 @RequestMapping("/admin")
 public class AdminController {
