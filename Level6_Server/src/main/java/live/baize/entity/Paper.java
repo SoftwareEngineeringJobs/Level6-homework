@@ -26,4 +26,11 @@ public class Paper implements Serializable {
     private Integer questionId;
     private String question;
     private String answer;
+
+    public Paper(Integer paperId, Integer questionId, String question, String answer) {
+        this.paperId = paperId;
+        this.questionId = questionId;
+        this.question = question;
+        this.answer = answer;
+    }
 }

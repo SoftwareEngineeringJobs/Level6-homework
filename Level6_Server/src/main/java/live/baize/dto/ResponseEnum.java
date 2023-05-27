@@ -32,8 +32,20 @@ public class ResponseEnum {
     public static final ResponseEnum Exam_Info = new ResponseEnum(200061, "考试信息");
     public static final ResponseEnum Publish_Exam_Failure = new ResponseEnum(200070, "发布考试信息失败");
     public static final ResponseEnum Publish_Exam_Success = new ResponseEnum(200071, "发布考试信息成功");
-    public static final ResponseEnum Modify_Exam_Failure = new ResponseEnum(200080, "发布考试信息失败");
-    public static final ResponseEnum Modify_Exam_Success = new ResponseEnum(200081, "发布考试信息成功");
+    public static final ResponseEnum Modify_Exam_Failure = new ResponseEnum(200080, "修改考试信息失败");
+    public static final ResponseEnum Modify_Exam_Success = new ResponseEnum(200081, "修改考试信息成功");
+    public static final ResponseEnum Paper_Info = new ResponseEnum(200091, "试卷信息");
+    public static final ResponseEnum Upload_Paper_Failure = new ResponseEnum(200100, "上传试卷信息失败");
+    public static final ResponseEnum Upload_Paper_Success = new ResponseEnum(200101, "上传试卷信息成功");
+    public static final ResponseEnum Modify_Paper_Failure = new ResponseEnum(200110, "上传试卷信息失败");
+    public static final ResponseEnum Modify_Paper_Success = new ResponseEnum(200111, "上传试卷信息成功");
+    public static final ResponseEnum Teacher_Info = new ResponseEnum(200121, "教师信息");
+    public static final ResponseEnum Add_Teacher_Failure = new ResponseEnum(200130, "添加教师失败");
+    public static final ResponseEnum Add_Teacher_Success = new ResponseEnum(200131, "添加教师成功");
+    public static final ResponseEnum Delete_Teacher_Failure = new ResponseEnum(200140, "删除教师失败");
+    public static final ResponseEnum Delete_Teacher_Success = new ResponseEnum(200141, "删除教师成功");
+    public static final ResponseEnum Reset_Passwd_Failure = new ResponseEnum(200150, "重置密码失败");
+    public static final ResponseEnum Reset_Passwd_Success = new ResponseEnum(200151, "重置密码成功");
 
     // ============================================= StudentController ============================================ //
     public static final ResponseEnum Student_Not_Login = new ResponseEnum(2001010, "学生没有登录");

@@ -45,11 +45,4 @@ public class Exam implements Serializable {
     public void setId(Integer examId) {
         this.examId = examId;
     }
-
-    @Override
-    public String toString() {
-        return "exam_id:" + examId + ",register_time:" + registerTime + ",test_time:" + testTime
-                + ",score_time:" + scoreTime + ",paper_a:" + paperA + ",paper_b:" + paperB
-                + ",paper_c:" + paperC;
-    }
 }

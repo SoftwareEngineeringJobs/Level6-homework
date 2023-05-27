@@ -31,15 +31,7 @@ public class Student implements Serializable {
     private Integer cet4;
     private Integer cet6;
 
-    @Override
-    public String toString() {
-        String result = "stu_id:" + stuId + ",id_card:" + idCard + ",name:" + name + "gender:";
-        // 性别1表示女，0表示男
-        if (gender)
-            result += "女";
-        else
-            result += "男";
-        result +=  ",password:" + password  + ",school:" + school + ",cet4:" + cet4 + ",cet6:" + cet6;
-        return result;
+    public void setPasswd(String password) {
+        this.password = password;
     }
 }
