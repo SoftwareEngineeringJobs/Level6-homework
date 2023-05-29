@@ -2,22 +2,25 @@ package live.baize.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
-import java.io.Serializable;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
+
+import java.io.Serializable;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author CodeXS
  * @since 2023-05-10
  */
-@Getter
-@Setter
+@Data
 @Accessors(chain = true)
+@AllArgsConstructor
+@NoArgsConstructor
 public class Paper implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -27,10 +30,4 @@ public class Paper implements Serializable {
     private String question;
     private String answer;
 
-    public Paper(Integer paperId, Integer questionId, String question, String answer) {
-        this.paperId = paperId;
-        this.questionId = questionId;
-        this.question = question;
-        this.answer = answer;
-    }
 }

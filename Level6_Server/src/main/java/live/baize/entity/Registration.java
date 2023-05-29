@@ -33,6 +33,7 @@ public class Registration implements Serializable {
     private Integer scoreListen;
     private Integer scoreRead;
     private Integer scoreWrite;
+    private String choice;
     private String writing;
     private String translation;
 }

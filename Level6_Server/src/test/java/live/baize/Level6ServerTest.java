@@ -1,18 +1,27 @@
 package live.baize;
 
+import live.baize.entity.Paper;
+import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.Comparator;
 
 public class Level6ServerTest {
 
     @Test
-    void test() {
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-//        System.out.println(format.format(new Date("2023-05-01 00:00:00")));
-//        System.out.println(format.format(new Date()));
-//        System.out.println(format.format(new Date()));
+    void contextLoads() {
+//        Calendar Cal = Calendar.getInstance();
+//        Cal.setTime(new Date());
+//        Cal.add(Calendar.MINUTE, 135);
+//        Date time = Cal.getTime();
+//        System.out.println("date:" + time);
+
+
+        Comparator.comparingInt(Paper::getQuestionId);
     }
 
+    @Test
+    void questions() {
+        //  BCABADDCCADDACBCBDCABADABKGLHBJAINDDGCEHKFMBJACABCADBCD
+    }
 }

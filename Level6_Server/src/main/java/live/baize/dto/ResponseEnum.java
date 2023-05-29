@@ -60,7 +60,11 @@ public class ResponseEnum {
     public static final ResponseEnum Registration_Success = new ResponseEnum(2001051, "报名成功");
     public static final ResponseEnum Not_Registration = new ResponseEnum(2001061, "没有报名");
     public static final ResponseEnum Test_Time_Not_Arrived = new ResponseEnum(2001062, "考试时间未到");
-    public static final ResponseEnum Get_PaperInfo_Success = new ResponseEnum(2001062, "获得试卷信息成功");
+    public static final ResponseEnum Not_Test_Time_Range = new ResponseEnum(2001062, "不在考试时间范围");
+    public static final ResponseEnum Get_PaperInfo_Success = new ResponseEnum(2001071, "获得试卷信息成功");
+    public static final ResponseEnum Save_Answer_Success = new ResponseEnum(2001081, "保存答案成功");
+    public static final ResponseEnum Not_Score_Time_Range = new ResponseEnum(2001090, "不在查分时间段");
+    public static final ResponseEnum Lookup_Score_Success = new ResponseEnum(2001091, "查询分数成功");
 
     // ============================================= TeacherController ============================================= //
     public static final ResponseEnum Teacher_Not_Login = new ResponseEnum(2002010, "老师没有登录");

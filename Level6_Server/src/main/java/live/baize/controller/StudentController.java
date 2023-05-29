@@ -1,6 +1,8 @@
 package live.baize.controller;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import live.baize.dto.Response;
 import live.baize.dto.ResponseEnum;
 import live.baize.entity.Exam;
@@ -13,12 +15,12 @@ import live.baize.service.RegistrationService;
 import live.baize.service.StudentService;
 import live.baize.utils.PasswdUtil;
 import live.baize.utils.SessionUtil;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.util.Date;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -27,6 +29,7 @@ import java.util.stream.Collectors;
  * @author CodeXS
  * @since 2023-05-10
  */
+@Slf4j
 @CrossOrigin
 @RestController
 @RequestMapping("/student")
@@ -81,7 +84,7 @@ public class StudentController {
      * @return 登录成功/登录失败
      */
     @GetMapping(value = "/login")
-    public Response login(@RequestParam String idCard, @RequestParam String password) {
+    public Response login(String idCard, String password) {
         Student student = studentService.getOne(
                 new QueryWrapper<Student>()
                         .eq("id_card", idCard)
@@ -96,7 +99,6 @@ public class StudentController {
         sessionUtil.setStudentToSession(student);
         return new Response(ResponseEnum.Student_Login_Success);
     }
-
 
     /**
      * 退出登录
@@ -119,7 +121,8 @@ public class StudentController {
     public Response lookupExam() {
         Date date = new Date();
         List<Exam> collect = examService.list(
-                        new QueryWrapper<Exam>().select("exam_id", "register_time", "test_time")
+                        new LambdaQueryWrapper<Exam>()
+                                .select(Exam::getExamId, Exam::getRegisterTime, Exam::getTestTime)
                 )
                 .stream()
                 // 未开始考试 同时 开始报名的场次
@@ -172,7 +175,9 @@ public class StudentController {
         // 考生信息
         Student student = sessionUtil.getStudentFromSession();
 
-        Registration registration = registrationService.getOne(new QueryWrapper<Registration>().eq("stu_id", student.getStuId()));
+        Registration registration = registrationService.getOne(
+                new LambdaQueryWrapper<Registration>().eq(Registration::getStuId, student.getStuId())
+        );
         if (registration == null) {
             // 没有报名
             return new Response(ResponseEnum.Not_Registration);
@@ -187,10 +192,143 @@ public class StudentController {
 
         // 试卷列表
         List<Paper> list = paperService.list(
-                new QueryWrapper<Paper>().eq("paper_id", registration.getPaperId())
-                        .select("question_id", "question")
+                new LambdaQueryWrapper<Paper>()
+                        .eq(Paper::getPaperId, registration.getPaperId())
+                        .select(Paper::getQuestionId, Paper::getQuestion)
         );
         return new Response(ResponseEnum.Get_PaperInfo_Success, list);
+    }
+
+    /**
+     * 上传答题结果
+     */
+    @PostMapping("uploadAnswer")
+    public Response uploadAnswer(@RequestParam(required = false) String choice,
+                                 @RequestParam(required = false) String writing,
+                                 @RequestParam(required = false) String translation) {
+        // 考生信息
+        Student student = sessionUtil.getStudentFromSession();
+
+        // 判断是否报名
+        Registration registration = registrationService.getOne(
+                new LambdaQueryWrapper<Registration>().eq(Registration::getStuId, student.getStuId())
+        );
+        if (registration == null) {
+            // 没有报名
+            return new Response(ResponseEnum.Not_Registration);
+        }
+
+        // 是否到了考试时间范围
+        Exam exam = examService.getById(registration.getExamId());
+        Calendar Cal = Calendar.getInstance();
+        Cal.setTime(exam.getTestTime());
+        Cal.add(Calendar.MINUTE, 135);
+
+        // 不在考试时间范围
+        if (exam.getTestTime().after(new Date()) || new Date().after(Cal.getTime())) {
+            return new Response(ResponseEnum.Not_Test_Time_Range);
+        }
+
+        // 保存答案
+        LambdaUpdateWrapper<Registration> wrapper = new LambdaUpdateWrapper<>();
+        if (StringUtils.isNotEmpty(choice)) {
+            wrapper.set(Registration::getChoice, choice);
+
+            // 全部作答开始判分
+            if (choice.length() == 55) {
+                // 选择题答案字符串
+                String collect = paperService.list(new LambdaQueryWrapper<Paper>()
+                                .eq(Paper::getPaperId, registration.getPaperId())
+                                .between(Paper::getQuestionId, 1, 55)
+                                .select(Paper::getQuestionId, Paper::getAnswer))
+                        .stream()
+                        .sorted(Comparator.comparingInt(Paper::getQuestionId))
+                        .map(Paper::getAnswer)
+                        .collect(Collectors.joining());
+                log.info("choice: " + choice);
+                log.info("collect: " + collect);
+                float scoreRead = 0f;
+                float scoreListen = 0f;
+                // BCABADDCCADDACBCBDCABADABKGLHBJAINDDGCEHKFMBJACABCADBCD
+                // BCABADDCCADDACBCBDCABADABKGLHBJAINDDGCEHKFMBJAcABCADBCD
+                // 听力
+                // 8  0  - 7    7
+                // 7  8  - 14   7
+                for (int i = 0; i < 15; ++i) {
+                    if (choice.charAt(i) == collect.charAt(i)) {
+                        scoreListen += 7.1;
+                    }
+                }
+                // 10 15 - 24   14
+                for (int i = 15; i < 25; ++i) {
+                    if (choice.charAt(i) == collect.charAt(i)) {
+                        scoreListen += 14.2;
+                    }
+                }
+
+                // 阅读
+                // 10 25 - 34   3.5
+                for (int i = 25; i < 35; ++i) {
+                    if (choice.charAt(i) == collect.charAt(i)) {
+                        scoreRead += 3.55;
+                    }
+                }
+                // 10 35 - 44   7
+                for (int i = 35; i < 45; ++i) {
+                    if (choice.charAt(i) == collect.charAt(i)) {
+                        scoreRead += 7.1;
+                    }
+                }
+                // 10 45 - 54   14
+                for (int i = 45; i < 55; ++i) {
+                    if (choice.charAt(i) == collect.charAt(i)) {
+                        scoreRead += 14.2;
+                    }
+                }
+
+                wrapper.set(Registration::getScoreRead, scoreRead);
+                wrapper.set(Registration::getScoreListen, scoreListen);
+            }
+
+        }
+        if (StringUtils.isNotEmpty(writing)) {
+            wrapper.set(Registration::getWriting, writing);
+        }
+        if (StringUtils.isNotEmpty(translation)) {
+            wrapper.set(Registration::getTranslation, translation);
+        }
+
+        wrapper.eq(Registration::getRegistrationId, registration.getRegistrationId());
+        registrationService.update(wrapper);
+
+        return new Response(ResponseEnum.Save_Answer_Success);
+    }
+
+    /**
+     * 查看分数（在时间上做拦截）
+     */
+    @GetMapping(value = "/lookupScore")
+    public Response lookupScore() {
+        // 考生信息
+        Student student = sessionUtil.getStudentFromSession();
+
+        // 判断是否报名
+        Registration registration = registrationService.getOne(
+                new LambdaQueryWrapper<Registration>().eq(Registration::getStuId, student.getStuId())
+                        .select(Registration::getExamId,
+                                Registration::getScoreRead, Registration::getScoreWrite, Registration::getScoreListen)
+        );
+        if (registration == null) {
+            // 没有报名
+            return new Response(ResponseEnum.Not_Registration);
+        }
+        // 是否到了出分时间
+        Exam exam = examService.getById(registration.getExamId());
+        if (exam.getScoreTime().after(new Date())) {
+            return new Response(ResponseEnum.Not_Score_Time_Range);
+        }
+        return new Response(ResponseEnum.Lookup_Score_Success, registration);
+
     }
 
 //    - 注册
