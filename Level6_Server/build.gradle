@@ -30,6 +30,7 @@ dependencies {
     runtimeOnly 'com.mysql:mysql-connector-j'
     implementation 'org.springframework.boot:spring-boot-starter-web'           // Web
     implementation 'org.springframework.boot:spring-boot-starter-aop'           // AOP
+    implementation 'org.springframework.boot:spring-boot-starter-log4j2'        // 日志框架(注意排除spring自带的logging)
     implementation 'org.springframework.boot:spring-boot-starter-validation'    // 参数校验
 
     implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.0'  // mybatis
@@ -37,6 +38,7 @@ dependencies {
     implementation 'com.alibaba:druid:1.2.15'                                   // druid数据源
 
     implementation 'commons-io:commons-io:2.11.0'                               // io工具类
+    implementation 'org.apache.commons:commons-lang3:3.1'
     implementation 'javax.mail:mail:1.4.7'                                      // 邮件mail
     implementation 'commons-codec:commons-codec'                                // 加解密
     implementation 'com.aliyun:aliyun-java-sdk-dysmsapi:1.1.0'                  // 阿里云
@@ -53,6 +55,10 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
     annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
 
+}
+
+configurations {
+    all*.exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
 }
 
 tasks.named('test') {
