@@ -11,12 +11,12 @@ import javax.annotation.Resource;
 @SpringBootTest
 class Level6ServerApplicationTests {
 
+    @Resource
+    PaperService paperService;
+
     @Test
     void contextLoads() {
     }
-
-    @Resource
-    PaperService paperService;
 
     String question(String question, String A, String B, String C, String D) {
         JSONObject json = new JSONObject();

@@ -1,14 +1,14 @@
 package live.baize.service.impl;
 
-import live.baize.entity.Teacher;
-import live.baize.dao.TeacherMapper;
-import live.baize.service.TeacherService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import live.baize.dao.TeacherMapper;
+import live.baize.entity.Teacher;
+import live.baize.service.TeacherService;
 import org.springframework.stereotype.Service;
 
 /**
  * <p>
- *  服务实现类
+ * 服务实现类
  * </p>
  *
  * @author CodeXS

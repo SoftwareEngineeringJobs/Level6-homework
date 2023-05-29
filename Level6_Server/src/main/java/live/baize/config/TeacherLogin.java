@@ -1,10 +1,8 @@
 package live.baize.config;
 
 import live.baize.dto.ResponseEnum;
-import live.baize.entity.Student;
 import live.baize.entity.Teacher;
 import live.baize.exception.BusinessException;
-import live.baize.exception.SystemException;
 import live.baize.utils.SessionUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -19,9 +17,6 @@ import java.util.HashSet;
 @Component
 public class TeacherLogin implements HandlerInterceptor {
 
-    @Resource
-    SessionUtil sessionUtil;
-
     // StudentAPI 白名单
     final static HashSet<String> TeacherAPI;
 
@@ -30,6 +25,10 @@ public class TeacherLogin implements HandlerInterceptor {
 
         TeacherAPI.add("/teacher/login");
     }
+
+    @Resource
+    SessionUtil sessionUtil;
+
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
         // 白名单直接过

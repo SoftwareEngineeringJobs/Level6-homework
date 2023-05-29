@@ -6,7 +6,6 @@ import live.baize.dto.Response;
 import live.baize.dto.ResponseEnum;
 import live.baize.entity.*;
 import live.baize.exception.BusinessException;
-import live.baize.exception.SystemException;
 import live.baize.service.*;
 import live.baize.utils.PasswdUtil;
 import live.baize.utils.SessionUtil;

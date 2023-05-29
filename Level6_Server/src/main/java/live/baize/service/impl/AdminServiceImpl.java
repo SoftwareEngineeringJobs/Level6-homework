@@ -1,14 +1,14 @@
 package live.baize.service.impl;
 
-import live.baize.entity.Admin;
-import live.baize.dao.AdminMapper;
-import live.baize.service.AdminService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import live.baize.dao.AdminMapper;
+import live.baize.entity.Admin;
+import live.baize.service.AdminService;
 import org.springframework.stereotype.Service;
 
 /**
  * <p>
- *  服务实现类
+ * 服务实现类
  * </p>
  *
  * @author CodeXS
