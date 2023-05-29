@@ -1,14 +1,16 @@
 package live.baize.controller;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import live.baize.dto.Response;
 import live.baize.dto.ResponseEnum;
 import live.baize.entity.*;
+import live.baize.exception.BusinessException;
 import live.baize.exception.SystemException;
 import live.baize.service.*;
 import live.baize.utils.PasswdUtil;
 import live.baize.utils.SessionUtil;
-import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -46,10 +48,10 @@ public class AdminController {
     public Response login(@RequestParam String email, @RequestParam String password) {
         // 根据邮箱和密码(加密)查询
         Admin admin = adminService.getOne(
-                new QueryWrapper<Admin>()
-                        .eq("email", email)
-                        .eq("password", PasswdUtil.generatePassword(password))
-                        .select("admin_id", "email", "authority")
+                new LambdaQueryWrapper<Admin>()
+                        .eq(Admin::getEmail, email)
+                        .eq(Admin::getPassword, PasswdUtil.generatePassword(password))
+                        .select(Admin::getAdminId, Admin::getEmail, Admin::getAuthority)
         );
 
         // 登录失败
@@ -81,7 +83,7 @@ public class AdminController {
         Admin adminCurr = sessionUtil.getAdminFromSession();
         if (adminCurr.getAuthority() != 1) {
             // 权限不足
-            throw new SystemException(ResponseEnum.Admin_Authority_Low);
+            throw new BusinessException(ResponseEnum.Admin_Authority_Low);
         }
 
         // 只有权限为1的超级管理员可以注册其他管理员账号
@@ -104,13 +106,13 @@ public class AdminController {
         Admin adminCurr = sessionUtil.getAdminFromSession();
         if (adminCurr.getAuthority() != 1) {
             // 权限不足
-            throw new SystemException(ResponseEnum.Admin_Authority_Low);
+            throw new BusinessException(ResponseEnum.Admin_Authority_Low);
         }
 
         Admin admin = adminService.getOne(
                 new QueryWrapper<Admin>().eq("admin_id", adminId)
         );
-        admin.setPasswd(PasswdUtil.generatePassword("12345678"));
+        admin.setPassword(PasswdUtil.generatePassword("12345678"));
         try {
             adminService.updateById(admin);
         } catch (Exception e) {
@@ -152,7 +154,7 @@ public class AdminController {
         Student student = studentService.getOne(
                 new QueryWrapper<Student>().eq("stu_id", stuId)
         );
-        student.setPasswd(PasswdUtil.generatePassword("12345678"));
+        student.setPassword(PasswdUtil.generatePassword("12345678"));
         try {
             studentService.updateById(student);
         } catch (Exception e) {
@@ -167,7 +169,7 @@ public class AdminController {
      */
     @GetMapping("/examInfo")
     public Response examInfo(Integer examId, Date registerTime, Date testTime, Date scoreTime,
-                            Integer paperA, Integer paperB, Integer paperC) {
+                             Integer paperA, Integer paperB, Integer paperC) {
         QueryWrapper<Exam> wrapper = new QueryWrapper<Exam>();
         if (examId != null)
             wrapper.eq("exam_id", examId);
@@ -188,9 +190,12 @@ public class AdminController {
      * 发布考试信息
      */
     @PostMapping("/publishExam")
-    public Response publishExam(@RequestParam Date registerTime, @RequestParam Date testTime,
-                                @RequestParam Date scoreTime, @RequestParam Integer paperA,
-                                @RequestParam Integer paperB, @RequestParam Integer paperC) {
+    public Response publishExam(@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") Date registerTime,
+                                @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") Date testTime,
+                                @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") Date scoreTime,
+                                @RequestParam Integer paperA,
+                                @RequestParam Integer paperB,
+                                @RequestParam Integer paperC) {
         Exam exam = new Exam(registerTime, testTime, scoreTime, paperA, paperB, paperC);
         try {
             examService.save(exam);
@@ -205,12 +210,14 @@ public class AdminController {
      * 修改考试信息
      */
     @PostMapping("/modifyExam")
-    public Response modifyExam(@RequestParam Integer examId, @RequestParam Date registerTime,
-                               @RequestParam Date testTime, @RequestParam Date scoreTime,
-                               @RequestParam Integer paperA, @RequestParam Integer paperB,
+    public Response modifyExam(@RequestParam Integer examId,
+                               @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") Date registerTime,
+                               @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") Date testTime,
+                               @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") Date scoreTime,
+                               @RequestParam Integer paperA,
+                               @RequestParam Integer paperB,
                                @RequestParam Integer paperC) {
-        Exam exam = new Exam(registerTime, testTime, scoreTime, paperA, paperB, paperC);
-        exam.setId(examId);
+        Exam exam = new Exam(examId, registerTime, testTime, scoreTime, paperA, paperB, paperC);
         try {
             examService.updateById(exam);   // 根据ID更新，ID永远不变
         } catch (Exception e) {
@@ -226,15 +233,17 @@ public class AdminController {
     @GetMapping("/paperInfo")
     public Response paperInfo(Integer paperId, Integer questionId) {
         QueryWrapper<Paper> wrapper = new QueryWrapper<Paper>();
-        if (paperId != null)
+        if (paperId != null) {
             wrapper.eq("paper_id", paperId);
-        if (questionId != null)
+        }
+        if (questionId != null) {
             wrapper.eq("question_id", questionId);
+        }
         List<Paper> paperList = paperService.list(wrapper);
-        if (paperList.isEmpty())
+        if (paperList.isEmpty()) {
             return new Response(ResponseEnum.Res_Not_Found);
-        else
-            return new Response(ResponseEnum.Paper_Info, paperList);
+        }
+        return new Response(ResponseEnum.Paper_Info, paperList);
     }
 
     /**
@@ -295,9 +304,9 @@ public class AdminController {
      * 增加教师
      */
     @PostMapping("/addTeacher")
-    public Response addTeacher(@RequestParam String eamil, @RequestParam String name, @RequestParam Boolean gender) {
+    public Response addTeacher(@RequestParam String email, @RequestParam String name, @RequestParam Boolean gender) {
         // 增加教师，默认密码设为12345678
-        Teacher teacher = new Teacher(eamil, name, gender, PasswdUtil.generatePassword("12345678"));
+        Teacher teacher = new Teacher(email, name, gender, PasswdUtil.generatePassword("12345678"));
         try {
             teacherService.save(teacher);
         } catch (Exception e) {

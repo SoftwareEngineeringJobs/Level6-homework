@@ -41,7 +41,4 @@ public class Admin implements Serializable {
         this.authority = authority;
     }
 
-    public void setPasswd(String password) {
-        this.password = password;
-    }
 }

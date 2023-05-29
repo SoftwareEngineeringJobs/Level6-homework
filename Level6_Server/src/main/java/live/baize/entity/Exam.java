@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
 import java.util.Date;
+
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
@@ -19,6 +21,7 @@ import lombok.experimental.Accessors;
 @Getter
 @Setter
 @Accessors(chain = true)
+@AllArgsConstructor
 public class Exam implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -42,7 +45,4 @@ public class Exam implements Serializable {
         this.paperC = paperC;
     }
 
-    public void setId(Integer examId) {
-        this.examId = examId;
-    }
 }

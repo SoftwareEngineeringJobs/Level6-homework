@@ -31,7 +31,4 @@ public class Student implements Serializable {
     private Integer cet4;
     private Integer cet6;
 
-    public void setPasswd(String password) {
-        this.password = password;
-    }
 }
