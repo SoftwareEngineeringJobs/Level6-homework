@@ -840,12 +840,12 @@ textarea:-ms-input-placeholder {
 }
 
 .header-logo {
-  flex-shrink: 0;
+  flex-shrink: 1;
 }
 
 @media only screen and (max-width: 1199px) {
   .header-logo a img {
-    width: 130px;
+    width: 50vw;
   }
 }
 
