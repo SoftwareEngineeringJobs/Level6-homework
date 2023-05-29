@@ -2,7 +2,7 @@ package live.baize.config;
 
 import live.baize.dto.ResponseEnum;
 import live.baize.entity.Admin;
-import live.baize.exception.SystemException;
+import live.baize.exception.BusinessException;
 import live.baize.utils.SessionUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -17,9 +17,6 @@ import java.util.HashSet;
 @Component
 public class AdminLogin implements HandlerInterceptor {
 
-    @Resource
-    SessionUtil sessionUtil;
-
     // AdminAPI 白名单
     final static HashSet<String> AdminAPI;
 
@@ -28,6 +25,9 @@ public class AdminLogin implements HandlerInterceptor {
 
         AdminAPI.add("/admin/login");
     }
+
+    @Resource
+    SessionUtil sessionUtil;
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
@@ -38,7 +38,7 @@ public class AdminLogin implements HandlerInterceptor {
         Admin admin = sessionUtil.getAdminFromSession();
         // 没有登录 扔出异常
         if (admin == null) {
-            throw new SystemException(ResponseEnum.Admin_Not_Login);
+            throw new BusinessException(ResponseEnum.Admin_Not_Login);
         }
         return true;
     }

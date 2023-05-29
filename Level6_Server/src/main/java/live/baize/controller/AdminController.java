@@ -6,7 +6,6 @@ import live.baize.dto.Response;
 import live.baize.dto.ResponseEnum;
 import live.baize.entity.*;
 import live.baize.exception.BusinessException;
-import live.baize.exception.SystemException;
 import live.baize.service.*;
 import live.baize.utils.PasswdUtil;
 import live.baize.utils.SessionUtil;
@@ -338,7 +337,7 @@ public class AdminController {
         Teacher teacher = teacherService.getOne(
                 new QueryWrapper<Teacher>().eq("teacher_id", teacherId)
         );
-        teacher.setPasswd(PasswdUtil.generatePassword("12345678"));
+        teacher.setPassword(PasswdUtil.generatePassword("12345678"));
         try {
             teacherService.updateById(teacher);
         } catch (Exception e) {

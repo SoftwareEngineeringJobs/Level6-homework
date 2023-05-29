@@ -1,14 +1,14 @@
 package live.baize.service.impl;
 
-import live.baize.entity.Paper;
-import live.baize.dao.PaperMapper;
-import live.baize.service.PaperService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import live.baize.dao.PaperMapper;
+import live.baize.entity.Paper;
+import live.baize.service.PaperService;
 import org.springframework.stereotype.Service;
 
 /**
  * <p>
- *  服务实现类
+ * 服务实现类
  * </p>
  *
  * @author CodeXS

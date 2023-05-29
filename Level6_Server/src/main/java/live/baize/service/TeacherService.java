@@ -1,11 +1,11 @@
 package live.baize.service;
 
-import live.baize.entity.Teacher;
 import com.baomidou.mybatisplus.extension.service.IService;
+import live.baize.entity.Teacher;
 
 /**
  * <p>
- *  服务类
+ * 服务类
  * </p>
  *
  * @author CodeXS

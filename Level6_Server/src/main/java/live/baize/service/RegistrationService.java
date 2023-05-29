@@ -1,11 +1,11 @@
 package live.baize.service;
 
-import live.baize.entity.Registration;
 import com.baomidou.mybatisplus.extension.service.IService;
+import live.baize.entity.Registration;
 
 /**
  * <p>
- *  服务类
+ * 服务类
  * </p>
  *
  * @author CodeXS
