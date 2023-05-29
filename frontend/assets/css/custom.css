@@ -14,6 +14,13 @@
 .news-text h4{
     margin-bottom: 1em;
 }
+.news-text ol{
+    text-align: justify;
+    text-justify: inter-ideograph;
+}
+.news-text li{
+    margin-bottom: 1em;
+}
 /*--- 文章格式
  * 内容居中，最大宽度为页面的60%
  --- */
