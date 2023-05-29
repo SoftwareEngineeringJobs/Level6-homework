@@ -1,0 +1,27 @@
+/*---------------- 自定义 CSS样式文件，如有需要在此文件中添加 ------------------- */
+
+/*--- 考试内容、考试大纲等，正文的格式
+ * 首行缩进2格
+ * 文字两端对齐
+ * 每一段之后的空隙为1em
+ --- */
+.news-text p{
+    text-align: justify;
+    text-justify: inter-ideograph;
+    text-indent: 2em;
+    margin-bottom: 1em;
+}
+.news-text h4{
+    margin-bottom: 1em;
+}
+/*--- 文章格式
+ * 内容居中，最大宽度为页面的60%
+ --- */
+.news-text {
+    display: flow;
+    align-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2em;
+    max-width: 60vw;
+}
