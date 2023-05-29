@@ -162,7 +162,7 @@ public class StudentController {
         }
         // 构造报名信息 默认完成缴费
         Registration registration = new Registration().setExamId(exam.getExamId()).setPaperId(paperId)
-                .setStuId(student.getStuId()).setRegisterTime(new Date()).setPaid(true);
+                .setStuId(student.getStuId()).setRegisterTime(new Date()).setPaid(true).setScoreWrite(-1);
         registrationService.save(registration);
         return new Response(ResponseEnum.Registration_Success);
     }

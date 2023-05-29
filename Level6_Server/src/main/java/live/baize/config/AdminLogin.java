@@ -2,6 +2,7 @@ package live.baize.config;
 
 import live.baize.dto.ResponseEnum;
 import live.baize.entity.Admin;
+import live.baize.exception.BusinessException;
 import live.baize.exception.SystemException;
 import live.baize.utils.SessionUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -38,7 +39,7 @@ public class AdminLogin implements HandlerInterceptor {
         Admin admin = sessionUtil.getAdminFromSession();
         // 没有登录 扔出异常
         if (admin == null) {
-            throw new SystemException(ResponseEnum.Admin_Not_Login);
+            throw new BusinessException(ResponseEnum.Admin_Not_Login);
         }
         return true;
     }

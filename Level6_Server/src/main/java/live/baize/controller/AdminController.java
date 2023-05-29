@@ -338,7 +338,7 @@ public class AdminController {
         Teacher teacher = teacherService.getOne(
                 new QueryWrapper<Teacher>().eq("teacher_id", teacherId)
         );
-        teacher.setPasswd(PasswdUtil.generatePassword("12345678"));
+        teacher.setPassword(PasswdUtil.generatePassword("12345678"));
         try {
             teacherService.updateById(teacher);
         } catch (Exception e) {
