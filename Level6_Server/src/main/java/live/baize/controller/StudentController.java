@@ -97,6 +97,7 @@ public class StudentController {
 
         // 登录信息
         sessionUtil.setStudentToSession(student);
+        sessionUtil.setStudentToCookies(student);
         return new Response(ResponseEnum.Student_Login_Success);
     }
 
@@ -108,6 +109,7 @@ public class StudentController {
     @GetMapping(value = "/logout")
     public Response logout() {
         sessionUtil.delStudentFromSession();
+        sessionUtil.delStudentFromCookies();
         return new Response(ResponseEnum.Student_Logout_Success);
     }
 
