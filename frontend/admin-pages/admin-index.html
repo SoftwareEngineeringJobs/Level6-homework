@@ -1,136 +1,391 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>管理员主页</title>
+  <meta name="robots" content="noindex, follow" />
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="../assets/images/counter-8.png">
+
+  <!-- CSS
+  ============================================ -->
+
+  <!-- Icon Font CSS -->
+  <link rel="stylesheet" href="../assets/css/plugins/all.min.css">
+  <link rel="stylesheet" href="../assets/css/plugins/flaticon.css">
+
+  <!-- Plugins CSS -->
+  <link rel="stylesheet" href="../assets/css/plugins/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plugins/swiper-bundle.min.css">
+  <link rel="stylesheet" href="../assets/css/plugins/aos.css">
+  <link rel="stylesheet" href="../assets/css/plugins/nice-select.css">
+  <link rel="stylesheet" href="../assets/css/plugins/jquery.powertip.min.css">
+  <link rel="stylesheet" href="../assets/css/plugins/magnific-popup.css">
+
+  <!-- Main Style CSS -->
+  <link rel="stylesheet" href="../assets/css/style.css">
+
+  <!-- Custom Style CSS -->
+  <link rel="stylesheet" href="../assets/css/admin.css">
 
 
+</head>
+
+<body>
+
+<div class="main-wrapper">
 
 
-<div class="row">
-  <div class="col-md-12">
-    <div class="main-card mb-3 card">
-      <div class="card-header">Active Users
-        <div class="btn-actions-pane-right">
-          <div role="group" class="btn-group-sm btn-group">
-            <button class="active btn btn-focus">Last Week</button>
-            <button class="btn btn-focus">All Month</button>
+  <!-- Preloader start -->
+  <div id="preloader">
+    <div class="preloader">
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+  <!-- Preloader End -->
+
+  <!-- Header Start  -->
+  <div class="section header">
+    <div class="header-top-section">
+      <div class="container">
+        <div class="header-top-wrap">
+          <div class="header-top-content text-center">
+            <p>如有问题或改进建议， <span> <a href="#contact-us">请联系我们</a></span></p>
           </div>
         </div>
       </div>
-      <div class="table-responsive">
-        <table class="align-middle mb-0 table table-borderless table-striped table-hover">
+    </div>
+    <div class="header-bottom-section">
+
+      <div class="container-fluid custom-container">
+        <div class="header-bottom-wrap">
+
+          <div class="header-logo-menu">
+
+            <!--  Header Logo Start  -->
+            <div class="header-logo">
+              <a href="../index.html"><img src="../assets/images/cet6_logo.png" alt="logo"></a>
+            </div>
+            <!--  Header Logo End  -->
+
+            <!--  Header Menu Start  -->
+            <div class="header-menu d-none d-lg-block">
+              <ul class="main-menu">
+                <li><a href="../index.html">首页</a></li>
+                <li><a href="#">考试内容</a>
+                  <ul class="sub-menu">
+                    <li><a href="../exam-pages/exam-news.html">考试动态</a></li>
+                    <li><a href="../exam-pages/exam-outline.html">考试简介</a></li>
+                    <li><a href="../exam-pages/exam-content.html">考核内容</a></li>
+                  </ul>
+                </li>
+                <li><a href="#">考生报名</a>
+                  <ul class="sub-menu">
+                    <li><a href="../sign-up.html">报名</a></li>
+                    <li><a href="../team.html">缴费</a></li>
+                  </ul>
+                </li>
+                <li><a href="#">线上考试</a>
+                  <ul class="sub-menu">
+                    <li><a href="about.html">开始考试</a></li>
+                    <li><a href="team.html">结果查询</a></li>
+                  </ul>
+                </li>
+                <li><a href="#contact-us">联系我们</a></li>
+                <div class="login-btn" style="margin-top: 20px; margin-left: 40px;">
+                  <a class="btn" href="../login-register.html">登录/注册</a>
+                </div>
+              </ul>
+            </div>
+            <!--  Header Menu End  -->
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+  <!-- Header End -->
+
+  <!-- Page Banner Start -->
+  <!-- 这是页面的标头 -->
+  <div class="section page-banner-section" style="background-image: url(../assets/images/bg/cta-bg.jpg);">
+    <div class="shape-1">
+      <img src="../assets/images/shape/shape-7.png" alt="">
+    </div>
+    <div class="shape-2">
+      <img src="../assets/images/shape/shape-1.png" alt="">
+    </div>
+    <div class="shape-3"></div>
+    <div class="container">
+      <div class="page-banner-wrap">
+        <div class="row">
+          <div class="col-lg-12">
+            <!-- Page Banner Content Start -->
+            <div class="page-banner text-center">
+              <h2 class="title">用户管理</h2>
+              <ul class="breadcrumb justify-content-center">
+                <li class="breadcrumb-item active" aria-current="page">请在下方对用户进行管理</li>
+              </ul>
+            </div>
+            <!-- Page Banner Content End -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Page Banner End -->
+
+  <!-- Admins Management Box Start -->
+  <!-- 管理员的管理界面 -->
+  <div class="row">
+    <div class="table-responsive">
+      <div class="table-wrapper">
+        <table class="table table-striped table-hover">
           <thead>
           <tr>
-            <th class="text-center">#</th>
+            <th>#</th>
             <th>Name</th>
-            <th class="text-center">City</th>
-            <th class="text-center">Status</th>
-            <th class="text-center">Actions</th>
+            <th>Date Created</th>
+            <th>Role</th>
+            <th>Status</th>
+            <th>Action</th>
           </tr>
           </thead>
           <tbody>
           <tr>
-            <td class="text-center text-muted">#345</td>
+            <td>1</td>
+            <td><a href="#"> Michael Holz</a></td>
+            <td>04/10/2013</td>
+            <td>Admin</td>
+            <td><span class="status text-success">&bull;</span> Active</td>
             <td>
-              <div class="widget-content p-0">
-                <div class="widget-content-wrapper">
-                  <div class="widget-content-left me-3">
-                    <div class="widget-content-left">
-                      <img width="40" class="rounded-circle" src="assets/images/avatars/4.jpg" alt="">
-                    </div>
-                  </div>
-                  <div class="widget-content-left flex2">
-                    <div class="widget-heading">John Doe</div>
-                    <div class="widget-subheading opacity-7">Web Developer</div>
-                  </div>
-                </div>
-              </div>
-            </td>
-            <td class="text-center">Madrid</td>
-            <td class="text-center">
-              <div class="badge bg-warning">Pending</div>
-            </td>
-            <td class="text-center">
-              <button type="button" id="PopoverCustomT-1" class="btn btn-primary btn-sm">Details</button>
+              <a href="#" class="settings" title="Settings" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
+              <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
             </td>
           </tr>
           <tr>
-            <td class="text-center text-muted">#347</td>
+            <td>2</td>
+            <td><a href="#"> Paula Wilson</a></td>
+            <td>05/08/2014</td>
+            <td>Publisher</td>
+            <td><span class="status text-success">&bull;</span> Active</td>
             <td>
-              <div class="widget-content p-0">
-                <div class="widget-content-wrapper">
-                  <div class="widget-content-left me-3">
-                    <div class="widget-content-left">
-                      <img width="40" class="rounded-circle" src="assets/images/avatars/3.jpg" alt="">
-                    </div>
-                  </div>
-                  <div class="widget-content-left flex2">
-                    <div class="widget-heading">Ruben Tillman</div>
-                    <div class="widget-subheading opacity-7">Etiam sit amet orci eget</div>
-                  </div>
-                </div>
-              </div>
-            </td>
-            <td class="text-center">Berlin</td>
-            <td class="text-center">
-              <div class="badge bg-success">Completed</div>
-            </td>
-            <td class="text-center">
-              <button type="button" id="PopoverCustomT-2" class="btn btn-primary btn-sm">Details</button>
+              <a href="#" class="settings" title="Settings" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
+              <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
             </td>
           </tr>
           <tr>
-            <td class="text-center text-muted">#321</td>
+            <td>3</td>
+            <td><a href="#"> Antonio Moreno</a></td>
+            <td>11/05/2015</td>
+            <td>Publisher</td>
+            <td><span class="status text-danger">&bull;</span> Suspended</td>
             <td>
-              <div class="widget-content p-0">
-                <div class="widget-content-wrapper">
-                  <div class="widget-content-left me-3">
-                    <div class="widget-content-left">
-                      <img width="40" class="rounded-circle" src="assets/images/avatars/2.jpg" alt="">
-                    </div>
-                  </div>
-                  <div class="widget-content-left flex2">
-                    <div class="widget-heading">Elliot Huber</div>
-                    <div class="widget-subheading opacity-7">Lorem ipsum dolor sic</div>
-                  </div>
-                </div>
-              </div>
-            </td>
-            <td class="text-center">London</td>
-            <td class="text-center">
-              <div class="badge bg-danger">In Progress</div>
-            </td>
-            <td class="text-center">
-              <button type="button" id="PopoverCustomT-3" class="btn btn-primary btn-sm">Details</button>
+              <a href="#" class="settings" title="Settings" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
+              <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
             </td>
           </tr>
           <tr>
-            <td class="text-center text-muted">#55</td>
+            <td>4</td>
+            <td><a href="#"> Mary Saveley</a></td>
+            <td>06/09/2016</td>
+            <td>Reviewer</td>
+            <td><span class="status text-success">&bull;</span> Active</td>
             <td>
-              <div class="widget-content p-0">
-                <div class="widget-content-wrapper">
-                  <div class="widget-content-left me-3">
-                    <div class="widget-content-left">
-                      <img width="40" class="rounded-circle" src="assets/images/avatars/1.jpg" alt=""></div>
-                  </div>
-                  <div class="widget-content-left flex2">
-                    <div class="widget-heading">Vinnie Wagstaff</div>
-                    <div class="widget-subheading opacity-7">UI Designer</div>
-                  </div>
-                </div>
-              </div>
+              <a href="#" class="settings" title="Settings" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
+              <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
             </td>
-            <td class="text-center">Amsterdam</td>
-            <td class="text-center">
-              <div class="badge bg-info">On Hold</div>
-            </td>
-            <td class="text-center">
-              <button type="button" id="PopoverCustomT-4" class="btn btn-primary btn-sm">Details</button>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td><a href="#">Martin Sommer</a></td>
+            <td>12/08/2017</td>
+            <td>Moderator</td>
+            <td><span class="status text-warning">&bull;</span> Inactive</td>
+            <td>
+              <a href="#" class="settings" title="Settings" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
+              <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
             </td>
           </tr>
           </tbody>
         </table>
-      </div>
-      <div class="d-block text-center card-footer">
-        <button class="me-2 btn-icon btn-icon-only btn btn-outline-danger"><i class="pe-7s-trash btn-icon-wrapper"> </i></button>
-        <button class="btn-wide btn btn-success">Save</button>
+        <div class="clearfix">
+          <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
+          <ul class="pagination">
+            <li class="page-item disabled"><a href="#">Previous</a></li>
+            <li class="page-item"><a href="#" class="page-link">1</a></li>
+            <li class="page-item"><a href="#" class="page-link">2</a></li>
+            <li class="page-item active"><a href="#" class="page-link">3</a></li>
+            <li class="page-item"><a href="#" class="page-link">4</a></li>
+            <li class="page-item"><a href="#" class="page-link">5</a></li>
+            <li class="page-item"><a href="#" class="page-link">Next</a></li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
+  <!-- Admin Management Box End -->
+
+
+<!-- Footer Start -->
+<div class="footer-section section">
+  <div class="container">
+
+    <!-- Footer Widget Wrapper Start -->
+    <div class="footer-widget-wrap">
+      <div class="row">
+
+        <div class="col-lg-3 col-sm-6">
+          <!-- Footer Widget Start -->
+          <div class="widget-info">
+            <div class="info-icon" id="about-info">
+              <i class="flaticon-user-1"></i>
+            </div>
+            <p class="info-text"><a id="contact-us">我们是软工工人，<br>有问题或建议请随时联系我们！</a> </p>
+          </div>
+          <div class="widget-info">
+            <div class="info-icon">
+              <i class="flaticon-phone-call"></i>
+            </div>
+            <div class="info-text">
+              <p class="call-text">Call Us Free</p>
+              <a href="../index.html">+123456</a>
+            </div>
+          </div>
+          <!-- Footer Widget End -->
+        </div>
+
+        <div class="col-lg-3 col-sm-6">
+          <!-- Footer Widget Start -->
+          <div class="footer-widget">
+            <h4 class="footer-widget-title">考试动态</h4>
+            <div class="widget-link">
+              <ul class="link">
+                <li><a href="../grade-query.html">成绩查询</a></li>
+                <li><a href="../sign-up.html">报名方式</a></li>
+                <li><a href="../exam-pages/exam-news.html">报名提示</a></li>
+                <li><a href="../exam-pages/exam-news.html">考试时间</a></li>
+              </ul>
+            </div>
+          </div>
+          <!-- Footer Widget End -->
+        </div>
+
+        <div class="col-lg-3 col-sm-6">
+          <!-- Footer Widget Start -->
+          <div class="footer-widget">
+            <h4 class="footer-widget-title">Contact Us
+            </h4>
+            <div class="widget-link">
+              <ul class="link">
+                <li><a href="mailto: seworker@mail.nankai.edu.cn?subject = Feedback&body = Message"> Mail </a></li>
+                <li><a href="#">Feishu</a></li>
+                <li><a href="#">Wechat</a></li>
+                <li><a href="#">QQ</a></li>
+              </ul>
+            </div>
+          </div>
+          <!-- Footer Widget End -->
+        </div>
+        <div class="col-lg-3 col-sm-6">
+          <!-- Footer Widget Start -->
+          <div class="footer-widget">
+            <h4 class="footer-widget-title">项目情况
+            </h4>
+            <div class="widget-link">
+              <ul class="link">
+                <li><a href="https://github.com/SoftwareEngineeringJobs/Level6-homework">项目概览</a></li>
+                <li><a href="https://github.com/SoftwareEngineeringJobs/Level6-homework">需求文档</a></li>
+                <li><a href="https://github.com/SoftwareEngineeringJobs/Level6-homework">网站说明</a></li>
+                <li><a href="https://github.com/SoftwareEngineeringJobs/Level6-homework">工作总结</a></li>
+              </ul>
+            </div>
+          </div>
+          <!-- Footer Widget End -->
+        </div>
+      </div>
+      <!-- Footer Widget Wrapper End -->
+
+      <!-- Footer Copyright Start -->
+      <div class="footer-copyright">
+        <div class="copyright-wrapper">
+          <div class="row align-items-center">
+            <div class="col-lg-6 col-md-6">
+              <!-- Footer Copyright Text Start -->
+              <div class="copyright-text">
+                <p>© Copyright 2023 软工工人 All Rights Reserved. </p>
+              </div>
+              <!-- Footer Copyright Text End -->
+            </div>
+            <div class="col-lg-6 col-md-6">
+              <!-- Footer Copyright Social Start -->
+              <div class="copyright-social">
+                <ul class="social">
+                  <li><a href="#"><i class="fab fa-github"></i></a></li>
+                  <li><a href="#"><i class="fab fa-weixin"></i></a></li>
+                </ul>
+              </div>
+              <!-- Footer Copyright Social End -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Footer Copyright End -->
+
+    </div>
+  </div>
+
+
+  <!-- back to top start -->
+  <div class="progress-wrap">
+    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+      <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+    </svg>
+  </div>
+  <!-- back to top end -->
+
 </div>
+  <!-- Footer End -->
+
+</div>
+  <!-- main wrapper end -->
+
+
+<!-- JS
+============================================ -->
+<script src="../var.js"></script>
+
+<script src="../assets/js/vendor/jquery-1.12.4.min.js"></script>
+<script src="../assets/js/vendor/modernizr-3.11.2.min.js"></script>
+
+<!-- Bootstrap JS -->
+<script src="../assets/js/plugins/popper.min.js"></script>
+<script src="../assets/js/plugins/bootstrap.min.js"></script>
+
+<!-- Plugins JS -->
+<script src="../assets/js/plugins/swiper-bundle.min.js"></script>
+<script src="../assets/js/plugins/aos.js"></script>
+<script src="../assets/js/plugins/waypoints.min.js"></script>
+<script src="../assets/js/plugins/jquery.counterup.min.js"></script>
+<script src="../assets/js/plugins/jquery.nice-select.min.js"></script>
+<script src="../assets/js/plugins/back-to-top.js"></script>
+<script src="../assets/js/plugins/jquery.powertip.min.js"></script>
+<script src="../assets/js/plugins/jquery.magnific-popup.min.js"></script>
+
+<!--====== Use the minified version files listed below for better performance and remove the files listed above ======-->
+
+
+<!-- Main JS -->
+<script src="../assets/js/main.js"></script>
+
+
+</body>
+
+</html>

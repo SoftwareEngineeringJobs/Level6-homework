@@ -1,6 +1,6 @@
 let baseUrl = 'https://www.baize.live/cet6'
 let studentUrl = baseUrl + '/student'
-
+let adminURL = baseUrl + '/admin'
 
 class ResponseEnum {
     msg;
