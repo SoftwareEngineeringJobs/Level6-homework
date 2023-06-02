@@ -167,18 +167,8 @@ public class AdminController {
      * （根据搜索条件）查看考试信息
      */
     @GetMapping("/examInfo")
-    public Response examInfo(Integer examId, Date registerTime, Date testTime, Date scoreTime,
-                             Integer paperA, Integer paperB, Integer paperC) {
-        QueryWrapper<Exam> wrapper = new QueryWrapper<Exam>();
-        if (examId != null)
-            wrapper.eq("exam_id", examId);
-        if (registerTime != null)
-            wrapper.eq("register_time", registerTime);
-        if (testTime != null)
-            wrapper.eq("test_time", testTime);
-        if (scoreTime != null)
-            wrapper.eq("score_time", scoreTime);
-        List<Exam> examList = examService.list(wrapper);
+    public Response examInfo() {
+        List<Exam> examList = examService.list();
         if (examList.isEmpty())
             return new Response(ResponseEnum.Res_Not_Found);
         else

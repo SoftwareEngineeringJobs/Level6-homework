@@ -139,7 +139,7 @@ public class StudentController {
      * @param examId 考试场次
      */
     @PostMapping(value = "/registration")
-    public Response registration(String examId) {
+    public Response registration(@RequestBody String examId) {
         // 考生信息
         Student student = sessionUtil.getStudentFromSession();
 
@@ -150,6 +150,10 @@ public class StudentController {
 
         // 根据考试ID 获得三张试卷ID
         Exam exam = examService.getById(examId);
+        if (exam == null) {
+            throw new BusinessException(ResponseEnum.Not_This_Exam);
+        }
+
         // 随机一张试卷ID
         int paperId;
         switch (new Random().nextInt(3)) {
@@ -203,11 +207,15 @@ public class StudentController {
 
     /**
      * 上传答题结果
+     *
+     * @param one 需要 String choice, String writing, String translation
      */
     @PostMapping("uploadAnswer")
-    public Response uploadAnswer(@RequestParam(required = false) String choice,
-                                 @RequestParam(required = false) String writing,
-                                 @RequestParam(required = false) String translation) {
+    public Response uploadAnswer(@RequestBody Registration one) {
+        String choice = one.getChoice();
+        String writing = one.getWriting();
+        String translation = one.getTranslation();
+
         // 考生信息
         Student student = sessionUtil.getStudentFromSession();
 
@@ -231,6 +239,11 @@ public class StudentController {
             return new Response(ResponseEnum.Not_Test_Time_Range);
         }
 
+        // 答案全空
+        if (StringUtils.isEmpty(choice) && StringUtils.isEmpty(writing) && StringUtils.isEmpty(translation)) {
+            throw new BusinessException(ResponseEnum.Param_Missing);
+        }
+
         // 保存答案
         LambdaUpdateWrapper<Registration> wrapper = new LambdaUpdateWrapper<>();
         if (StringUtils.isNotEmpty(choice)) {
@@ -247,12 +260,8 @@ public class StudentController {
                         .sorted(Comparator.comparingInt(Paper::getQuestionId))
                         .map(Paper::getAnswer)
                         .collect(Collectors.joining());
-                log.info("choice: " + choice);
-                log.info("collect: " + collect);
                 float scoreRead = 0f;
                 float scoreListen = 0f;
-                // BCABADDCCADDACBCBDCABADABKGLHBJAINDDGCEHKFMBJACABCADBCD
-                // BCABADDCCADDACBCBDCABADABKGLHBJAINDDGCEHKFMBJAcABCADBCD
                 // 听力
                 // 8  0  - 7    7
                 // 7  8  - 14   7
