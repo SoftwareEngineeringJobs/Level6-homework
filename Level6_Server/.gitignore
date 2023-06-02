@@ -1,7 +1,7 @@
 HELP.md
 .gradle
 build/
-depend/
+deploy/Level6_Server-0.1.jar
 gradle/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
