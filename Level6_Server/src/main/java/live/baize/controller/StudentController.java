@@ -9,6 +9,7 @@ import live.baize.entity.Exam;
 import live.baize.entity.Paper;
 import live.baize.entity.Registration;
 import live.baize.entity.Student;
+import live.baize.exception.BusinessException;
 import live.baize.service.ExamService;
 import live.baize.service.PaperService;
 import live.baize.service.RegistrationService;
@@ -50,27 +51,26 @@ public class StudentController {
      * 学生注册
      * 收集学生的身份证 姓名 性别 学校 邮箱 等信息
      *
-     * @param idCard   身份证
-     * @param name     姓名
-     * @param gender   性别
-     * @param school   学校
-     * @param password 密码
+     * @param student 学生 需要传递 身份证, 姓名, 性别, 学校, 密码
      * @return 三种 已经注册/注册成功/注册失败
      */
     @PostMapping(value = "/register")
-    public Response register(String idCard, String name, boolean gender, String school, String password) {
+    public Response register(@RequestBody Student student) {
+        if (student == null) {
+            throw new BusinessException(ResponseEnum.Param_Missing);
+        }
+
         // 注册过
-        if (studentService.getOne(new QueryWrapper<Student>().eq("id_card", idCard)) != null) {
+        if (studentService.getOne(new LambdaQueryWrapper<Student>().eq(Student::getIdCard, student.getIdCard())) != null) {
             return new Response(ResponseEnum.Student_Has_Registered);
         }
 
         // 注册
         try {
-            Student student = new Student().setIdCard(idCard).setName(name).setGender(gender).setSchool(school)
-                    .setPassword(PasswdUtil.generatePassword(password)).setCet4(425);
+            student.setPassword(PasswdUtil.generatePassword(student.getPassword())).setCet4(425);
             studentService.save(student);
         } catch (Exception e) {
-            return new Response(ResponseEnum.Register_Failure);
+            throw new BusinessException(ResponseEnum.Register_Failure);
         }
         return new Response(ResponseEnum.Register_Success);
     }
