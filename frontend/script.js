@@ -31,16 +31,18 @@ form.addEventListener("submit", (event) => {
     };
 
     // 使用fetch函数发送POST请求到后端的/register路由，并获取响应
-    fetch("/register", options)
+    fetch(studentUrl + "/register", options)
         .then((response) => response.json())
         .then((data) => {
-            // 如果响应中有message属性，说明注册成功或失败，显示消息
-            if (data.message) {
-                alert(data.message);
-            }
-            // 如果响应中有error属性，说明发生了错误，显示错误
-            if (data.error) {
-                alert(data.error);
+            if (data.code === Register_Success.code) {
+                // TODO: 注册成功并跳转
+                alert(data.msg);
+                // 注册成功
+                setTimeout(() => {
+                    location.href = "./login-register.html";
+                }, 1000)
+            } else {
+                alert(data.msg);
             }
         })
         .catch((error) => {
