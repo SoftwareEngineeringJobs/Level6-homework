@@ -1,8 +1,10 @@
 package live.baize.config;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import live.baize.dto.ResponseEnum;
 import live.baize.entity.Student;
 import live.baize.exception.BusinessException;
+import live.baize.service.StudentService;
 import live.baize.utils.SessionUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -29,6 +31,8 @@ public class StudentLogin implements HandlerInterceptor {
 
     @Resource
     SessionUtil sessionUtil;
+    @Resource
+    private StudentService studentService;
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
@@ -37,8 +41,20 @@ public class StudentLogin implements HandlerInterceptor {
             return true;
         }
         Student student = sessionUtil.getStudentFromSession();
-        // 没有登录 扔出异常
+        // 没有登录
         if (student == null) {
+            // 尝试从cookies中获得
+            student = sessionUtil.getStudentFromCookies();
+            if (student != null) {
+                Student one = studentService.getOne(new LambdaQueryWrapper<Student>()
+                        .eq(Student::getIdCard, student.getIdCard())
+                        .eq(Student::getPassword, student.getPassword()));
+                // 获得成功
+                if (one != null) {
+                    sessionUtil.setStudentToSession(one);
+                    return true;
+                }
+            }
             throw new BusinessException(ResponseEnum.Student_Not_Login);
         }
         return true;

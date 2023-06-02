@@ -163,23 +163,33 @@
                                 <!-- Section Title End -->
 
                                 <div class="login-register-form">
-                                    <form action="#">
+                                    <form id = "register-form" action="#">
                                         <div class="single-form">
-                                            <input type="text" class="form-control" placeholder="邮箱">
+                                            <input id = "id" type="text" class="form-control" placeholder="身份证号" required>
                                         </div>
                                         <div class="single-form">
-                                            <input type="text" class="form-control" placeholder="用户名">
+                                            <input id = "name" type="text" class="form-control" placeholder="姓名" required>
                                         </div>
                                         <div class="single-form">
-                                            <input type="password" class="form-control" placeholder="密码">
+                                            <div style="display: flex; align-items: center;">
+                                                <label for="gender">性别</label>
+                                                <select id="gender" name="gender" required style="margin-left: 20px">
+                                                    <option value="0">男</option>
+                                                    <option value="1">女</option>
+                                                </select>
+                                            </div>
                                         </div>
                                         <div class="single-form">
-                                            <input type="password" class="form-control" placeholder="请再次输入密码">
+                                            <input id = "school" type="text" class="form-control" placeholder="学校" required>
+                                        </div>
+                                        <div class="single-form">
+                                            <input id = "password" type="password" class="form-control" placeholder="密码" required>
                                         </div>
                                         <div class="form-btn">
-                                            <button class="btn">注册</button>
+                                            <button type="submit" class="btn">注册</button>
                                         </div>
                                     </form>
+                                    <script src="script.js"></script>
                                 </div>
                             </div>
                             <!-- Login & Register Box End -->
@@ -340,6 +350,8 @@
 
     <!-- JS
     ============================================ -->
+    <script src="var.js"></script>
+
     <script src="assets/js/vendor/jquery-1.12.4.min.js"></script>
     <script src="assets/js/vendor/modernizr-3.11.2.min.js"></script>
 

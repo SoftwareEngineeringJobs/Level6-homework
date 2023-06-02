@@ -9,6 +9,7 @@ import live.baize.entity.Exam;
 import live.baize.entity.Paper;
 import live.baize.entity.Registration;
 import live.baize.entity.Student;
+import live.baize.exception.BusinessException;
 import live.baize.service.ExamService;
 import live.baize.service.PaperService;
 import live.baize.service.RegistrationService;
@@ -50,27 +51,26 @@ public class StudentController {
      * 学生注册
      * 收集学生的身份证 姓名 性别 学校 邮箱 等信息
      *
-     * @param idCard   身份证
-     * @param name     姓名
-     * @param gender   性别
-     * @param school   学校
-     * @param password 密码
+     * @param student 学生 需要传递 身份证, 姓名, 性别, 学校, 密码
      * @return 三种 已经注册/注册成功/注册失败
      */
     @PostMapping(value = "/register")
-    public Response register(String idCard, String name, boolean gender, String school, String password) {
+    public Response register(@RequestBody Student student) {
+        if (student == null) {
+            throw new BusinessException(ResponseEnum.Param_Missing);
+        }
+
         // 注册过
-        if (studentService.getOne(new QueryWrapper<Student>().eq("id_card", idCard)) != null) {
+        if (studentService.getOne(new LambdaQueryWrapper<Student>().eq(Student::getIdCard, student.getIdCard())) != null) {
             return new Response(ResponseEnum.Student_Has_Registered);
         }
 
         // 注册
         try {
-            Student student = new Student().setIdCard(idCard).setName(name).setGender(gender).setSchool(school)
-                    .setPassword(PasswdUtil.generatePassword(password)).setCet4(425);
+            student.setPassword(PasswdUtil.generatePassword(student.getPassword())).setCet4(425);
             studentService.save(student);
         } catch (Exception e) {
-            return new Response(ResponseEnum.Register_Failure);
+            throw new BusinessException(ResponseEnum.Register_Failure);
         }
         return new Response(ResponseEnum.Register_Success);
     }
@@ -97,6 +97,7 @@ public class StudentController {
 
         // 登录信息
         sessionUtil.setStudentToSession(student);
+        sessionUtil.setStudentToCookies(student);
         return new Response(ResponseEnum.Student_Login_Success);
     }
 
@@ -108,6 +109,7 @@ public class StudentController {
     @GetMapping(value = "/logout")
     public Response logout() {
         sessionUtil.delStudentFromSession();
+        sessionUtil.delStudentFromCookies();
         return new Response(ResponseEnum.Student_Logout_Success);
     }
 
@@ -137,7 +139,7 @@ public class StudentController {
      * @param examId 考试场次
      */
     @PostMapping(value = "/registration")
-    public Response registration(String examId) {
+    public Response registration(@RequestBody String examId) {
         // 考生信息
         Student student = sessionUtil.getStudentFromSession();
 
@@ -148,6 +150,10 @@ public class StudentController {
 
         // 根据考试ID 获得三张试卷ID
         Exam exam = examService.getById(examId);
+        if (exam == null) {
+            throw new BusinessException(ResponseEnum.Not_This_Exam);
+        }
+
         // 随机一张试卷ID
         int paperId;
         switch (new Random().nextInt(3)) {
@@ -201,11 +207,15 @@ public class StudentController {
 
     /**
      * 上传答题结果
+     *
+     * @param one 需要 String choice, String writing, String translation
      */
     @PostMapping("uploadAnswer")
-    public Response uploadAnswer(@RequestParam(required = false) String choice,
-                                 @RequestParam(required = false) String writing,
-                                 @RequestParam(required = false) String translation) {
+    public Response uploadAnswer(@RequestBody Registration one) {
+        String choice = one.getChoice();
+        String writing = one.getWriting();
+        String translation = one.getTranslation();
+
         // 考生信息
         Student student = sessionUtil.getStudentFromSession();
 
@@ -229,6 +239,11 @@ public class StudentController {
             return new Response(ResponseEnum.Not_Test_Time_Range);
         }
 
+        // 答案全空
+        if (StringUtils.isEmpty(choice) && StringUtils.isEmpty(writing) && StringUtils.isEmpty(translation)) {
+            throw new BusinessException(ResponseEnum.Param_Missing);
+        }
+
         // 保存答案
         LambdaUpdateWrapper<Registration> wrapper = new LambdaUpdateWrapper<>();
         if (StringUtils.isNotEmpty(choice)) {
@@ -245,12 +260,8 @@ public class StudentController {
                         .sorted(Comparator.comparingInt(Paper::getQuestionId))
                         .map(Paper::getAnswer)
                         .collect(Collectors.joining());
-                log.info("choice: " + choice);
-                log.info("collect: " + collect);
                 float scoreRead = 0f;
                 float scoreListen = 0f;
-                // BCABADDCCADDACBCBDCABADABKGLHBJAINDDGCEHKFMBJACABCADBCD
-                // BCABADDCCADDACBCBDCABADABKGLHBJAINDDGCEHKFMBJAcABCADBCD
                 // 听力
                 // 8  0  - 7    7
                 // 7  8  - 14   7

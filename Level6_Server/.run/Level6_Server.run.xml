@@ -5,12 +5,12 @@
         <option name="imageTag" value="tomcat" />
         <option name="containerName" value="Level6_Server" />
         <option name="commandLineOptions" value="-itd   -p 8421:80  -v /cet6:/cet6" />
-        <option name="sourceFilePath" value="Dockerfile" />
+        <option name="sourceFilePath" value="deploy/Dockerfile" />
       </settings>
     </deployment>
     <method v="2">
-      <option name="Gradle.BeforeRunTask" enabled="true" tasks="clean" externalProjectPath="$PROJECT_DIR$" vmOptions="" scriptParameters="" />
       <option name="Gradle.BeforeRunTask" enabled="true" tasks="build" externalProjectPath="$PROJECT_DIR$" vmOptions="" scriptParameters="" />
+      <option name="ToolBeforeRunTask" enabled="true" actionId="Tool_External Tools_CopyLevel6" />
     </method>
   </configuration>
 </component>

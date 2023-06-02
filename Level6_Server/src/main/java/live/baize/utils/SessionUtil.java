@@ -15,7 +15,7 @@ import java.util.Base64;
 @Service
 public class SessionUtil {
 
-    private final String Student_Cookie_Name = "Student_Cookie_Name";
+    private final String Student_Cookie_Name = "U3R1ZGVudF9Db29raWVfTmFtZQ";
     private final String Admin = "Admin";
     private final String Teacher = "Teacher";
     private final String Student = "Student";
@@ -30,10 +30,12 @@ public class SessionUtil {
     /**
      * 添加cookies
      */
-    public void setCookies(String email, String password) {
-        email = Base64.getEncoder().encodeToString(email.getBytes());
-        password = Base64.getEncoder().encodeToString(password.getBytes());
-        Cookie cookie = new Cookie(Student_Cookie_Name, email + "#" + password);
+    public void setStudentToCookies(Student student) {
+        String idCard = PasswdUtil.encryptAES(student.getIdCard());
+        String passwd = PasswdUtil.encryptAES(student.getPassword());
+        idCard = Base64.getEncoder().encodeToString(idCard.getBytes());
+        passwd = Base64.getEncoder().encodeToString(passwd.getBytes());
+        Cookie cookie = new Cookie(Student_Cookie_Name, idCard + "#" + passwd);
         cookie.setMaxAge(2592000);
         response.addCookie(cookie);
     }
@@ -41,14 +43,17 @@ public class SessionUtil {
     /**
      * 删除cookies
      */
-    public void delCookies() {
+    public void delStudentFromCookies() {
         Cookie[] cookies = request.getCookies();
         if (cookies == null) {
             return;
         }
         for (Cookie cookie : cookies) {
-            cookie.setMaxAge(0);
-            response.addCookie(cookie);
+            if (Student_Cookie_Name.equals(cookie.getName())) {
+                cookie.setMaxAge(0);
+                response.addCookie(cookie);
+                break;
+            }
         }
     }
 
@@ -64,9 +69,12 @@ public class SessionUtil {
         for (Cookie cookie : cookies) {
             if (Student_Cookie_Name.equals(cookie.getName())) {
                 String[] params = cookie.getValue().split("#");
-                student = new Student()
-//                        .setEmail(new String(Base64.getDecoder().decode(params[0]), StandardCharsets.UTF_8))
-                        .setPassword(new String(Base64.getDecoder().decode(params[1]), StandardCharsets.UTF_8));
+                String idCard = new String(Base64.getDecoder().decode(params[0]), StandardCharsets.UTF_8);
+                String passwd = new String(Base64.getDecoder().decode(params[1]), StandardCharsets.UTF_8);
+                idCard = PasswdUtil.decryptAES(idCard);
+                passwd = PasswdUtil.decryptAES(passwd);
+                student = new Student().setIdCard(idCard).setPassword(passwd);
+                break;
             }
         }
         return student;
