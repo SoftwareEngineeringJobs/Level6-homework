@@ -61,6 +61,7 @@ Get_PaperInfo_Success = new ResponseEnum(2001071, "获得试卷信息成功");
 Save_Answer_Success = new ResponseEnum(2001081, "保存答案成功");
 Not_Score_Time_Range = new ResponseEnum(2001090, "不在查分时间段");
 Lookup_Score_Success = new ResponseEnum(2001091, "查询分数成功");
+Get_Student_Info = new ResponseEnum(2001101, "获取用户信息成功");
 
 // ============================================= TeacherController ============================================= //
 Teacher_Not_Login = new ResponseEnum(2002010, "老师没有登录");
