@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>报名</title>
+    <title>错误</title>
     <meta name="robots" content="noindex, follow" />
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -89,13 +89,13 @@
                                 <li><a href="#">考生报名</a>
                                     <ul class="sub-menu">
                                         <li><a href="sign-up.html">报名</a></li>
-                                        <li><a href="sign-up.html">缴费</a></li>
+                                        <li><a href="team.html">缴费</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="#">线上考试</a>
                                     <ul class="sub-menu">
-                                        <li><a href="paper.html">开始考试</a></li>
-                                        <li><a href="grade-query.html">结果查询</a></li>
+                                        <li><a href="about.html">开始考试</a></li>
+                                        <li><a href="team.html">结果查询</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="#contact-us">联系我们</a></li>
@@ -131,9 +131,9 @@
                     <div class="col-lg-12">
                         <!-- Page Banner Content Start -->
                         <div class="page-banner text-center">
-                            <h2 class="title">报名 SIGN UP</h2>
+                            <h2 class="title">错误 ERROR</h2>
                             <ul class="breadcrumb justify-content-center">
-                                <li class="breadcrumb-item active" aria-current="page">请在下方确认报名</li>
+                                <!--<li class="breadcrumb-item active" aria-current="page">请在下方确认报名</li>-->
                             </ul>
                         </div>
                         <!-- Page Banner Content End -->
@@ -144,232 +144,169 @@
     </div>
     <!-- Page Banner End -->
 
-    <!-- Login & Register Start -->
-    <!-- 登录对话窗口 -->
-    <div class="section login-register-section section-padding">
-        <div class="container">
-
-            <!-- Login & Register Wrapper Start -->
-            <div class="login-register-wrap"  style="display: flex; justify-content: center; align-items: center">
-                <!--div class="row gx-5" -->
-                <div class="col-lg-6">
-
-                    <!-- Login & Register Box Start -->
-                    <div class="login-register-box">
-                        <!-- Section Title Start -->
-                        <div class="section-title">
-                            <h2 class="title" style="text-align: center;margin-bottom: 20px">CET-6报名</h2>
-                        </div>
-                        <!-- Section Title End -->
-
-                        <div class="login-register-form">
-                            <form form action="pay.html">
-                                <h5 class="title" style="text-align: center;margin-bottom: 20px">报名时间：2023年6月5日~2023年6月7日</h5>
-                                <h5 class="title" style="text-align: center;margin-bottom: 20px">考试时间：2023年6月18日</h5>
-                                <h5 class="title" style="text-align: center;margin-bottom: 20px">考试方式：在线考试</h5>
-                                <div class="text" style="text-align: center;margin-bottom: 20px">请您再次核实个人信息，有问题请联系管理员。</div>
-                                <div class="form-btn">
-                                    <button type="submit" class="btn">点击报名</button>
+        <!-- Error Start -->
+        <div class="section error-section section-padding">
+            <div class="container">
+                <!-- Error Wrapper Start -->
+                <div class="error-wrapper">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8">
+                            <div class="error-item text-center">
+                                <div class="error-content">
+                                    <h3 class="title" style="text-align: center">对不起，您的报名时间超出期限！</h3>
+                                    <p style="text-align: center">Sorry, your registration time exceeds the deadline！</p>
+                                    <a class="btn" href="index.html" style="text-align: center">返回主页</a>
                                 </div>
-                            </form>
-                            <script>
-                                // 设置报名截止日期为2023年6月7日
-                                var deadline = new Date("2023-06-07");
-                                // 获取表单元素
-                                var form = document.querySelector("form");
-                                // 监听表单提交事件
-                                form.addEventListener("submit", function(event) {
-                                    // 获取当前日期
-                                    var today = new Date();
-                                    // 如果当前日期晚于截止日期，阻止表单提交并跳转到错误界面
-                                    if (today > deadline) {
-                                        event.preventDefault();
-                                        window.location.href = "error.html";
-                                    }
-                                });
-                            </script>
-                        </div>
-                    </div>
-                    <!-- Login & Register Box End -->
-                </div>
-            </div>
-        </div>
-        <!-- Login & Register Wrapper End -->
-
-    </div>
-</div>
-<!-- Login & Register End -->
-
-
-<!-- Footer Start -->
-<div class="footer-section section">
-    <div class="container">
-
-        <!-- Footer Widget Wrapper Start -->
-        <div class="footer-widget-wrap">
-            <div class="row">
-
-                <div class="col-lg-3 col-sm-6">
-                    <!-- Footer Widget Start -->
-                    <div class="widget-info">
-                        <div class="info-icon" id="about-info">
-                            <i class="flaticon-user-1"></i>
-                        </div>
-                        <p class="info-text"><a id="contact-us">我们是软工工人，<br>有问题或建议请随时联系我们！</a> </p>
-                    </div>
-                    <div class="widget-info">
-                        <div class="info-icon">
-                            <i class="flaticon-phone-call"></i>
-                        </div>
-                        <div class="info-text">
-                            <p class="call-text">Call Us Free</p>
-                            <a href="tel:+1234567">+1234567</a>
-                        </div>
-                    </div>
-                    <!-- Footer Widget End -->
-                </div>
-
-                <div class="col-lg-3 col-sm-6">
-                    <!-- Footer Widget Start -->
-                    <div class="footer-widget">
-                        <h4 class="footer-widget-title">考试动态</h4>
-                        <div class="widget-link">
-                            <ul class="link">
-                                <li><a href="./grade-query.html">成绩查询</a></li>
-                                <li><a href="./sign-up.html">报名方式</a></li>
-                                <li><a href="./exam-pages/exam-news.html">报名提示</a></li>
-                                <li><a href="./exam-pages/exam-news.html">考试时间</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- Footer Widget End -->
-                </div>
-
-                <div class="col-lg-3 col-sm-6">
-                    <!-- Footer Widget Start -->
-                    <div class="footer-widget">
-                        <h4 class="footer-widget-title">Contact Us
-                        </h4>
-                        <div class="widget-link">
-                            <ul class="link">
-                                <li><a href="mailto: seworker@mail.nankai.edu.cn?subject = Feedback&body = Message"> Mail </a></li>
-                                <li><a href="#">Feishu</a></li>
-                                <li><a href="#">Wechat</a></li>
-                                <li><a href="#">QQ</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- Footer Widget End -->
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <!-- Footer Widget Start -->
-                    <div class="footer-widget">
-                        <h4 class="footer-widget-title">项目情况
-                        </h4>
-                        <div class="widget-link">
-                            <ul class="link">
-                                <li><a href="https://github.com/SoftwareEngineeringJobs/Level6-homework">项目概览</a></li>
-                                <li><a href="https://github.com/SoftwareEngineeringJobs/Level6-homework">需求文档</a></li>
-                                <li><a href="https://github.com/SoftwareEngineeringJobs/Level6-homework">网站说明</a></li>
-                                <li><a href="https://github.com/SoftwareEngineeringJobs/Level6-homework">工作总结</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- Footer Widget End -->
-                </div>
-            </div>
-            <!-- Footer Widget Wrapper End -->
-
-            <!-- Footer Copyright Start -->
-            <div class="footer-copyright">
-                <div class="copyright-wrapper">
-                    <div class="row align-items-center">
-                        <div class="col-lg-6 col-md-6">
-                            <!-- Footer Copyright Text Start -->
-                            <div class="copyright-text">
-                                <p>© Copyright 2023 软工工人 All Rights Reserved</a>. </p>
                             </div>
-                            <!-- Footer Copyright Text End -->
-                        </div>
-                        <div class="col-lg-6 col-md-6">
-                            <!-- Footer Copyright Social Start -->
-                            <div class="copyright-social">
-                                <ul class="social">
-                                    <li><a href="#"><i class="fab fa-github"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-weixin"></i></a></li>
-                                </ul>
-                            </div>
-                            <!-- Footer Copyright Social End -->
                         </div>
                     </div>
                 </div>
+                <!-- Error Wrapper End -->
             </div>
-            <!-- Footer Copyright End -->
-
         </div>
-    </div>
-    <!-- Footer End -->
-
-    <!-- back to top start -->
-    <div class="progress-wrap">
-        <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
-            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
-        </svg>
-    </div>
-    <!-- back to top end -->
+        <!-- Error End -->
 
 
-    <!-- course hover Start -->
-    <div id="course-hover">
-        <div class="course-hover">
-            <div class="courses-content">
-                <div class="top-meta"><a class="tag" href="#">Beginner</a></div>
-                <h3 class="title"><a href="course-details.html">Design 101: Product & Web Design Course</a></h3>
-            </div>
-            <div class="rating">
-                <div class="rating-star">
-                    <div class="rating-active" style="width: 60%;"></div>
+        <!-- Footer Start -->
+        <div class="footer-section section">
+            <div class="container">
+
+                <!-- Footer Widget Wrapper Start -->
+                <div class="footer-widget-wrap">
+                    <div class="row">
+
+                        <div class="col-lg-3 col-sm-6">
+                            <!-- Footer Widget Start -->
+                            <div class="footer-widget widget-about">
+                                <div class="footer-logo">
+                                    <a href="index.html"><img src="assets/images/logo-white.png" alt=""></a>
+                                </div>
+                                <p class="text">World largest online learning platform. Download our apps to start learning.</p>
+                                <div class="widget-info">
+                                    <div class="info-icon">
+                                        <i class="flaticon-phone-call"></i>
+                                    </div>
+                                    <div class="info-text">
+                                        <p class="call-text">Call Us Free</p>
+                                        <a href="tel:+91458654528">+91 458 654 528</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Footer Widget End -->
+                        </div>
+
+                        <div class="col-lg-3 col-sm-6">
+                            <!-- Footer Widget Start -->
+                            <div class="footer-widget">
+                                <h4 class="footer-widget-title">Trending Courses</h4>
+                                <div class="widget-link">
+                                    <ul class="link">
+                                        <li><a href="index.html">Home </a></li>
+                                        <li><a href="#">Pricing</a></li>
+                                        <li><a href="about.html">Compare plans</a></li>
+                                        <li><a href="contact.html">Contact us</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- Footer Widget End -->
+                        </div>
+
+                        <div class="col-lg-3 col-sm-6">
+                            <!-- Footer Widget Start -->
+                            <div class="footer-widget">
+                                <h4 class="footer-widget-title">Study material</h4>
+                                <div class="widget-link">
+                                    <ul class="link">
+                                        <li><a href="blog.html">Blog</a></li>
+                                        <li><a href="#">Weekly webinar</a></li>
+                                        <li><a href="#">Academy</a></li>
+                                        <li><a href="#">Free eBooks & checklists</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- Footer Widget End -->
+                        </div>
+                        <div class="col-lg-3 col-sm-6">
+                            <!-- Footer Widget Start -->
+                            <div class="footer-widget">
+                                <h4 class="footer-widget-title">Download Now</h4>
+                                <div class="widget-download">
+                                    <a href="#"><img src="assets/images/app-1.jpg" alt=""></a>
+                                    <a href="#"><img src="assets/images/app-2.png" alt=""></a>
+                                </div>
+                            </div>
+                            <!-- Footer Widget End -->
+                        </div>
+                    </div>
                 </div>
-                <span>(4.5)</span>
+                <!-- Footer Widget Wrapper End -->
+
+                <!-- Footer Copyright Start -->
+                <div class="footer-copyright">
+                    <div class="copyright-wrapper">
+                        <div class="row align-items-center">
+                            <div class="col-lg-6 col-md-6">
+                                <!-- Footer Copyright Text Start -->
+                                <div class="copyright-text">
+                                    <p>© Copyright 2023 upstudy All rights By <a href="http://www.bootstrapmb.com">Reserved</a>. </p>
+                                </div>
+                                <!-- Footer Copyright Text End -->
+                            </div>
+                            <div class="col-lg-6 col-md-6">
+                                <!-- Footer Copyright Social Start -->
+                                <div class="copyright-social">
+                                    <ul class="social">
+                                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                                    </ul>
+                                </div>
+                                <!-- Footer Copyright Social End -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Footer Copyright End -->
+
             </div>
-            <p class="price">Free</p>
-            <p>World-class training and programs developed by top teachers Lorem ipsum dolor sit amet consectur adip iscing elit sed eiusmod tempor.</p>
-            <div class="courses-meta">
-                <p class="student"><i class="flaticon-google-docs"></i> 10 Lessons</p>
-                <p class="student"><i class="far fa-clock"></i> 03 Hours</p>
-            </div>
-            <div class="courses-btn"><a class="btn" href="course-details.html">Course Full Details</a></div>
         </div>
+        <!-- Footer End -->
+
+        <!-- back to top start -->
+        <div class="progress-wrap">
+            <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+            </svg>
+        </div>
+        <!-- back to top end -->
+
     </div>
-    <!-- course hover End -->
 
-</div>
+    <!-- JS
+    ============================================ -->
+    <script src="assets/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="assets/js/vendor/modernizr-3.11.2.min.js"></script>
 
-<!-- JS
-============================================ -->
-<script src="assets/js/vendor/jquery-1.12.4.min.js"></script>
-<script src="assets/js/vendor/modernizr-3.11.2.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="assets/js/plugins/popper.min.js"></script>
+    <script src="assets/js/plugins/bootstrap.min.js"></script>
 
-<!-- Bootstrap JS -->
-<script src="assets/js/plugins/popper.min.js"></script>
-<script src="assets/js/plugins/bootstrap.min.js"></script>
+    <!-- Plugins JS -->
+    <script src="assets/js/plugins/swiper-bundle.min.js"></script>
+    <script src="assets/js/plugins/aos.js"></script>
+    <script src="assets/js/plugins/waypoints.min.js"></script>
+    <script src="assets/js/plugins/jquery.counterup.min.js"></script>
+    <script src="assets/js/plugins/jquery.nice-select.min.js"></script>
+    <script src="assets/js/plugins/back-to-top.js"></script>
+    <script src="assets/js/plugins/jquery.powertip.min.js"></script>
+    <script src="assets/js/plugins/jquery.magnific-popup.min.js"></script>
 
-<!-- Plugins JS -->
-<script src="assets/js/plugins/swiper-bundle.min.js"></script>
-<script src="assets/js/plugins/aos.js"></script>
-<script src="assets/js/plugins/waypoints.min.js"></script>
-<script src="assets/js/plugins/jquery.counterup.min.js"></script>
-<script src="assets/js/plugins/jquery.nice-select.min.js"></script>
-<script src="assets/js/plugins/back-to-top.js"></script>
-<script src="assets/js/plugins/jquery.powertip.min.js"></script>
-<script src="assets/js/plugins/jquery.magnific-popup.min.js"></script>
-
-<!--====== Use the minified version files listed below for better performance and remove the files listed above ======-->
+    <!--====== Use the minified version files listed below for better performance and remove the files listed above ======-->
 
 
-<!-- Main JS -->
-<script src="assets/js/main.js"></script>
-</div>
+    <!-- Main JS -->
+    <script src="assets/js/main.js"></script>
+
 </body>
 
 </html>
