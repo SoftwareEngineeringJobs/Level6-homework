@@ -189,11 +189,15 @@ public class StudentController {
             return new Response(ResponseEnum.Not_Registration);
         }
 
-        // 是否到了考试时间
+        // 是否到了考试时间范围
         Exam exam = examService.getById(registration.getExamId());
-        if (exam.getTestTime().after(new Date())) {
-            // 不到考试时间
-            return new Response(ResponseEnum.Test_Time_Not_Arrived);
+        Calendar Cal = Calendar.getInstance();
+        Cal.setTime(exam.getTestTime());
+        Cal.add(Calendar.MINUTE, 135);
+
+        // 不在考试时间范围
+        if (exam.getTestTime().after(new Date()) || new Date().after(Cal.getTime())) {
+            return new Response(ResponseEnum.Not_Test_Time_Range);
         }
 
         // 试卷列表
@@ -207,15 +211,11 @@ public class StudentController {
 
     /**
      * 上传答题结果
-     *
-     * @param one 需要 String choice, String writing, String translation
      */
     @PostMapping("uploadAnswer")
-    public Response uploadAnswer(@RequestBody Registration one) {
-        String choice = one.getChoice();
-        String writing = one.getWriting();
-        String translation = one.getTranslation();
-
+    public Response uploadAnswer(@RequestParam(required = false) String choice,
+                                 @RequestParam(required = false) String writing,
+                                 @RequestParam(required = false) String translation) {
         // 考生信息
         Student student = sessionUtil.getStudentFromSession();
 
@@ -342,6 +342,19 @@ public class StudentController {
 
     }
 
+    /**
+     * 获得当前用户的信息
+     */
+    @GetMapping(value = "/getStudentInfo")
+    public Response getStudentInfo() {
+        // 考生信息
+        Student student = sessionUtil.getStudentFromSession();
+
+        student.setPassword(null);
+
+        return new Response(ResponseEnum.Get_Student_Info, student);
+
+    }
 //    - 注册
 //    - 登录
 //    - 退出
