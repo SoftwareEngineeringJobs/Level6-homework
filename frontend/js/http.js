@@ -22,7 +22,6 @@ function requests(obj) {
             // 获取data键名
             let queryParams = Object.keys(obj.data).map(k => `${ec(k)}=${ec(obj.data[k])}`).join('&');
             if (queryParams) obj.path += `?${queryParams}`;
-            console.log(obj.path)
         }
     } else {
         for (const key in obj.data) {
@@ -43,7 +42,6 @@ function requests(obj) {
         requestOptions.body = urlencoded
     }
 
-    console.log(requestOptions);
     // 发送请求并返回 promise 对象，注意 fetch不会拦截400/500等异常请求️，只有网络不通时才会失败
     return fetch(baseUrl + obj.path, requestOptions)
         .then((response) => response.json())
