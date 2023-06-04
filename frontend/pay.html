@@ -47,6 +47,27 @@
 
     <!-- SPECIFIC CSS -->
     <link href="assets/css/paycss/custom.css" rel="stylesheet">
+
+    <!-- ALERT -->
+    <link rel="stylesheet" type="text/css" href="assets/css/sweetalert.css">
+    <script type="text/javascript" src="assets/js/sweetalert-dev.js"></script>
+    <script>
+        function paySuccess() {
+            swal('缴费成功', 'CET-6报名成功!', 'success');
+            var count = 2;
+            var speed = 1000;
+            setTimeout(goIndexPage, speed);
+            function goIndexPage(){
+                count--;
+                if (count <= 0){
+                    window.location.href = "index.html";
+                }
+                else{
+                    setTimeout(goIndexPage, speed);
+                }
+            }
+        }
+    </script>
 </head>
 
 <body>
@@ -174,7 +195,7 @@
                                         <h5>考试方式：在线答题</h5>
                                         <h5>应缴金额：人民币50元（¥50）</h5>
                                     </ul>
-                                    <a href="confirm.html" class="btn_1 full-width mb_5" >点击缴费</a>
+                                    <a onclick="paySuccess();" class="btn_1 full-width mb_5" >点击缴费</a>
                                     <div class="text-center"><small>Or Call Us at <strong> <a href="tel:+1234567">1234567</a></strong></small></div>
                                 </div>
                             </div>
