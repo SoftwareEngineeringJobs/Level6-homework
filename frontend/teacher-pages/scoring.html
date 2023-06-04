@@ -71,7 +71,7 @@
 
             <!--  Header Logo Start  -->
             <div class="header-logo">
-              <a href="../index.html"><img src="../assets/images/cet6_logo.png" alt="logo"></a>
+              <a href="teacher-index.html"><img src="../assets/images/cet6_logo.png" alt="logo"></a>
             </div>
             <!--  Header Logo End  -->
 
@@ -81,27 +81,23 @@
                 <li><a href="../index.html">首页</a></li>
                 <li><a href="#">考试内容</a>
                   <ul class="sub-menu">
-                    <li><a href="./exam-news.html">考试动态</a></li>
-                    <li><a href="./exam-outline.html">考试简介</a></li>
-                    <li><a href="./exam-content.html">考核内容</a></li>
+                    <li><a href="../exam-pages/exam-news.html">考试动态</a></li>
+                    <li><a href="../exam-pages/exam-outline.html">考试简介</a></li>
+                    <li><a href="../exam-pages/exam-content.html">考核内容</a></li>
                   </ul>
                 </li>
-                <li><a href="#">考生报名</a>
-                  <ul class="sub-menu">
-                    <li><a href="../sign-up.html">报名</a></li>
-                    <li><a href="pay.html">缴费</a></li>
-                  </ul>
-                </li>
-                <li><a href="#">线上考试</a>
-                  <ul class="sub-menu">
-                    <li><a href="about.html">开始考试</a></li>
-                    <li><a href="team.html">结果查询</a></li>
-                  </ul>
-                </li>
+                <li><a href="./scoring.html">批改试卷</a></li>
+                <li><a href="#">试卷信息</a></li>
                 <li><a href="#contact-us">联系我们</a></li>
-                <div class="login-btn" style="margin-top: 20px; margin-left: 40px;">
-                  <a class="btn" href="../login-register.html">登录/注册</a>
-                </div>
+                <li>
+                  <a class="btn" href="#" style="margin-top:-0.5em;">登录/注册</a>
+                  <ul class="sub-menu">
+                    <li><a href="../register.html">注册</a></li>
+                    <li><a href="../login-register.html">登录</a></li>
+                    <li><a href="../index.html">退出登录</a></li>
+                  </ul>
+                </li>
+
               </ul>
             </div>
             <!--  Header Menu End  -->
@@ -218,9 +214,17 @@
                             <!-- 打分 Box Start -->
                             <div class="login-register-form" style="margin-top: 2em;">
                               <form id="Essay" action="#">
-                                <div class="single-form" >
-                                  <input id="Essay-Score" type="text"
-                                         class="form-control" placeholder="请输入评判分数" style="text-align: center;">
+                                <div class="row" style="width: 100%;">
+                                  <div class="col-10">
+                                    <div class="single-form" >
+                                      <input id="Essay-Score" type="text" class="form-control" placeholder="请输入评判分数" style="text-align: center;">
+                                    </div>
+                                  </div>
+                                  <div class="col">
+                                    <div class="form-btn" style="justify-self: right">
+                                      <button type="submit" class="btn btn-primary">提交分数</button>
+                                    </div>
+                                  </div>
                                 </div>
                               </form>
                             </div>
@@ -255,9 +259,17 @@
                             <!-- 打分 Box Start -->
                             <div class="login-register-form" style="margin-top: 2em;">
                               <form id="Translate" action="#">
-                                <div class="single-form" >
-                                  <input id="Translate-Score" type="text"
-                                         class="form-control" placeholder="请输入评判分数" style="text-align: center;">
+                                <div class="row" style="width: 100%;">
+                                  <div class="col-10">
+                                    <div class="single-form" >
+                                      <input id="Translate-Score" type="text" class="form-control" placeholder="请输入评判分数" style="text-align: center;">
+                                    </div>
+                                  </div>
+                                  <div class="col">
+                                    <div class="form-btn">
+                                      <button type="submit" class="btn btn-primary">提交分数</button>
+                                    </div>
+                                  </div>
                                 </div>
                               </form>
                             </div>
