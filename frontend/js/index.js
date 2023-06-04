@@ -25,17 +25,13 @@ requests(object)
 
                 student_requests(logout).then((data) => {
                     if (data.code === Student_Logout_Success.code) {
-                        alert(data.msg);
+                        swal(data.msg, data.msg + ' 等待跳转', 'success');
                         // 跳转到另一个界面
                         setTimeout(() => {
                             location.href = "./index.html";
                         }, 0)
                     } else {
-                        alert(data.msg);
-                        // 跳转到另一个界面
-                        setTimeout(() => {
-                            location.href = "./index.html";
-                        }, 0)
+                        swal('错误', '错误', 'error');
                     }
                 });
 

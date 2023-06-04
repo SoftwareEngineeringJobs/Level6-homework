@@ -35,18 +35,17 @@ form.addEventListener("submit", (event) => {
         .then((response) => response.json())
         .then((data) => {
             if (data.code === Register_Success.code) {
-                // TODO: 注册成功并跳转
-                alert(data.msg);
+                swal(data.msg, data.msg + ', 等待跳转', 'success');
                 // 注册成功
                 setTimeout(() => {
                     location.href = "./login-register.html";
                 }, 1000)
             } else {
-                alert(data.msg);
+                swal('错误', data.msg, 'error');
             }
         })
         .catch((error) => {
             // 如果发生网络错误，显示错误
-            alert(error);
+            swal('错误', '未知错误', 'error');
         });
 });
