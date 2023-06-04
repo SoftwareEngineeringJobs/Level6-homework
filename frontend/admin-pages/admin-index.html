@@ -29,7 +29,8 @@
     <!-- Main Style CSS -->
     <link rel="stylesheet" href="../assets/css/style.css">
 
-
+    <link rel="stylesheet" type="text/css" href="../assets/css/sweetalert.css">
+    <script type="text/javascript" src="../assets/js/sweetalert-dev.js"></script>
     <!--====== Use the minified version files listed below for better performance and remove the files listed above ======-->
     <!-- <link rel="stylesheet" href="../assets/css/vendor/plugins.min.css">
     <link rel="stylesheet" href="../assets/css/style.min.css"> -->
@@ -85,7 +86,7 @@
                                     </ul>
                                 </li>
                                 <li><a href="#contact-us" >联系我们</a></li>
-                                <div class="login-btn" style="margin-top: 20px; margin-left: 40px;">
+                                <div id="admin-login-div" class="login-btn" style="margin-top: 20px; margin-left: 40px;">
                                     <a class="btn" href="../login-register.html">登录/注册</a>
                                 </div>
                             </ul>
@@ -388,6 +389,9 @@
 
 </div>
 <!-- JS ============================================ -->
+<script src="../js/http.js"></script>
+<script src="../js/var.js"></script>
+<script src="../js/adminIndex.js"></script>
 
 <script src="../assets/js/vendor/jquery-1.12.4.min.js"></script>
 <script src="../assets/js/vendor/modernizr-3.11.2.min.js"></script>
