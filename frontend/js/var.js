@@ -72,6 +72,7 @@ Teacher_Login_Success = new ResponseEnum(2002021, "老师登录成功");
 Without_Paper = new ResponseEnum(2002030, "试卷判完了");
 Get_Paper_Success = new ResponseEnum(2002031, "获得试卷成功");
 Scoring_Success = new ResponseEnum(2002041, "打分成功");
+Teacher_Logout_Success = new ResponseEnum(2002051, "老师退出登录成功");
 
 // 客户端异常
 Not_ThisFile = new ResponseEnum(400050, "没有这样的文件");
