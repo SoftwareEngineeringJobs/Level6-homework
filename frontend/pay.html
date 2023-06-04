@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>缴费</title>
-    <meta name="robots" content="noindex, follow" />
+    <meta name="robots" content="noindex, follow"/>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicon -->
@@ -39,7 +39,8 @@
     <!-- GOOGLE WEB FONT -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lora:ital@1&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital@1&family=Poppins:wght@400;500;600;700&display=swap"
+          rel="stylesheet">
 
     <!-- BASE CSS -->
     <link href="assets/css/paycss/vendors.min.css" rel="stylesheet">
@@ -51,21 +52,37 @@
     <!-- ALERT -->
     <link rel="stylesheet" type="text/css" href="assets/css/sweetalert.css">
     <script type="text/javascript" src="assets/js/sweetalert-dev.js"></script>
+
+    <script src="./js/http.js"></script>
+    <script src="./js/var.js"></script>
+
     <script>
         function paySuccess() {
-            swal('缴费成功', 'CET-6报名成功!', 'success');
-            var count = 2;
-            var speed = 1000;
-            setTimeout(goIndexPage, speed);
-            function goIndexPage(){
-                count--;
-                if (count <= 0){
-                    window.location.href = "index.html";
-                }
-                else{
-                    setTimeout(goIndexPage, speed);
+            let object = {
+                path: "/registration",
+                method: "POST",
+                data: {
+                    examId: 1,
                 }
             }
+
+            student_requests(object)
+                .then((data) => {
+                    if (data.code === Registration_Success.code) {
+                        swal("成功", '缴费成功, 等待跳转', 'success');
+                        // 跳转到另一个界面
+                        setTimeout(() => {
+                            location.href = "./confirm.html";
+                        }, 1000)
+                    } else {
+                        swal('错误', data.msg, 'error');
+
+                        setTimeout(() => {
+                            location.href = "./index.html";
+                        }, 1000)
+                    }
+                });
+
         }
     </script>
 </head>
@@ -173,7 +190,7 @@
         <div class="container">
 
             <!-- Login & Register Wrapper Start -->
-            <div class="login-register-wrap"  style="display: flex; justify-content: center; align-items: center">
+            <div class="login-register-wrap" style="display: flex; justify-content: center; align-items: center">
                 <!--div class="row gx-5" -->
                 <div class="col-lg-6">
 
@@ -184,22 +201,23 @@
                             <h2 class="title" style="text-align: center;margin-bottom: 20px">CET-6缴费</h2>
                         </div>
                         <!-- Section Title End -->
-                            <div class="box_booking">
-                                <div class="head">
-                                    <h3>确认信息</h3>
-                                </div>
-                                <!-- /head -->
-                                <div class="main">
-                                    <ul class="clearfix">
-                                        <h5>考试场次：2023年6月18日</h5>
-                                        <h5>考试方式：在线答题</h5>
-                                        <h5>应缴金额：人民币50元（¥50）</h5>
-                                    </ul>
-                                    <a onclick="paySuccess();" class="btn_1 full-width mb_5" >点击缴费</a>
-                                    <div class="text-center"><small>Or Call Us at <strong> <a href="tel:+1234567">1234567</a></strong></small></div>
-                                </div>
+                        <div class="box_booking">
+                            <div class="head">
+                                <h3>确认信息</h3>
                             </div>
-                            <!-- /box_booking -->
+                            <!-- /head -->
+                            <div class="main">
+                                <ul class="clearfix">
+                                    <h5>考试场次：2023年6月18日</h5>
+                                    <h5>考试方式：在线答题</h5>
+                                    <h5>应缴金额：人民币50元（¥50）</h5>
+                                </ul>
+                                <a onclick="paySuccess();" class="btn_1 full-width mb_5">点击缴费</a>
+                                <div class="text-center"><small>Or Call Us at <strong> <a
+                                        href="tel:+1234567">1234567</a></strong></small></div>
+                            </div>
+                        </div>
+                        <!-- /box_booking -->
                     </div>
                     <!-- Login & Register Box End -->
                 </div>
@@ -225,7 +243,7 @@
                         <div class="info-icon" id="about-info">
                             <i class="flaticon-user-1"></i>
                         </div>
-                        <p class="info-text"><a id="contact-us">我们是软工工人，<br>有问题或建议请随时联系我们！</a> </p>
+                        <p class="info-text"><a id="contact-us">我们是软工工人，<br>有问题或建议请随时联系我们！</a></p>
                     </div>
                     <!-- Footer Widget End -->
                 </div>
@@ -253,7 +271,8 @@
                         </h4>
                         <div class="widget-link">
                             <ul class="link">
-                                <li><a href="mailto: seworker@mail.nankai.edu.cn?subject = Feedback&body = Message"> Mail </a></li>
+                                <li><a href="mailto: seworker@mail.nankai.edu.cn?subject = Feedback&body = Message">
+                                    Mail </a></li>
                                 <li><a href="#">Feishu</a></li>
                                 <li><a href="#">Wechat</a></li>
                                 <li><a href="#">QQ</a></li>
@@ -269,10 +288,14 @@
                         </h4>
                         <div class="widget-link">
                             <ul class="link">
-                                <li><a href="https://github.com/SoftwareEngineeringJobs/Level6-homework">项目概览</a></li>
-                                <li><a href="https://github.com/SoftwareEngineeringJobs/Level6-homework">需求文档</a></li>
-                                <li><a href="https://github.com/SoftwareEngineeringJobs/Level6-homework">网站说明</a></li>
-                                <li><a href="https://github.com/SoftwareEngineeringJobs/Level6-homework">工作总结</a></li>
+                                <li><a href="https://github.com/SoftwareEngineeringJobs/Level6-homework">项目概览</a>
+                                </li>
+                                <li><a href="https://github.com/SoftwareEngineeringJobs/Level6-homework">需求文档</a>
+                                </li>
+                                <li><a href="https://github.com/SoftwareEngineeringJobs/Level6-homework">网站说明</a>
+                                </li>
+                                <li><a href="https://github.com/SoftwareEngineeringJobs/Level6-homework">工作总结</a>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -314,7 +337,7 @@
     <!-- back to top start -->
     <div class="progress-wrap">
         <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
-            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
         </svg>
     </div>
     <!-- back to top end -->
@@ -334,7 +357,8 @@
                 <span>(4.5)</span>
             </div>
             <p class="price">Free</p>
-            <p>World-class training and programs developed by top teachers Lorem ipsum dolor sit amet consectur adip iscing elit sed eiusmod tempor.</p>
+            <p>World-class training and programs developed by top teachers Lorem ipsum dolor sit amet consectur adip
+                iscing elit sed eiusmod tempor.</p>
             <div class="courses-meta">
                 <p class="student"><i class="flaticon-google-docs"></i> 10 Lessons</p>
                 <p class="student"><i class="far fa-clock"></i> 03 Hours</p>
@@ -346,30 +370,30 @@
 
 </div>
 
-    <!-- JS
-    ============================================ -->
-    <script src="assets/js/vendor/jquery-1.12.4.min.js"></script>
-    <script src="assets/js/vendor/modernizr-3.11.2.min.js"></script>
+<!-- JS
+============================================ -->
+<script src="assets/js/vendor/jquery-1.12.4.min.js"></script>
+<script src="assets/js/vendor/modernizr-3.11.2.min.js"></script>
 
-    <!-- Bootstrap JS -->
-    <script src="assets/js/plugins/popper.min.js"></script>
-    <script src="assets/js/plugins/bootstrap.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="assets/js/plugins/popper.min.js"></script>
+<script src="assets/js/plugins/bootstrap.min.js"></script>
 
-    <!-- Plugins JS -->
-    <script src="assets/js/plugins/swiper-bundle.min.js"></script>
-    <script src="assets/js/plugins/aos.js"></script>
-    <script src="assets/js/plugins/waypoints.min.js"></script>
-    <script src="assets/js/plugins/jquery.counterup.min.js"></script>
-    <script src="assets/js/plugins/jquery.nice-select.min.js"></script>
-    <script src="assets/js/plugins/back-to-top.js"></script>
-    <script src="assets/js/plugins/jquery.powertip.min.js"></script>
-    <script src="assets/js/plugins/jquery.magnific-popup.min.js"></script>
+<!-- Plugins JS -->
+<script src="assets/js/plugins/swiper-bundle.min.js"></script>
+<script src="assets/js/plugins/aos.js"></script>
+<script src="assets/js/plugins/waypoints.min.js"></script>
+<script src="assets/js/plugins/jquery.counterup.min.js"></script>
+<script src="assets/js/plugins/jquery.nice-select.min.js"></script>
+<script src="assets/js/plugins/back-to-top.js"></script>
+<script src="assets/js/plugins/jquery.powertip.min.js"></script>
+<script src="assets/js/plugins/jquery.magnific-popup.min.js"></script>
 
-    <!--====== Use the minified version files listed below for better performance and remove the files listed above ======-->
+<!--====== Use the minified version files listed below for better performance and remove the files listed above ======-->
 
 
-    <!-- Main JS -->
-    <script src="assets/js/main.js"></script>
+<!-- Main JS -->
+<script src="assets/js/main.js"></script>
 
 </body>
 
