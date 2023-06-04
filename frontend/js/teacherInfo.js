@@ -1,11 +1,10 @@
 window.onload = function () {
-    // 查看学生信息
-    let stuInfo = {
-        path: "/stuInfo",
+    let teacherInfo = {
+        path: "/teacherInfo",
         method: "GET",
     }
-    admin_requests(stuInfo).then((data) => {
-        if (data.code === Stu_Info.code) {
+    admin_requests(teacherInfo).then((data) => {
+        if (data.code === Teacher_Info.code) {
             // 修改右上角
             let div = document.getElementById("admin-login-div")
             div.innerHTML = "<button id='admin-logout-btn' class='btn'>退出登录</button>"
@@ -37,25 +36,22 @@ window.onload = function () {
             // 修改学生信息
             let tableStr = "";
             for (let i = 0; i < data.data.length; i++) {
-                let stu = data.data[i];
+                let teacher = data.data[i];
                 tableStr += "<tr>";
-                tableStr += "<td>" + stu.stuId + "</td>";
-                tableStr += "<td>" + stu.idCard + "</td>";
-                tableStr += "<td>" + stu.name + "</td>";
-                var gender;
-                    if (teacher.gender)
-                        gender = "女";
-                    else
-                        gender = "男";
+                tableStr += "<td>" + teacher.teacherId + "</td>";
+                tableStr += "<td>" + teacher.email + "</td>";
+                tableStr += "<td>" + teacher.name + "</td>";
+                let gender;
+                if (teacher.gender)
+                    gender = "女";
+                else
+                    gender = "男";
                 tableStr += "<td>" + gender + "</td>";
-                tableStr += "<td>" + stu.school + "</td>";
-                tableStr += "<td>" + stu.cet4 + "</td>";
-                tableStr += "<td>" + (stu.cet6 === undefined ? "" : stu.cet6) + "</td>";
-                tableStr += "<td><button>Reset Password</button></td>"
+                tableStr += "<td><button>Reset Password</button><button style=\"margin-left:20px\">Delete Teacher</button></td>"
                 tableStr += "</tr>";
             }
             // 将拼接的字符串放进tbody里
-            document.getElementById("stuTable").innerHTML += tableStr;
+            document.getElementById("teacherTable").innerHTML += tableStr;
         }
     });
 }

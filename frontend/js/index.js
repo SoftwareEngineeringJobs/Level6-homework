@@ -7,7 +7,7 @@ requests(object)
     .then((data) => {
         if (data.code === Get_Student_Info.code) {
             let div = document.querySelector("body > div > div.section.header > div.header-bottom-section > div > div > div > div.header-menu.d-none.d-lg-block > ul > div")
-            div.innerHTML = "姓名: " + data.data.name + " 学校: " + data.data.school + "  "
+            div.innerHTML = data.data.name + " " + data.data.school + "<br>"
             div.innerHTML += "<button id='logout-btn' class='btn'>退出登录</button>"
 
             // 注册点击事件

@@ -33,38 +33,9 @@
   <link rel="stylesheet" href="../assets/css/admin.css">
 
   <!-- Get admin info -->
-  <script>
-  window.onload = function() {
-    var data= [
-        {
-            "adminId": 1,
-            "email": "admin@163.com",
-            "name": "admin",
-            "gender": false,
-            "authority": 1
-        }
-    ];
-    var tableStr = "";
-    for(var i = 0;i < data.length;i++) {
-      var admin = data[i];
-      tableStr += "<tr>";
-      tableStr += "<td>" + admin.adminId + "</td>";
-      tableStr += "<td>" + admin.email + "</td>";
-      tableStr += "<td>" + admin.name + "</td>";
-      var gender;
-      if (admin.gender)
-        gender = "女";
-      else
-        gender = "男";
-      tableStr += "<td>" + gender + "</td>";
-      tableStr += "<td>" + admin.authority + "</td>";
-      tableStr += "<td><button>Reset Password</button><button style=\"margin-left:20px\">Delete Admin</button></td>"
-      tableStr += "</tr>";
-    }
-    // 将拼接的字符串放进tbody里
-    document.getElementById("adminTable").innerHTML += tableStr;
-  }
-  </script>
+  <script src="../js/http.js"></script>
+  <script src="../js/var.js"></script>
+  <script src="../js/adminInfo.js"></script>
 
 </head>
 
@@ -124,7 +95,7 @@
                       </ul>
                   </li>
                   <li><a href="#contact-us">联系我们</a></li>
-                  <div class="login-btn" style="margin-top: 20px; margin-left: 40px;">
+                  <div id="admin-login-div" class="login-btn" style="margin-top: 20px; margin-left: 40px;">
                       <a class="btn" href="../login-register.html">登录/注册</a>
                   </div>
               </ul>
@@ -182,7 +153,7 @@
             <th>Name</th>
             <th>Gender</th>
             <th>Authority</th>
-            <th>Action</th>
+            <th style="width: 300px;">Action</th>
           </tr>
           </thead>
           <tbody id="adminTable">
@@ -335,7 +306,6 @@
 
 <!-- JS
 ============================================ -->
-<script src="../var.js"></script>
 
 <script src="../assets/js/vendor/jquery-1.12.4.min.js"></script>
 <script src="../assets/js/vendor/modernizr-3.11.2.min.js"></script>
