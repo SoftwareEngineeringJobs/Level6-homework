@@ -167,3 +167,10 @@ table.table td i {
     margin-right: auto;
     margin-top: 2em;
 }
+
+.vertical-centered {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
