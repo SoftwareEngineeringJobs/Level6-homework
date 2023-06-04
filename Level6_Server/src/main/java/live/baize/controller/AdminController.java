@@ -73,6 +73,30 @@ public class AdminController {
     }
 
     /**
+     * 查看管理员信息
+     */
+    @GetMapping("/adminInfo")
+    public Response adminInfo(Integer adminId, String email, String name, Boolean gender, Integer authority) {
+        QueryWrapper<Admin> wrapper = new QueryWrapper<Admin>();
+        if (adminId != null)
+            wrapper.eq("admin_id", adminId);
+        if (email != null && !email.equals(""))
+            wrapper.eq("email", email);
+        if (name != null && !name.equals(""))
+            wrapper.eq("name", name);
+        if (gender != null)
+            wrapper.eq("gender", gender);
+        if (authority != null)
+            wrapper.eq("authority", authority);
+        wrapper.select("admin_id", "email", "name", "gender", "authority");
+        List<Admin> adminList = adminService.list(wrapper);
+        if (adminList.isEmpty())
+            return new Response(ResponseEnum.Res_Not_Found);
+        else
+            return new Response(ResponseEnum.Admin_Info, adminList);
+    }
+
+    /**
      * 管理员注册
      */
     @PostMapping("/signup")
