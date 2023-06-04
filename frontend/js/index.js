@@ -29,7 +29,7 @@ requests(object)
                         // 跳转到另一个界面
                         setTimeout(() => {
                             location.href = "./index.html";
-                        }, 0)
+                        }, 1000)
                     } else {
                         swal('错误', '错误', 'error');
                     }

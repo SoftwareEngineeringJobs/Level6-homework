@@ -59,7 +59,7 @@ student_requests(getPaperInfo).then((data) => {
         // 跳转到另一个界面
         setTimeout(() => {
             location.href = "./index.html";
-        }, 0)
+        }, 1000)
     }
 });
 
@@ -103,13 +103,13 @@ UploadAnswer.addEventListener("submit", (event) => {
             // 跳转到另一个界面
             setTimeout(() => {
                 location.href = "./index.html";
-            }, 0)
+            }, 1000)
         } else {
             swal(data.msg, data.msg + ' 等待跳转', 'error');
             // 跳转到另一个界面
             setTimeout(() => {
                 location.href = "./index.html";
-            }, 0)
+            }, 1000)
         }
     });
 
