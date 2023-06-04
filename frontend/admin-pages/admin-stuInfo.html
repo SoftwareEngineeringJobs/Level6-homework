@@ -2,168 +2,40 @@
 <html class="no-js" lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>管理员主页</title>
-  <meta name="robots" content="noindex, follow" />
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <!-- Favicon -->
-  <link rel="shortcut icon" type="image/x-icon" href="../assets/images/counter-8.png">
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>管理员主页</title>
+    <meta name="robots" content="noindex, follow"/>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="../assets/images/counter-8.png">
 
-  <!-- CSS
-  ============================================ -->
+    <!-- CSS
+    ============================================ -->
 
-  <!-- Icon Font CSS -->
-  <link rel="stylesheet" href="../assets/css/plugins/all.min.css">
-  <link rel="stylesheet" href="../assets/css/plugins/flaticon.css">
+    <!-- Icon Font CSS -->
+    <link rel="stylesheet" href="../assets/css/plugins/all.min.css">
+    <link rel="stylesheet" href="../assets/css/plugins/flaticon.css">
 
-  <!-- Plugins CSS -->
-  <link rel="stylesheet" href="../assets/css/plugins/bootstrap.min.css">
-  <link rel="stylesheet" href="../assets/css/plugins/swiper-bundle.min.css">
-  <link rel="stylesheet" href="../assets/css/plugins/aos.css">
-  <link rel="stylesheet" href="../assets/css/plugins/nice-select.css">
-  <link rel="stylesheet" href="../assets/css/plugins/jquery.powertip.min.css">
-  <link rel="stylesheet" href="../assets/css/plugins/magnific-popup.css">
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="../assets/css/plugins/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/plugins/swiper-bundle.min.css">
+    <link rel="stylesheet" href="../assets/css/plugins/aos.css">
+    <link rel="stylesheet" href="../assets/css/plugins/nice-select.css">
+    <link rel="stylesheet" href="../assets/css/plugins/jquery.powertip.min.css">
+    <link rel="stylesheet" href="../assets/css/plugins/magnific-popup.css">
 
-  <!-- Main Style CSS -->
-  <link rel="stylesheet" href="../assets/css/style.css">
+    <!-- Main Style CSS -->
+    <link rel="stylesheet" href="../assets/css/style.css">
 
-  <!-- Custom Style CSS -->
-  <link rel="stylesheet" href="../assets/css/admin.css">
+    <!-- Custom Style CSS -->
+    <link rel="stylesheet" href="../assets/css/admin.css">
 
-  <!-- Get stu info -->
-  <script>
-  window.onload = function() {
-    var data= [
-        {
-            "stuId": 1,
-            "idCard": "350205200201013791",
-            "name": "李四",
-            "gender": true,
-            "school": "南开大学",
-            "cet4": 623
-        },
-        {
-            "stuId": 2,
-            "idCard": "140602200111184010",
-            "name": "聂耀帅",
-            "gender": false,
-            "school": "南开大学",
-            "cet4": 425
-        },
-        {
-            "stuId": 5,
-            "idCard": "1921676794@qq.com",
-            "name": "聂耀帅",
-            "gender": false,
-            "school": "南开大学",
-            "cet4": 425
-        },
-        {
-            "stuId": 6,
-            "idCard": "1921676794@qq.co",
-            "name": "大",
-            "gender": false,
-            "school": "南开大学",
-            "cet4": 425
-        },
-        {
-            "stuId": 7,
-            "idCard": "123456",
-            "name": "聂耀帅",
-            "gender": false,
-            "school": "南开大学",
-            "cet4": 425
-        },
-        {
-            "stuId": 8,
-            "idCard": "124545",
-            "name": "聂耀帅",
-            "gender": false,
-            "school": "南开大学",
-            "cet4": 425
-        },
-        {
-            "stuId": 9,
-            "idCard": "1921676794@",
-            "name": "聂耀帅",
-            "gender": false,
-            "school": "南开大学",
-            "cet4": 425
-        },
-        {
-            "stuId": 10,
-            "idCard": "1921676794@qq.c",
-            "name": "聂耀帅",
-            "gender": false,
-            "school": "南开大学",
-            "cet4": 425
-        },
-        {
-            "stuId": 11,
-            "idCard": "1234567",
-            "name": "小五",
-            "gender": true,
-            "school": "南开大学",
-            "cet4": 425
-        },
-        {
-            "stuId": 12,
-            "idCard": "1234567",
-            "name": "小五",
-            "gender": true,
-            "school": "南开大学",
-            "cet4": 425
-        },
-        {
-            "stuId": 13,
-            "idCard": "1234",
-            "name": "testuser",
-            "gender": false,
-            "school": "nku",
-            "cet4": 425
-        },
-        {
-            "stuId": 14,
-            "idCard": "14400",
-            "name": "木耳",
-            "gender": false,
-            "school": "南开大学",
-            "cet4": 425
-        }
-    ];
-    var tableStr = "";
-    for(var i = 0;i < data.length;i++) {
-      var stu = data[i];
-      tableStr += "<tr>";
-      tableStr += "<td>" + stu.stuId + "</td>";
-      tableStr += "<td>" + stu.idCard + "</td>";
-      tableStr += "<td>" + stu.name + "</td>";
-      tableStr += "<td>" + stu.gender + "</td>";
-      tableStr += "<td>" + stu.school + "</td>";
-      tableStr += "<td>" + stu.cet4 + "</td>";
-      tableStr += "<td>" + stu.cet6 + "</td>";
-      tableStr += "<td><button>Reset Password</button></td>"
-      tableStr += "</tr>";
-    }
-    // 将拼接的字符串放进tbody里
-    document.getElementById("stuTable").innerHTML += tableStr;
-    /*
-    var pagesStr = "";
-    pagesStr += "<li class=\"page-item disabled\"><a href=\"#\">Previous</a></li>";
-    pagesStr += "<li class=\"page-item active\"><a href=\"#\" class=\"page-link\">1</a></li>";
-    for(var i = 1; i < data.length / 5; i++) {
-      pagesStr += "<li class=\"page-item\"><a href=\"#\" class=\"page-link\">" + i + "</a></li>";
-    }
-    pagesStr += "<li class=\"page-item\"><a href=\"#\" class=\"page-link\">Next</a></li>";
-    document.getElementById("pages").innerText = pagesStr;
-    var countStr = "";
-    countStr += "Showing <b>5</b> out of <b>" + data.length + "</b> entries";
-    document.getElementById("count").innerText = countStr;
-    */
-  }
-  </script>
+    <!-- Get stu info -->
+    <script src="../js/http.js"></script>
+    <script src="../js/var.js"></script>
+    <script src="../js/stuInfo.js"></script>
 
 </head>
 
@@ -172,271 +44,281 @@
 <div class="main-wrapper">
 
 
-  <!-- Preloader start -->
-  <div id="preloader">
-    <div class="preloader">
-      <span></span>
-      <span></span>
+    <!-- Preloader start -->
+    <div id="preloader">
+        <div class="preloader">
+            <span></span>
+            <span></span>
+        </div>
     </div>
-  </div>
-  <!-- Preloader End -->
+    <!-- Preloader End -->
 
-  <!-- Header Start  -->
-  <div class="section header">
-    <div class="header-top-section">
-      <div class="container">
-        <div class="header-top-wrap">
-          <div class="header-top-content text-center">
-            <p>如有问题或改进建议， <span> <a href="#contact-us">请联系我们</a></span></p>
-          </div>
+    <!-- Header Start  -->
+    <div class="section header">
+        <div class="header-top-section">
+            <div class="container">
+                <div class="header-top-wrap">
+                    <div class="header-top-content text-center">
+                        <p>如有问题或改进建议， <span> <a href="#contact-us">请联系我们</a></span></p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
+        <div class="header-bottom-section">
+
+            <div class="container-fluid custom-container">
+                <div class="header-bottom-wrap">
+
+                    <div class="header-logo-menu">
+
+                        <!--  Header Logo Start  -->
+                        <div class="header-logo">
+                            <a href="../index.html"><img src="../assets/images/cet6_logo.png" alt="logo"></a>
+                        </div>
+                        <!--  Header Logo End  -->
+
+                        <!--  Header Menu Start  -->
+                        <div class="header-menu d-none d-lg-block">
+                            <ul class="main-menu">
+                                <li><a href="admin-index.html">首页</a></li>
+                                <li><a href="#">用户信息管理</a>
+                                    <ul class="sub-menu">
+                                        <li><a href="admin-stuInfo.html">考生信息</a></li>
+                                        <li><a href="admin-teacherInfo.html">教师信息</a></li>
+                                        <li><a href="admin-all.html">管理员信息</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">考试信息管理</a>
+                                    <ul class="sub-menu">
+                                        <li><a href="admin-examInfo.html">考试信息</a></li>
+                                        <li><a href="admin-paperInfo.html">试卷信息</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#contact-us">联系我们</a></li>
+                                <div id="admin-login-div" class="login-btn" style="margin-top: 20px; margin-left: 40px;">
+                                    <a class="btn" href="../login-register.html">登录/注册</a>
+                                </div>
+                            </ul>
+                        </div>
+                        <!--  Header Menu End  -->
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
     </div>
-    <div class="header-bottom-section">
+    <!-- Header End -->
 
-      <div class="container-fluid custom-container">
-        <div class="header-bottom-wrap">
-
-          <div class="header-logo-menu">
-
-            <!--  Header Logo Start  -->
-            <div class="header-logo">
-              <a href="../index.html"><img src="../assets/images/cet6_logo.png" alt="logo"></a>
-            </div>
-            <!--  Header Logo End  -->
-
-            <!--  Header Menu Start  -->
-            <div class="header-menu d-none d-lg-block">
-              <ul class="main-menu">
-                  <li><a href="admin-index.html">首页</a></li>
-                  <li><a href="#">用户信息管理</a>
-                      <ul class="sub-menu">
-                          <li><a href="admin-stuInfo.html">考生信息</a></li>
-                          <li><a href="admin-teacherInfo.html">教师信息</a></li>
-                          <li><a href="admin-all.html">管理员信息</a></li>
-                      </ul>
-                  </li>
-                  <li><a href="#">考试信息管理</a>
-                      <ul class="sub-menu">
-                          <li><a href="admin-examInfo.html">考试信息</a></li>
-                          <li><a href="admin-paperInfo.html">试卷信息</a></li>
-                      </ul>
-                  </li>
-                  <li><a href="#contact-us">联系我们</a></li>
-                  <div class="login-btn" style="margin-top: 20px; margin-left: 40px;">
-                      <a class="btn" href="../login-register.html">登录/注册</a>
-                  </div>
-              </ul>
-          </div>
-            <!--  Header Menu End  -->
-
-          </div>
+    <!-- Page Banner Start -->
+    <!-- 这是页面的标头 -->
+    <div class="section page-banner-section" style="background-image: url(../assets/images/bg/cta-bg.jpg);">
+        <div class="shape-1">
+            <img src="../assets/images/shape/shape-7.png" alt="">
         </div>
-      </div>
+        <div class="shape-2">
+            <img src="../assets/images/shape/shape-1.png" alt="">
+        </div>
+        <div class="shape-3"></div>
+        <div class="container">
+            <div class="page-banner-wrap">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <!-- Page Banner Content Start -->
+                        <div class="page-banner text-center">
+                            <h2 class="title">考生信息用户管理</h2>
+                            <ul class="breadcrumb justify-content-center">
+                                <li class="breadcrumb-item active" aria-current="page">请在下方对用户进行管理</li>
+                            </ul>
+                        </div>
+                        <!-- Page Banner Content End -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Page Banner End -->
 
+    <!-- Admins Management Box Start -->
+    <!-- 管理员的管理界面 -->
+    <div class="row">
+        <div class="table-responsive">
+            <div class="table-wrapper">
+                <table class="table table-striped table-hover">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Gender</th>
+                        <th>School</th>
+                        <th>CET-4</th>
+                        <th>CET-6</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody id="stuTable">
+                    <tr>
+                        <td><input id="stuId" type="text" style="width:100%;height:100%"/></td>
+                        <td><input id="idCard" type="text" style="width:100%;height:100%"/></td>
+                        <td><input id="name" type="text" style="width:100%;height:100%"/></td>
+                        <td><input id="gender" type="text" style="width:100%;height:100%"/></td>
+                        <td><input id="school" type="text" style="width:100%;height:100%"/></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <button>Search</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="clearfix">
+                    <div class="hint-text" id="count"></div>
+                    <ul class="pagination" id="pages"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Admin Management Box End -->
+
+
+    <!-- Footer Start -->
+    <div class="footer-section section">
+        <div class="container">
+
+            <!-- Footer Widget Wrapper Start -->
+            <div class="footer-widget-wrap">
+                <div class="row">
+
+                    <div class="col-lg-3 col-sm-6">
+                        <!-- Footer Widget Start -->
+                        <div class="widget-info">
+                            <div class="info-icon" id="about-info">
+                                <i class="flaticon-user-1"></i>
+                            </div>
+                            <p class="info-text"><a id="contact-us">我们是软工工人，<br>有问题或建议请随时联系我们！</a>
+                            </p>
+                        </div>
+                        <div class="widget-info">
+                            <div class="info-icon">
+                                <i class="flaticon-phone-call"></i>
+                            </div>
+                            <div class="info-text">
+                                <p class="call-text">Call Us Free</p>
+                                <a href="../index.html">+123456</a>
+                            </div>
+                        </div>
+                        <!-- Footer Widget End -->
+                    </div>
+
+                    <div class="col-lg-3 col-sm-6">
+                        <!-- Footer Widget Start -->
+                        <div class="footer-widget">
+                            <h4 class="footer-widget-title">考试动态</h4>
+                            <div class="widget-link">
+                                <ul class="link">
+                                    <li><a href="../grade-query.html">成绩查询</a></li>
+                                    <li><a href="../sign-up.html">报名方式</a></li>
+                                    <li><a href="../exam-pages/exam-news.html">报名提示</a></li>
+                                    <li><a href="../exam-pages/exam-news.html">考试时间</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- Footer Widget End -->
+                    </div>
+
+                    <div class="col-lg-3 col-sm-6">
+                        <!-- Footer Widget Start -->
+                        <div class="footer-widget">
+                            <h4 class="footer-widget-title">Contact Us
+                            </h4>
+                            <div class="widget-link">
+                                <ul class="link">
+                                    <li><a href="mailto: seworker@mail.nankai.edu.cn?subject = Feedback&body = Message">
+                                        Mail </a></li>
+                                    <li><a href="#">Feishu</a></li>
+                                    <li><a href="#">Wechat</a></li>
+                                    <li><a href="#">QQ</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- Footer Widget End -->
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <!-- Footer Widget Start -->
+                        <div class="footer-widget">
+                            <h4 class="footer-widget-title">项目情况
+                            </h4>
+                            <div class="widget-link">
+                                <ul class="link">
+                                    <li>
+                                        <a href="https://github.com/SoftwareEngineeringJobs/Level6-homework">项目概览</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://github.com/SoftwareEngineeringJobs/Level6-homework">需求文档</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://github.com/SoftwareEngineeringJobs/Level6-homework">网站说明</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://github.com/SoftwareEngineeringJobs/Level6-homework">工作总结</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- Footer Widget End -->
+                    </div>
+                </div>
+                <!-- Footer Widget Wrapper End -->
+
+                <!-- Footer Copyright Start -->
+                <div class="footer-copyright">
+                    <div class="copyright-wrapper">
+                        <div class="row align-items-center">
+                            <div class="col-lg-6 col-md-6">
+                                <!-- Footer Copyright Text Start -->
+                                <div class="copyright-text">
+                                    <p>© Copyright 2023 软工工人 All Rights Reserved. </p>
+                                </div>
+                                <!-- Footer Copyright Text End -->
+                            </div>
+                            <div class="col-lg-6 col-md-6">
+                                <!-- Footer Copyright Social Start -->
+                                <div class="copyright-social">
+                                    <ul class="social">
+                                        <li><a href="#"><i class="fab fa-github"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-weixin"></i></a></li>
+                                    </ul>
+                                </div>
+                                <!-- Footer Copyright Social End -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Footer Copyright End -->
+
+            </div>
+        </div>
+
+
+        <!-- back to top start -->
+        <div class="progress-wrap">
+            <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+            </svg>
+        </div>
+        <!-- back to top end -->
 
     </div>
-  </div>
-  <!-- Header End -->
-
-  <!-- Page Banner Start -->
-  <!-- 这是页面的标头 -->
-  <div class="section page-banner-section" style="background-image: url(../assets/images/bg/cta-bg.jpg);">
-    <div class="shape-1">
-      <img src="../assets/images/shape/shape-7.png" alt="">
-    </div>
-    <div class="shape-2">
-      <img src="../assets/images/shape/shape-1.png" alt="">
-    </div>
-    <div class="shape-3"></div>
-    <div class="container">
-      <div class="page-banner-wrap">
-        <div class="row">
-          <div class="col-lg-12">
-            <!-- Page Banner Content Start -->
-            <div class="page-banner text-center">
-              <h2 class="title">考生信息用户管理</h2>
-              <ul class="breadcrumb justify-content-center">
-                <li class="breadcrumb-item active" aria-current="page">请在下方对用户进行管理</li>
-              </ul>
-            </div>
-            <!-- Page Banner Content End -->
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Page Banner End -->
-
-  <!-- Admins Management Box Start -->
-  <!-- 管理员的管理界面 -->
-  <div class="row">
-    <div class="table-responsive">
-      <div class="table-wrapper">
-        <table class="table table-striped table-hover">
-          <thead>
-          <tr>
-            <th>#</th>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Gender</th>
-            <th>School</th>
-            <th>CET-4</th>
-            <th>CET-6</th>
-            <th>Action</th>
-          </tr>
-          </thead>
-          <tbody id="stuTable">
-            <tr>
-              <td><input id="stuId" type="text" style="width:100%;height:100%"/></td>
-              <td><input id="idCard" type="text" style="width:100%;height:100%"/></td>
-              <td><input id="name" type="text" style="width:100%;height:100%"/></td>
-              <td><input id="gender" type="text" style="width:100%;height:100%"/></td>
-              <td><input id="school" type="text" style="width:100%;height:100%"/></td>
-              <td></td>
-              <td></td>
-              <td><button>Search</button></td>
-            </tr>
-          </tbody>
-        </table>
-        <div class="clearfix">
-          <div class="hint-text" id="count"></div>
-          <ul class="pagination" id="pages"></ul>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Admin Management Box End -->
-
-
-<!-- Footer Start -->
-<div class="footer-section section">
-  <div class="container">
-
-    <!-- Footer Widget Wrapper Start -->
-    <div class="footer-widget-wrap">
-      <div class="row">
-
-        <div class="col-lg-3 col-sm-6">
-          <!-- Footer Widget Start -->
-          <div class="widget-info">
-            <div class="info-icon" id="about-info">
-              <i class="flaticon-user-1"></i>
-            </div>
-            <p class="info-text"><a id="contact-us">我们是软工工人，<br>有问题或建议请随时联系我们！</a> </p>
-          </div>
-          <div class="widget-info">
-            <div class="info-icon">
-              <i class="flaticon-phone-call"></i>
-            </div>
-            <div class="info-text">
-              <p class="call-text">Call Us Free</p>
-              <a href="../index.html">+123456</a>
-            </div>
-          </div>
-          <!-- Footer Widget End -->
-        </div>
-
-        <div class="col-lg-3 col-sm-6">
-          <!-- Footer Widget Start -->
-          <div class="footer-widget">
-            <h4 class="footer-widget-title">考试动态</h4>
-            <div class="widget-link">
-              <ul class="link">
-                <li><a href="../grade-query.html">成绩查询</a></li>
-                <li><a href="../sign-up.html">报名方式</a></li>
-                <li><a href="../exam-pages/exam-news.html">报名提示</a></li>
-                <li><a href="../exam-pages/exam-news.html">考试时间</a></li>
-              </ul>
-            </div>
-          </div>
-          <!-- Footer Widget End -->
-        </div>
-
-        <div class="col-lg-3 col-sm-6">
-          <!-- Footer Widget Start -->
-          <div class="footer-widget">
-            <h4 class="footer-widget-title">Contact Us
-            </h4>
-            <div class="widget-link">
-              <ul class="link">
-                <li><a href="mailto: seworker@mail.nankai.edu.cn?subject = Feedback&body = Message"> Mail </a></li>
-                <li><a href="#">Feishu</a></li>
-                <li><a href="#">Wechat</a></li>
-                <li><a href="#">QQ</a></li>
-              </ul>
-            </div>
-          </div>
-          <!-- Footer Widget End -->
-        </div>
-        <div class="col-lg-3 col-sm-6">
-          <!-- Footer Widget Start -->
-          <div class="footer-widget">
-            <h4 class="footer-widget-title">项目情况
-            </h4>
-            <div class="widget-link">
-              <ul class="link">
-                <li><a href="https://github.com/SoftwareEngineeringJobs/Level6-homework">项目概览</a></li>
-                <li><a href="https://github.com/SoftwareEngineeringJobs/Level6-homework">需求文档</a></li>
-                <li><a href="https://github.com/SoftwareEngineeringJobs/Level6-homework">网站说明</a></li>
-                <li><a href="https://github.com/SoftwareEngineeringJobs/Level6-homework">工作总结</a></li>
-              </ul>
-            </div>
-          </div>
-          <!-- Footer Widget End -->
-        </div>
-      </div>
-      <!-- Footer Widget Wrapper End -->
-
-      <!-- Footer Copyright Start -->
-      <div class="footer-copyright">
-        <div class="copyright-wrapper">
-          <div class="row align-items-center">
-            <div class="col-lg-6 col-md-6">
-              <!-- Footer Copyright Text Start -->
-              <div class="copyright-text">
-                <p>© Copyright 2023 软工工人 All Rights Reserved. </p>
-              </div>
-              <!-- Footer Copyright Text End -->
-            </div>
-            <div class="col-lg-6 col-md-6">
-              <!-- Footer Copyright Social Start -->
-              <div class="copyright-social">
-                <ul class="social">
-                  <li><a href="#"><i class="fab fa-github"></i></a></li>
-                  <li><a href="#"><i class="fab fa-weixin"></i></a></li>
-                </ul>
-              </div>
-              <!-- Footer Copyright Social End -->
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Footer Copyright End -->
-
-    </div>
-  </div>
-
-
-  <!-- back to top start -->
-  <div class="progress-wrap">
-    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
-      <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
-    </svg>
-  </div>
-  <!-- back to top end -->
+    <!-- Footer End -->
 
 </div>
-  <!-- Footer End -->
-
-</div>
-  <!-- main wrapper end -->
+<!-- main wrapper end -->
 
 
 <!-- JS
 ============================================ -->
-<script src="../var.js"></script>
-
 <script src="../assets/js/vendor/jquery-1.12.4.min.js"></script>
 <script src="../assets/js/vendor/modernizr-3.11.2.min.js"></script>
 

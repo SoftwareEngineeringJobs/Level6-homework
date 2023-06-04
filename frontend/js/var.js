@@ -1,3 +1,4 @@
+let baseHtml = 'https://www.baize.live/frontend/'
 let baseUrl = 'https://www.baize.live/cet6'
 let studentUrl = baseUrl + '/student'
 let adminURL = baseUrl + '/admin'
