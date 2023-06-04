@@ -56,6 +56,23 @@ public class TeacherController {
     }
 
     /**
+     * 是否登录
+     */
+    @GetMapping("/isLogin")
+    public Response isLogin() {
+        return new Response(ResponseEnum.Teacher_Login_Success);
+    }
+
+    /**
+     * 退出登录
+     */
+    @GetMapping(value = "/logout")
+    public Response logout() {
+        sessionUtil.delTeacherFromSession();
+        return new Response(ResponseEnum.Teacher_Logout_Success);
+    }
+
+    /**
      * 获得试卷信息
      */
     @GetMapping("/getPaperInfo")
