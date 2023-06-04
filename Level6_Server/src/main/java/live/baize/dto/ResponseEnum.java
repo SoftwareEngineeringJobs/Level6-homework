@@ -46,6 +46,7 @@ public class ResponseEnum {
     public static final ResponseEnum Delete_Teacher_Success = new ResponseEnum(200141, "删除教师成功");
     public static final ResponseEnum Reset_Passwd_Failure = new ResponseEnum(200150, "重置密码失败");
     public static final ResponseEnum Reset_Passwd_Success = new ResponseEnum(200151, "重置密码成功");
+    public static final ResponseEnum Admin_Info = new ResponseEnum(200161, "管理员信息");
 
     // ============================================= StudentController ============================================ //
     public static final ResponseEnum Student_Not_Login = new ResponseEnum(2001010, "学生没有登录");
