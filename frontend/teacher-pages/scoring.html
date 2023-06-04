@@ -151,9 +151,9 @@
                         <div class="paper-info-box">
                             <div class="row" style="margin:auto;">
                                 <input id="examID" type="text" placeholder="输入试卷号" style="text-align: center">
-                                <div class="btn btn-secondary btn-round" style="margin-top:2em;">
-                                    选择该试卷
-                                </div>
+                                    <button id="select-Exam" class="btn btn-secondary btn-round" style="margin-top:2em;">
+                                        选择该试卷
+                                    </button>
                             </div>
                         </div>
                         <!-- 试卷号 Box End -->
@@ -177,7 +177,6 @@
                             <div class="card" style="margin-top:2em;">
                                 <div class="card-body" style="text-indent: 2em;">
                                     <p id="essay-answer">这是一段试卷信息</p>
-                                    <p>这是另一段试卷信息。</p>
                                     <!-- 打分 Box Start -->
                                     <div class="login-register-form" style="margin-top: 2em;">
                                         <form id="Essay" action="#">
@@ -214,7 +213,6 @@
                             <div class="card" style="margin-top:2em;">
                                 <div class="card-body" style="text-indent: 2em;">
                                     <p id="translate-answer">这是一段试卷信息</p>
-                                    <p>这是另一段试卷信息。</p>
                                     <!-- 打分 Box Start -->
                                     <div class="login-register-form" style="margin-top: 2em;">
                                         <form id="Translate" action="#">
@@ -386,11 +384,9 @@
 
 <!-- JS
 ============================================ -->
-<!--
 <script src="../js/http.js"></script>
 <script src="../js/var.js"></script>
 <script src="../js/teacherScoring.js"></script>
--->
 
 <script src="../assets/js/vendor/jquery-1.12.4.min.js"></script>
 <script src="../assets/js/vendor/modernizr-3.11.2.min.js"></script>
