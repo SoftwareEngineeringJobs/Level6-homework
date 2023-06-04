@@ -99,7 +99,7 @@
                                     </ul>
                                 </li>
                                 <li><a href="#contact-us">联系我们</a></li>
-                                <div class="login-btn" style="margin-top: 20px; margin-left: 40px;">
+                                <div id="student-login-div" class="login-btn" style="margin-top: 20px; margin-left: 40px;">
                                     <a class="btn" href="login-register.html">登录/注册</a>
                                 </div>
                             </ul>
@@ -162,32 +162,10 @@
                         <!-- Section Title End -->
 
                         <div class="login-register-form">
-                            <form action="#">
-
                                 <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
-
                                 <div id="chart" style="width: 600px; height: 400px;"></div>
-                                <script>
-                                    var chart = echarts.init(document.getElementById('chart'));
-                                    var option = {
-                                        xAxis: {
-                                            type: 'category',
-                                            data: ['写作&翻译', '听力', '阅读']
-                                        },
-                                        yAxis: {
-                                            type: 'value'
-                                        },
-                                        series: [
-                                            {
-                                                data: [120, 200, 100],
-                                                type: 'bar'
-                                            }
-                                        ]
-                                    };
-                                    chart.setOption(option);
-                                </script>
-                            </form>
-                            <h4 class="title" style="text-align: center">您本次CET-6考试总成绩为</h4>
+
+                            <h4 id="sum-score" class="title" style="text-align: center">您本次CET-6考试总成绩为 </h4>
                         </div>
                     </div>
                     <!-- Login & Register Box End -->
@@ -346,6 +324,10 @@
 
 <!-- JS
 ============================================ -->
+<script src="./js/http.js"></script>
+<script src="./js/var.js"></script>
+<script src="./js/grade-query.js"></script>
+
 <script src="assets/js/vendor/jquery-1.12.4.min.js"></script>
 <script src="assets/js/vendor/modernizr-3.11.2.min.js"></script>
 
