@@ -2,6 +2,7 @@ package live.baize.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import live.baize.dto.Response;
 import live.baize.dto.ResponseEnum;
 import live.baize.entity.Registration;
@@ -59,17 +60,17 @@ public class TeacherController {
      */
     @GetMapping("/getPaperInfo")
     public Response getPaperInfo(String examId) {
-        Registration one = registrationService.getOne(
+        Page<Registration> page = registrationService.page(
+                new Page<>(0, 1),
                 new LambdaQueryWrapper<Registration>()
                         .eq(Registration::getExamId, examId)
                         .eq(Registration::getScoreWrite, -1)
                         .select(Registration::getRegistrationId, Registration::getWriting, Registration::getTranslation)
         );
-
-        if (one == null) {
+        if (page == null || page.getRecords().isEmpty()) {
             return new Response(ResponseEnum.Without_Paper);
         }
-        return new Response(ResponseEnum.Get_Paper_Success, one);
+        return new Response(ResponseEnum.Get_Paper_Success, page.getRecords().get(0));
     }
 
     /**

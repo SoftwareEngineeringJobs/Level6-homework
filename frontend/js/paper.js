@@ -55,11 +55,11 @@ student_requests(getPaperInfo).then((data) => {
             }
         }
     } else {
-        alert(data.msg);
+        swal(data.msg, data.msg + ' 等待跳转', 'error');
         // 跳转到另一个界面
         setTimeout(() => {
             location.href = "./index.html";
-        }, 0)
+        }, 1000)
     }
 });
 
@@ -99,17 +99,17 @@ UploadAnswer.addEventListener("submit", (event) => {
 
     student_requests(uploadAnswer).then((data) => {
         if (data.code === Save_Answer_Success.code) {
-            alert(data.msg);
+            swal(data.msg, data.msg + ' 等待跳转', 'success');
             // 跳转到另一个界面
             setTimeout(() => {
                 location.href = "./index.html";
-            }, 0)
+            }, 1000)
         } else {
-            alert(data.msg);
+            swal(data.msg, data.msg + ' 等待跳转', 'error');
             // 跳转到另一个界面
             setTimeout(() => {
                 location.href = "./index.html";
-            }, 0)
+            }, 1000)
         }
     });
 

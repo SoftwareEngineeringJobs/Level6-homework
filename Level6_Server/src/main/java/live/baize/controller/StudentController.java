@@ -139,7 +139,7 @@ public class StudentController {
      * @param examId 考试场次
      */
     @PostMapping(value = "/registration")
-    public Response registration(@RequestBody String examId) {
+    public Response registration(@RequestParam String examId) {
         // 考生信息
         Student student = sessionUtil.getStudentFromSession();
 

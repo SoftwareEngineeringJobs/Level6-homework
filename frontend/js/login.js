@@ -29,13 +29,13 @@ Student_Login.addEventListener("submit", (event) => {
     student_requests(object)
         .then((data) => {
             if (data.code === Student_Login_Success.code) {
-                alert(data.msg);
+                swal(data.msg, data.msg + ' 等待跳转', 'success');
                 // 跳转到另一个界面
                 setTimeout(() => {
                     location.href = "./index.html";
                 }, 1000)
             } else if (data.code === Student_Login_Failure.code) {
-                alert(data.msg);
+                swal('错误', data.msg, 'error');
             }
         });
 
@@ -58,13 +58,13 @@ Admin_Login.addEventListener("submit", (event) => {
     admin_requests(object)
         .then((data) => {
             if (data.code === Admin_Login_Success.code) {
-                alert(data.msg);
+                swal(data.msg, data.msg + ' 等待跳转', 'success');
                 // 跳转到另一个界面
                 setTimeout(() => {
                     location.href = "./admin-pages/admin-index.html";
                 }, 1000)
             } else if (data.code === Admin_Login_Failure.code) {
-                alert(data.msg);
+                swal('错误', data.msg, 'error');
             }
         });
 
@@ -87,13 +87,13 @@ Teacher_Login.addEventListener("submit", (event) => {
     teacher_requests(object)
         .then((data) => {
             if (data.code === Teacher_Login_Success.code) {
-                alert(data.msg);
+                swal(data.msg, data.msg + ' 等待跳转', 'success');
                 // 跳转到另一个界面
                 setTimeout(() => {
                     location.href = "./teacher-pages/teacher-index.html";
                 }, 1000)
             } else if (data.code === Teacher_Login_Failure.code) {
-                alert(data.msg);
+                swal('错误', data.msg, 'error');
             }
         });
 

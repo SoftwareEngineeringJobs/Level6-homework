@@ -65,7 +65,7 @@ Get_Student_Info = new ResponseEnum(2001101, "获取用户信息成功");
 
 // ============================================= TeacherController ============================================= //
 Teacher_Not_Login = new ResponseEnum(2002010, "老师没有登录");
-Teacher_Login_Failure = new ResponseEnum(2002020, "老师登录成功");
+Teacher_Login_Failure = new ResponseEnum(2002020, "老师登录失败");
 Teacher_Login_Success = new ResponseEnum(2002021, "老师登录成功");
 Without_Paper = new ResponseEnum(2002030, "试卷判完了");
 Get_Paper_Success = new ResponseEnum(2002031, "获得试卷成功");

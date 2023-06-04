@@ -71,7 +71,7 @@ public class ResponseEnum {
 
     // ============================================= TeacherController ============================================= //
     public static final ResponseEnum Teacher_Not_Login = new ResponseEnum(2002010, "老师没有登录");
-    public static final ResponseEnum Teacher_Login_Failure = new ResponseEnum(2002020, "老师登录成功");
+    public static final ResponseEnum Teacher_Login_Failure = new ResponseEnum(2002020, "老师登录失败");
     public static final ResponseEnum Teacher_Login_Success = new ResponseEnum(2002021, "老师登录成功");
     public static final ResponseEnum Without_Paper = new ResponseEnum(2002030, "试卷判完了");
     public static final ResponseEnum Get_Paper_Success = new ResponseEnum(2002031, "获得试卷成功");

@@ -72,7 +72,7 @@ function student_requests(obj) {
                 if (data.code === Student_Not_Login.code) {
                     // 重定向
                     setTimeout(() => {
-                        location.href = "../login-register.html";
+                        location.href = "./login-register.html";
                     }, 1000)
                 } else {
                     resolve(data)
@@ -95,7 +95,7 @@ function admin_requests(obj) {
                 if (data.code === Admin_Not_Login.code) {
                     // 重定向
                     setTimeout(() => {
-                        location.href = "../login-register.html";
+                        location.href = "./login-register.html";
                     }, 1000)
                 } else {
                     resolve(data)
@@ -118,7 +118,7 @@ function teacher_requests(obj) {
                 if (data.code === Teacher_Not_Login.code) {
                     // 重定向
                     setTimeout(() => {
-                        location.href = "../login-register.html";
+                        location.href = "./login-register.html";
                     }, 1000)
                 } else {
                     resolve(data)
