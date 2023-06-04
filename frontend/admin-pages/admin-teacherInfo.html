@@ -33,36 +33,9 @@
   <link rel="stylesheet" href="../assets/css/admin.css">
 
   <!-- Get teacher info -->
-  <script>
-  window.onload = function() {
-    var data= [
-        {
-            "teacherId": 1,
-            "email": "baize_live@163.com",
-            "name": "聂耀帅",
-            "gender": false
-        }
-    ];
-    var tableStr = "";
-    for(var i = 0;i < data.length;i++) {
-      var teacher = data[i];
-      tableStr += "<tr>";
-      tableStr += "<td>" + teacher.teacherId + "</td>";
-      tableStr += "<td>" + teacher.email + "</td>";
-      tableStr += "<td>" + teacher.name + "</td>";
-      var gender;
-      if (teacher.gender)
-        gender = "女";
-      else
-        gender = "男";
-      tableStr += "<td>" + gender + "</td>";
-      tableStr += "<td><button>Reset Password</button><button style=\"margin-left:20px\">Delete Teacher</button></td>"
-      tableStr += "</tr>";
-    }
-    // 将拼接的字符串放进tbody里
-    document.getElementById("teacherTable").innerHTML += tableStr;
-  }
-  </script>
+  <script src="../js/http.js"></script>
+  <script src="../js/var.js"></script>
+  <script src="../js/teacherInfo.js"></script>
 
 </head>
 
@@ -122,7 +95,7 @@
                       </ul>
                   </li>
                   <li><a href="#contact-us">联系我们</a></li>
-                  <div class="login-btn" style="margin-top: 20px; margin-left: 40px;">
+                  <div id="admin-login-div" class="login-btn" style="margin-top: 20px; margin-left: 40px;">
                       <a class="btn" href="../login-register.html">登录/注册</a>
                   </div>
               </ul>
@@ -331,7 +304,6 @@
 
 <!-- JS
 ============================================ -->
-<script src="../var.js"></script>
 
 <script src="../assets/js/vendor/jquery-1.12.4.min.js"></script>
 <script src="../assets/js/vendor/modernizr-3.11.2.min.js"></script>
