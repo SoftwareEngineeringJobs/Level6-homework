@@ -42,7 +42,12 @@ window.onload = function () {
                 tableStr += "<td>" + stu.stuId + "</td>";
                 tableStr += "<td>" + stu.idCard + "</td>";
                 tableStr += "<td>" + stu.name + "</td>";
-                tableStr += "<td>" + stu.gender + "</td>";
+                var gender;
+                    if (teacher.gender)
+                        gender = "女";
+                    else
+                        gender = "男";
+                tableStr += "<td>" + gender + "</td>";
                 tableStr += "<td>" + stu.school + "</td>";
                 tableStr += "<td>" + stu.cet4 + "</td>";
                 tableStr += "<td>" + (stu.cet6 === undefined ? "" : stu.cet6) + "</td>";
