@@ -89,7 +89,7 @@
                                 <li><a href="#">考生报名</a>
                                     <ul class="sub-menu">
                                         <li><a href="sign-up.html">报名</a></li>
-                                        <li><a href="pay.html">缴费</a></li>
+                                        <li><a href="team.html">缴费</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="#">线上考试</a>
@@ -131,9 +131,9 @@
                     <div class="col-lg-12">
                         <!-- Page Banner Content Start -->
                         <div class="page-banner text-center">
-                            <h2 class="title">登录 LOGIN</h2>
+                            <h2 class="title">查询成绩</h2>
                             <ul class="breadcrumb justify-content-center">
-                                <li class="breadcrumb-item active" aria-current="page">请在下方进行登录</li>
+                                <li class="breadcrumb-item active" aria-current="page">成绩详细信息在下方显示</li>
                             </ul>
                         </div>
                         <!-- Page Banner Content End -->
@@ -153,35 +153,41 @@
             <div class="login-register-wrap"  style="display: flex; justify-content: center; align-items: center">
                 <!--div class="row gx-5" -->
                 <div class="col-lg-6">
-
                     <!-- Login & Register Box Start -->
                     <div class="login-register-box">
                         <!-- Section Title Start -->
                         <div class="section-title">
-                            <h2 class="title" style="text-align: center">登录</h2>
+                            <h2 class="title" style="text-align: center">各部分分数明细</h2>
                         </div>
                         <!-- Section Title End -->
 
                         <div class="login-register-form">
                             <form action="#">
-                                <div class="single-form">
-                                    <input type="text" class="form-control" placeholder="用户名/邮箱 ">
-                                </div>
-                                <div class="single-form">
-                                    <input type="password" class="form-control" placeholder="请输入密码">
-                                </div>
-                                <div class="single-form form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">记住这个账号</label>
-                                </div>
-                                <div class="form-btn">
-                                    <button class="btn">登录</button>
-                                </div>
-                                <div class="single-form" style="text-align: center">
-                                    <p><a href="#">忘记密码？</a></p>
-                                    <p><a href="register.html">还没有账户，请点击此处进行注册</a></p>
-                                </div>
+
+                                <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+
+                                <div id="chart" style="width: 600px; height: 400px;"></div>
+                                <script>
+                                    var chart = echarts.init(document.getElementById('chart'));
+                                    var option = {
+                                        xAxis: {
+                                            type: 'category',
+                                            data: ['写作&翻译', '听力', '阅读']
+                                        },
+                                        yAxis: {
+                                            type: 'value'
+                                        },
+                                        series: [
+                                            {
+                                                data: [120, 200, 100],
+                                                type: 'bar'
+                                            }
+                                        ]
+                                    };
+                                    chart.setOption(option);
+                                </script>
                             </form>
+                            <h4 class="title" style="text-align: center">您本次CET-6考试总成绩为</h4>
                         </div>
                     </div>
                     <!-- Login & Register Box End -->
@@ -189,7 +195,6 @@
             </div>
         </div>
         <!-- Login & Register Wrapper End -->
-
     </div>
 </div>
 <!-- Login & Register End -->
