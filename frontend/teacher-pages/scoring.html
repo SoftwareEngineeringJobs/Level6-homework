@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>考试简介</title>
+  <title>试卷批改</title>
   <meta name="robots" content="noindex, follow" />
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -28,7 +28,7 @@
 
   <!-- Main Style CSS -->
   <link rel="stylesheet" href="../assets/css/style.css">
-  <link rel="stylesheet" href="../assets/css/custom.css">
+  <link rel="stylesheet" href="../assets/css/admin.css">
 
 
   <!--====== Use the minified version files listed below for better performance and remove the files listed above ======-->
@@ -147,24 +147,143 @@
 
   <!-- Score Box Begin-->
   <div class="container">
-    <div class="score-box">
-      <div class="row">
-          <p>试题</p>
-      </div>
-      <div class="row">
-        <div class="col">
-          <div class="btn btn-round"><a>1</a></div>
+    <div class="row">
+      <div class="col-4">
+        <div class="paper-info-box-title" style="margin-top:2.5em;">
+          <h5 class="title" style="text-align: center">试卷选择</h5>
+        </div>
+        <div class="card" style="margin-top:4em">
+          <div class="card-body">
+          <!-- 试卷号 Box Start -->
+            <div class="paper-info-box">
+
+              <div class="row"  style="margin:auto;">
+                <input id="examID" type="text" placeholder="输入试卷号" style="text-align: center">
+                <div class="btn btn-secondary btn-round" style="margin-top:2em;">
+                  选择该试卷
+                </div>
+              </div>
+            </div>
+
+
+          <!-- 试卷号 Box End -->
+          </div>
         </div>
       </div>
+
+      <!-- Score Panel Start -->
+      <div class="col-8">
+        <div class="row">
+          <div class="login-tab-window">
+            <!-- 打分版面 Begin -->
+            <div class="row">
+              <div class="tab-content">
+                <!-- 打分窗口导航栏  Begin-->
+                <div class="d-flex align-items-center" style="width: 100%">
+                  <ul class="body-tabs body-tabs-layout tabs-animated body-tabs-animated nav">
+                    <li class="nav-item">
+                      <a role="tab" class="nav-link active" id="tab-0" data-bs-toggle="tab"
+                         href="#tab-content-0">
+                        <span>作文</span>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a role="tab" class="nav-link" id="tab-1" data-bs-toggle="tab" href="#tab-content-1">
+                        <span>翻译</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <!-- 打分窗口导航栏 End -->
+                <!-- 作文评分 Panel Begin -->
+                  <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
+                  <div class="card-body">
+
+                      <!-- Score Panel Start -->
+                      <div class="row">
+                        <div class="score-wrap" style="display: flex; justify-content: center; align-items: center;margin: auto;width: 75vw;">
+                          <div class="col-lg-10">
+
+                            <!-- 试卷信息 Box Start -->
+                            <div class="paper-info-box">
+                              <div class="card" style="margin-top:2em;">
+                                <div class="card-body" style="text-indent: 2em;">
+                                  <p id="essay-answer">这是一段试卷信息</p>
+                                  <p>这是另一段试卷信息。</p>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- 试卷信息 Box End -->
+
+                            <!-- 打分 Box Start -->
+                            <div class="login-register-form" style="margin-top: 2em;">
+                              <form id="Essay" action="#">
+                                <div class="single-form" >
+                                  <input id="Essay-Score" type="text"
+                                         class="form-control" placeholder="请输入评判分数" style="text-align: center;">
+                                </div>
+                              </form>
+                            </div>
+                            <!-- 打分 Box End -->
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Score Panel End -->
+
+                  </div>
+                </div>
+                <!-- 作文评分 Panel End -->
+                <!-- 翻译评分 Panel Begin -->
+                  <div class="tab-pane tabs-animation fade" id="tab-content-1" role="tabpanel">
+                  <div class="card-body">
+                      <!-- Score Panel Start -->
+                      <div class="row">
+                        <div class="score-wrap" style="display: flex; justify-content: center; align-items: center;margin: auto;width: 75vw;">
+                          <div class="col-lg-10">
+
+                            <!-- 试卷信息 Box Start -->
+                            <div class="paper-info-box">
+                              <div class="card" style="margin-top:2em;">
+                                <div class="card-body" style="text-indent: 2em;">
+                                  <p id="translate-answer">这是一段试卷信息</p>
+                                  <p>这是另一段试卷信息。</p>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- 试卷信息 Box End -->
+
+                            <!-- 打分 Box Start -->
+                            <div class="login-register-form" style="margin-top: 2em;">
+                              <form id="Translate" action="#">
+                                <div class="single-form" >
+                                  <input id="Translate-Score" type="text"
+                                         class="form-control" placeholder="请输入评判分数" style="text-align: center;">
+                                </div>
+                              </form>
+                            </div>
+                            <!-- 打分 Box End -->
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Score Panel End -->
+                  </div>
+                </div>
+                <!-- 翻译评分 Panel End -->
+              </div>
+            </div>
+            <!-- 打分版面 End -->
+          </div>
+        </div>
+      </div>
+      <!-- Score Panel End -->
     </div>
-  </div>
-  <!-- Score Box End-->
 </div>
-<!-- main-wrapper End -->
+  <!-- Score Box End-->
+
 
 
 <!-- Footer Start -->
-<div class="footer-section section">
+  <div class="footer-section section">
   <div class="container">
 
     <!-- Footer Widget Wrapper Start -->
@@ -282,6 +401,10 @@
 
 </div>
 
+</div>
+<!-- main-wrapper End -->
+
+
 <!-- JS
 ============================================ -->
 <script src="../assets/js/vendor/jquery-1.12.4.min.js"></script>
@@ -300,12 +423,19 @@
 <script src="../assets/js/plugins/back-to-top.js"></script>
 <script src="../assets/js/plugins/jquery.powertip.min.js"></script>
 <script src="../assets/js/plugins/jquery.magnific-popup.min.js"></script>
+<script defer src="../assets/scripts/main.js"></script>
+<script defer src="../assets/scripts/demo.js"></script>
+<script defer src="../assets/scripts/toastr.js"></script>
+<script defer src="../assets/scripts/fullcalendar.js"></script>
+<script defer src="../assets/scripts/maps.js"></script>
+<script defer src="../assets/scripts/chart_js.js"></script>
 
 <!--====== Use the minified version files listed below for better performance and remove the files listed above ======-->
 
 
 <!-- Main JS -->
 <script src="../assets/js/main.js"></script>
+<script src="../assets/js/teacher.js"></script>
 
 </body>
 

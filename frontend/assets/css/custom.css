@@ -46,3 +46,26 @@
     line-height: 2.5em;
     width:auto;
 }
+/*--- 教师批改试卷界面
+ *
+ */
+.score-box {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2em;
+}
+
+.paper-info-box button {
+    margin-right: 1em;
+}
+.paper-info-box row {
+    margin-top:2em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.paper-info-box-title {
+    font-size:42px;
+    font-style: initial;
+    color:#299be4;
+}
