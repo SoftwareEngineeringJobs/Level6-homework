@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>管理员主页</title>
+  <title>考试简介</title>
   <meta name="robots" content="noindex, follow" />
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -28,10 +28,12 @@
 
   <!-- Main Style CSS -->
   <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/custom.css">
 
-  <!-- Custom Style CSS -->
-  <link rel="stylesheet" href="../assets/css/admin.css">
 
+  <!--====== Use the minified version files listed below for better performance and remove the files listed above ======-->
+  <!-- <link rel="stylesheet" href="assets/css/vendor/plugins.min.css">
+  <link rel="stylesheet" href="assets/css/style.min.css"> -->
 
 </head>
 
@@ -79,15 +81,15 @@
                 <li><a href="../index.html">首页</a></li>
                 <li><a href="#">考试内容</a>
                   <ul class="sub-menu">
-                    <li><a href="../exam-pages/exam-news.html">考试动态</a></li>
-                    <li><a href="../exam-pages/exam-outline.html">考试简介</a></li>
-                    <li><a href="../exam-pages/exam-content.html">考核内容</a></li>
+                    <li><a href="./exam-news.html">考试动态</a></li>
+                    <li><a href="./exam-outline.html">考试简介</a></li>
+                    <li><a href="./exam-content.html">考核内容</a></li>
                   </ul>
                 </li>
                 <li><a href="#">考生报名</a>
                   <ul class="sub-menu">
                     <li><a href="../sign-up.html">报名</a></li>
-                    <li><a href="../pay.html">缴费</a></li>
+                    <li><a href="pay.html">缴费</a></li>
                   </ul>
                 </li>
                 <li><a href="#">线上考试</a>
@@ -113,11 +115,12 @@
   </div>
   <!-- Header End -->
 
+
   <!-- Page Banner Start -->
   <!-- 这是页面的标头 -->
-  <div class="section page-banner-section" style="background-image: url(../assets/images/bg/cta-bg.jpg);">
+  <div class="section page-banner-section" style="background-image: url(../assets/images/bg/page-banner.jpg);">
     <div class="shape-1">
-      <img src="../assets/images/shape/shape-7.png" alt="">
+      <img src="../assets/images/shape/hero-shape1.png" alt="">
     </div>
     <div class="shape-2">
       <img src="../assets/images/shape/shape-1.png" alt="">
@@ -129,9 +132,9 @@
           <div class="col-lg-12">
             <!-- Page Banner Content Start -->
             <div class="page-banner text-center">
-              <h2 class="title">用户管理</h2>
+              <h2 class="title">试卷批改 Scoring</h2>
               <ul class="breadcrumb justify-content-center">
-                <li class="breadcrumb-item active" aria-current="page">请在下方对用户进行管理</li>
+                <li class="breadcrumb-item active" aria-current="page">请在以下界面对试卷进行评分</li>
               </ul>
             </div>
             <!-- Page Banner Content End -->
@@ -142,96 +145,22 @@
   </div>
   <!-- Page Banner End -->
 
-  <!-- Admins Management Box Start -->
-  <!-- 管理员的管理界面 -->
-  <div class="row">
-    <div class="table-responsive">
-      <div class="table-wrapper">
-        <table class="table table-striped table-hover">
-          <thead>
-          <tr>
-            <th>#</th>
-            <th>Name</th>
-            <th>Date Created</th>
-            <th>Role</th>
-            <th>Status</th>
-            <th>Action</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr>
-            <td>1</td>
-            <td><a href="#"> Michael Holz</a></td>
-            <td>04/10/2013</td>
-            <td>Admin</td>
-            <td><span class="status text-success">&bull;</span> Active</td>
-            <td>
-              <a href="#" class="settings" title="Settings" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
-              <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
-            </td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td><a href="#"> Paula Wilson</a></td>
-            <td>05/08/2014</td>
-            <td>Publisher</td>
-            <td><span class="status text-success">&bull;</span> Active</td>
-            <td>
-              <a href="#" class="settings" title="Settings" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
-              <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
-            </td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td><a href="#"> Antonio Moreno</a></td>
-            <td>11/05/2015</td>
-            <td>Publisher</td>
-            <td><span class="status text-danger">&bull;</span> Suspended</td>
-            <td>
-              <a href="#" class="settings" title="Settings" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
-              <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
-            </td>
-          </tr>
-          <tr>
-            <td>4</td>
-            <td><a href="#"> Mary Saveley</a></td>
-            <td>06/09/2016</td>
-            <td>Reviewer</td>
-            <td><span class="status text-success">&bull;</span> Active</td>
-            <td>
-              <a href="#" class="settings" title="Settings" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
-              <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
-            </td>
-          </tr>
-          <tr>
-            <td>5</td>
-            <td><a href="#">Martin Sommer</a></td>
-            <td>12/08/2017</td>
-            <td>Moderator</td>
-            <td><span class="status text-warning">&bull;</span> Inactive</td>
-            <td>
-              <a href="#" class="settings" title="Settings" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
-              <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
-            </td>
-          </tr>
-          </tbody>
-        </table>
-        <div class="clearfix">
-          <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
-          <ul class="pagination">
-            <li class="page-item disabled"><a href="#">Previous</a></li>
-            <li class="page-item"><a href="#" class="page-link">1</a></li>
-            <li class="page-item"><a href="#" class="page-link">2</a></li>
-            <li class="page-item active"><a href="#" class="page-link">3</a></li>
-            <li class="page-item"><a href="#" class="page-link">4</a></li>
-            <li class="page-item"><a href="#" class="page-link">5</a></li>
-            <li class="page-item"><a href="#" class="page-link">Next</a></li>
-          </ul>
+  <!-- Score Box Begin-->
+  <div class="container">
+    <div class="score-box">
+      <div class="row">
+          <p>试题</p>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="btn btn-round"><a>1</a></div>
         </div>
       </div>
     </div>
   </div>
-  <!-- Admin Management Box End -->
+  <!-- Score Box End-->
+</div>
+<!-- main-wrapper End -->
 
 
 <!-- Footer Start -->
@@ -256,7 +185,7 @@
             </div>
             <div class="info-text">
               <p class="call-text">Call Us Free</p>
-              <a href="../index.html">+123456</a>
+              <a href="index.html">+123456</a>
             </div>
           </div>
           <!-- Footer Widget End -->
@@ -270,8 +199,8 @@
               <ul class="link">
                 <li><a href="../grade-query.html">成绩查询</a></li>
                 <li><a href="../sign-up.html">报名方式</a></li>
-                <li><a href="../exam-pages/exam-news.html">报名提示</a></li>
-                <li><a href="../exam-pages/exam-news.html">考试时间</a></li>
+                <li><a href="./exam-news.html">报名提示</a></li>
+                <li><a href="./exam-news.html">考试时间</a></li>
               </ul>
             </div>
           </div>
@@ -285,7 +214,7 @@
             </h4>
             <div class="widget-link">
               <ul class="link">
-                <li><a href="mailto: seworker@mail.nankai.edu.cn?subject = Feedback&body = Message"> Mail </a></li>
+                <li><a href="mailto: seworker@mail.nankai.edu.cn?subject = Feedback&body = Message">Mail</a></li>
                 <li><a href="#">Feishu</a></li>
                 <li><a href="#">Wechat</a></li>
                 <li><a href="#">QQ</a></li>
@@ -320,7 +249,7 @@
             <div class="col-lg-6 col-md-6">
               <!-- Footer Copyright Text Start -->
               <div class="copyright-text">
-                <p>© Copyright 2023 软工工人 All Rights Reserved. </p>
+                <p>© Copyright 2023 软工工人 All Rights Reserved</a>. </p>
               </div>
               <!-- Footer Copyright Text End -->
             </div>
@@ -341,7 +270,7 @@
 
     </div>
   </div>
-
+  <!-- Footer End -->
 
   <!-- back to top start -->
   <div class="progress-wrap">
@@ -352,16 +281,9 @@
   <!-- back to top end -->
 
 </div>
-  <!-- Footer End -->
-
-</div>
-  <!-- main wrapper end -->
-
 
 <!-- JS
 ============================================ -->
-<script src="../var.js"></script>
-
 <script src="../assets/js/vendor/jquery-1.12.4.min.js"></script>
 <script src="../assets/js/vendor/modernizr-3.11.2.min.js"></script>
 
@@ -384,7 +306,6 @@
 
 <!-- Main JS -->
 <script src="../assets/js/main.js"></script>
-
 
 </body>
 
