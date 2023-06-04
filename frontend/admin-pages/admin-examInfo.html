@@ -33,37 +33,9 @@
   <link rel="stylesheet" href="../assets/css/admin.css">
 
   <!-- Get exam info -->
-  <script>
-  window.onload = function() {
-    var data= [
-        {
-            "examId": 1,
-            "registerTime": "2023-05-01 00:00:00",
-            "testTime": "2023-06-04 09:00:00",
-            "scoreTime": "2023-07-01 00:00:00",
-            "paperA": 1,
-            "paperB": 2,
-            "paperC": 3
-        }
-    ];
-    var tableStr = "";
-    for(var i = 0;i < data.length;i++) {
-      var exam = data[i];
-      tableStr += "<tr>";
-      tableStr += "<td>" + exam.examId + "</td>";   // ID不可更改
-      tableStr += "<td contentEditable=\"true\">" + exam.registerTime + "</td>";
-      tableStr += "<td contentEditable=\"true\">" + exam.testTime + "</td>";
-      tableStr += "<td contentEditable=\"true\">" + exam.scoreTime + "</td>";
-      tableStr += "<td contentEditable=\"true\">" + exam.paperA + "</td>";
-      tableStr += "<td contentEditable=\"true\">" + exam.paperB + "</td>";
-      tableStr += "<td contentEditable=\"true\">" + exam.paperC + "</td>";
-      tableStr += "<td><button>Edit Exam</button></td>"
-      tableStr += "</tr>";
-    }
-    // 将拼接的字符串放进tbody里
-    document.getElementById("examTable").innerHTML += tableStr;
-  }
-  </script>
+  <script src="../js/http.js"></script>
+  <script src="../js/var.js"></script>
+  <script src="../js/examInfo.js"></script>
 
 </head>
 
@@ -123,7 +95,7 @@
                       </ul>
                   </li>
                   <li><a href="#contact-us">联系我们</a></li>
-                  <div class="login-btn" style="margin-top: 20px; margin-left: 40px;">
+                  <div id="admin-login-div" class="login-btn" style="margin-top: 20px; margin-left: 40px;">
                       <a class="btn" href="../login-register.html">登录/注册</a>
                   </div>
               </ul>
@@ -337,7 +309,6 @@
 
 <!-- JS
 ============================================ -->
-<script src="../var.js"></script>
 
 <script src="../assets/js/vendor/jquery-1.12.4.min.js"></script>
 <script src="../assets/js/vendor/modernizr-3.11.2.min.js"></script>

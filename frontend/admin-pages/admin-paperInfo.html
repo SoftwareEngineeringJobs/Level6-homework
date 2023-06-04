@@ -33,49 +33,9 @@
   <link rel="stylesheet" href="../assets/css/admin.css">
 
   <!-- Get exam info -->
-  <script>
-  window.onload = function() {
-    var data= [
-        {
-            "paperId": 1,
-            "questionId": 0,
-            "question": "{\"question\":\"Directions: For this part, you are allowed 30 minutes to write an essay that begins with the sentence \\\"People \\nare now increasingly aware of the danger of 'appearance anxiety' or being obsessed with ones looks. \\\" You can \\nmake comments, cite examples or use your personal experiences to develop your essay. You should write at least \\n150 words but no more than 200 words.\",\"option\":{\"A\":\"\",\"B\":\"\",\"C\":\"\",\"D\":\"\"}}",
-            "answer": " "
-        },
-        {
-            "paperId": 1,
-            "questionId": 1,
-            "question": "{\"question\":\"\",\"option\":{\"A\":\"In a food store.\",\"B\":\"In a restaurant. \",\"C\":\"In a kitchen.\",\"D\":\"In a supermarket.\"}}",
-            "answer": "B"
-        },
-        {
-            "paperId": 1,
-            "questionId": 2,
-            "question": "{\"question\":\"\",\"option\":{\"A\":\"She eats meat occasionally.\",\"B\":\"She enjoys cheeseburgers.\",\"C\":\"She is a partial vegetarian.\",\"D\":\"She is allergic to seafood.\"}}",
-            "answer": "C"
-        },
-        {
-            "paperId": 1,
-            "questionId": 3,
-            "question": "{\"question\":\"\",\"option\":{\"A\":\"Changing one's eating habit.\",\"B\":\"Dealing with one's colleagues. \",\"C\":\"Following the same diet for years.\",\"D\":\"Keeping awake at morning meetings.\"}}",
-            "answer": "A"
-        }
-    ];
-    var tableStr = "";
-    for(var i = 0;i < data.length;i++) {
-      var paper = data[i];
-      tableStr += "<tr>";
-      tableStr += "<td>" + paper.paperId + "</td>";   // ID不可更改
-      tableStr += "<td contentEditable=\"true\">" + paper.questionId + "</td>";
-      tableStr += "<td contentEditable=\"true\" style=\"width:100px;\">" + paper.question + "</td>";
-      tableStr += "<td contentEditable=\"true\">" + paper.answer + "</td>";
-      tableStr += "<td><button>Edit Question</button></td>"
-      tableStr += "</tr>";
-    }
-    // 将拼接的字符串放进tbody里
-    document.getElementById("paperTable").innerHTML += tableStr;
-  }
-  </script>
+  <script src="../js/http.js"></script>
+  <script src="../js/var.js"></script>
+  <script src="../js/paperInfo.js"></script>
 
 </head>
 
@@ -135,7 +95,7 @@
                       </ul>
                   </li>
                   <li><a href="#contact-us">联系我们</a></li>
-                  <div class="login-btn" style="margin-top: 20px; margin-left: 40px;">
+                  <div id="admin-login-div" class="login-btn" style="margin-top: 20px; margin-left: 40px;">
                       <a class="btn" href="../login-register.html">登录/注册</a>
                   </div>
               </ul>
@@ -343,7 +303,6 @@
 
 <!-- JS
 ============================================ -->
-<script src="../var.js"></script>
 
 <script src="../assets/js/vendor/jquery-1.12.4.min.js"></script>
 <script src="../assets/js/vendor/modernizr-3.11.2.min.js"></script>
