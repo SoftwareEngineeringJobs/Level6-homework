@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Level6_Server" type="docker-deploy" factoryName="dockerfile" server-name="AliYun">
+  <configuration default="false" name="Level6_Server" type="docker-deploy" factoryName="dockerfile" server-name="Docker">
     <deployment type="dockerfile">
       <settings>
         <option name="imageTag" value="tomcat" />
@@ -10,7 +10,7 @@
     </deployment>
     <method v="2">
       <option name="Gradle.BeforeRunTask" enabled="true" tasks="build" externalProjectPath="$PROJECT_DIR$" vmOptions="" scriptParameters="" />
-      <option name="ToolBeforeRunTask" enabled="true" actionId="Tool_External Tools_CopyLevel6" />
+      <option name="ToolBeforeRunTask" enabled="true" actionId="Tool_External Tools_copy" />
     </method>
   </configuration>
 </component>

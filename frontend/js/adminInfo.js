@@ -56,3 +56,72 @@ window.onload = function () {
         }
     });
 }
+
+function search () {
+    let adminId = document.getElementById("adminId");
+    let email = document.getElementById("email");
+    let adminName = document.getElementById("name");
+    let gender = document.getElementById("gender");
+    let authority = document.getElementById("authority");
+    let temp = null;
+    if (gender.value === "女")
+        temp = true;
+    else if (gender.value === "男")
+        temp = false;
+    let adminInfo = {
+        path: "/adminInfo",
+        method: "GET",
+        data: {
+            adminId: parseInt(adminId.value),
+            email: email.value,
+            name: adminName.value,
+            gender: temp,
+            authority: parseInt(authority.value),
+        }
+    }
+    if (adminId.value === "")
+        delete adminInfo["data"]["adminId"];
+    if (temp === null)
+        delete adminInfo["data"]["gender"];
+    if (authority.value === "")
+        delete adminInfo["data"]["authority"];
+    let table = document.getElementById('adminTable');
+    let rowNum = table.rows.length;
+    // 删除原来的内容（第一行是搜索框保留）
+    for (i = 1; i < rowNum; i++) {
+        table.deleteRow(i);
+        rowNum = rowNum - 1;
+        i = i - 1;
+    }
+    admin_requests(adminInfo).then((data) => {
+        // 显示查询到的教师信息
+        if (data.code === Admin_Info.code) {
+            let tableStr = "";
+            for (let i = 0; i < data.data.length; i++) {
+                let admin = data.data[i];
+                tableStr += "<tr>";
+                tableStr += "<td>" + admin.adminId + "</td>";
+                tableStr += "<td>" + admin.email + "</td>";
+                tableStr += "<td>" + admin.name + "</td>";
+                let gender;
+                if (admin.gender)
+                    gender = "女";
+                else
+                    gender = "男";
+                tableStr += "<td>" + gender + "</td>";
+                tableStr += "<td>" + admin.authority + "</td>";
+                tableStr += "<td><button>Reset Password</button><button style=\"margin-left:20px\">Delete Admin</button></td>"
+                tableStr += "</tr>";
+            }
+            // 将拼接的字符串放进tbody里
+            document.getElementById("adminTable").innerHTML += tableStr;
+        }
+        // 跳出弹窗提示未搜索到，并刷新界面
+        else if (data.code === Res_Not_Found.code) {
+            swal("查询失败", '没有找到相关结果！', 'warning');
+            setTimeout(() => {
+                location.href = "admin-all.html";
+            }, 1000)
+        }
+    });
+}

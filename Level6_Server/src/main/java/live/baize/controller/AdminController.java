@@ -76,7 +76,9 @@ public class AdminController {
      * 查看管理员信息
      */
     @GetMapping("/adminInfo")
-    public Response adminInfo(Integer adminId, String email, String name, Boolean gender, Integer authority) {
+    public Response adminInfo(@RequestParam(required = false) Integer adminId, @RequestParam(required = false) String email,
+                              @RequestParam(required = false) String name, @RequestParam(required = false) Boolean gender,
+                              @RequestParam(required = false) Integer authority) {
         QueryWrapper<Admin> wrapper = new QueryWrapper<Admin>();
         if (adminId != null)
             wrapper.eq("admin_id", adminId);
@@ -149,7 +151,9 @@ public class AdminController {
      * （根据搜索条件）查看考生信息
      */
     @GetMapping("/stuInfo")
-    public Response stuInfo(Integer stuId, String idCard, String name, Boolean gender, String school) {
+    public Response stuInfo(@RequestParam(required = false) Integer stuId, @RequestParam(required = false) String idCard,
+                            @RequestParam(required = false) String name, @RequestParam(required = false) Boolean gender,
+                            @RequestParam(required = false) String school) {
         QueryWrapper<Student> wrapper = new QueryWrapper<Student>();
         if (stuId != null)
             wrapper.eq("stu_id", stuId);
@@ -244,7 +248,7 @@ public class AdminController {
      * 查看试卷信息
      */
     @GetMapping("/paperInfo")
-    public Response paperInfo(Integer paperId, Integer questionId) {
+    public Response paperInfo(@RequestParam(required = false) Integer paperId, @RequestParam(required = false) Integer questionId) {
         QueryWrapper<Paper> wrapper = new QueryWrapper<Paper>();
         if (paperId != null) {
             wrapper.eq("paper_id", paperId);
@@ -295,7 +299,8 @@ public class AdminController {
      * 查看教师信息
      */
     @GetMapping("/teacherInfo")
-    public Response teacherInfo(Integer teacherId, String email, String name, Boolean gender) {
+    public Response teacherInfo(@RequestParam(required = false) Integer teacherId, @RequestParam(required = false) String email,
+                                @RequestParam(required = false) String name, @RequestParam(required = false) Boolean gender) {
         QueryWrapper<Teacher> wrapper = new QueryWrapper<Teacher>();
         if (teacherId != null)
             wrapper.eq("teacher_id", teacherId);
