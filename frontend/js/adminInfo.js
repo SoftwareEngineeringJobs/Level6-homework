@@ -48,7 +48,7 @@ window.onload = function () {
                     gender = "男";
                 tableStr += "<td>" + gender + "</td>";
                 tableStr += "<td>" + admin.authority + "</td>";
-                tableStr += "<td><button onclick='resetAdmin(" + admin.adminId + ");'>Reset Password</button><button style=\"margin-left:20px\">Delete Admin</button></td>"
+                tableStr += "<td><button onclick='resetAdmin(" + admin.adminId + ");'>Reset Password</button><button style=\"margin-left:20px\" onclick='deleteAdmin(" + admin.adminId + ");'>Delete Admin</button></td>"
                 tableStr += "</tr>";
             }
             // 将拼接的字符串放进tbody里
@@ -110,7 +110,7 @@ function search () {
                     gender = "男";
                 tableStr += "<td>" + gender + "</td>";
                 tableStr += "<td>" + admin.authority + "</td>";
-                tableStr += "<td><button onclick='resetAdmin(" + admin.adminId + ");'>Reset Password</button><button style=\"margin-left:20px\">Delete Admin</button></td>"
+                tableStr += "<td><button onclick='resetAdmin(" + admin.adminId + ");'>Reset Password</button><button style=\"margin-left:20px\" onclick='deleteAdmin(" + admin.adminId + ");'>Delete Admin</button></td>"
                 tableStr += "</tr>";
             }
             // 将拼接的字符串放进tbody里
@@ -139,6 +139,71 @@ function resetAdmin(resetId) {
             swal('重整密码成功', '重置密码成功！', 'success');
         } else if (data.code === Reset_Passwd_Failure.code) {
             swal('重整密码失败', '重置密码失败！', 'warning');
+        }
+    });
+}
+
+function addAdmin() {
+    let email = document.getElementById("email");
+    let teacherName = document.getElementById("name");
+    let gender = document.getElementById("gender");
+    let authority = document.getElementById("authority");
+    let temp = null;
+    if (gender.value === "女")
+        temp = true;
+    else if (gender.value === "男")
+        temp = false;
+    if (email.value === "" || teacherName.value === "" || temp === null || authority.value === "") {
+        swal('新增管理员失败', '请检查是否正确输入所有管理员信息！', 'error');
+        return;
+    }
+    else if (parseInt(authority.value) < 1) {
+        swal('新增管理员失败', '请检查是否正确输入所有管理员信息！', 'error');
+        return;
+    }
+    let result = {
+        path: "/signup",
+        method: "POST",
+        data: {
+            email: email.value,
+            name: teacherName.value,
+            gender: temp,
+            authority: parseInt(authority.value),
+        }
+    }
+    admin_requests(result).then((data) => {
+        if (data.code === Signup_Success.code) {
+            swal('新增管理员成功', '请尽快提醒管理员修改默认密码！', 'success');
+            setTimeout(() => {
+                location.href = "admin-all.html";
+            }, 1000)
+        }
+        else if (data.code === Signup_Failure.code) {
+            swal('新增管理员失败', '请检查是否正确输入所有管理员信息！', 'error');
+        }
+        else if (data.code === Admin_Authority_Low) {
+            swal('新增管理员失败', '当前管理员权限不足！', 'error');
+        }
+    });
+}
+
+function deleteAdmin(deleteId) {
+    let result = {
+        path: "/deleteAdmin",
+        method: "GET",
+        data: {
+            adminId: parseInt(deleteId),
+        }
+    }
+    admin_requests(result).then((data) => {
+        if (data.code === Delete_Admin_Success.code) {
+            swal('删除教师成功', '删除教师成功！', 'success');
+            setTimeout(() => {
+                location.href = "admin-all.html";
+            }, 1000)
+        }
+        else if (data.code === Delete_Admin_Failure.code) {
+            swal('删除教师失败', '删除教师失败！', 'error');
         }
     });
 }

@@ -2,6 +2,7 @@ package live.baize.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import live.baize.dto.Response;
 import live.baize.dto.ResponseEnum;
 import live.baize.entity.*;
@@ -120,6 +121,22 @@ public class AdminController {
             return new Response(ResponseEnum.Signup_Failure);
         }
         return new Response(ResponseEnum.Signup_Success);
+    }
+
+    @GetMapping("/deleteAdmin")
+    public Response deleteAdmin(@RequestParam Integer adminId) {
+        Admin adminCurr = sessionUtil.getAdminFromSession();
+        if (adminCurr.getAuthority() != 1) {
+            // 权限不足
+            throw new BusinessException(ResponseEnum.Admin_Authority_Low);
+        }
+        try {
+            adminService.removeById(adminId);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Response(ResponseEnum.Delete_Admin_Failure);
+        }
+        return new Response(ResponseEnum.Delete_Admin_Success);
     }
 
     /**
@@ -285,9 +302,13 @@ public class AdminController {
     @PostMapping("/modifyPaper")
     public Response modifyPaper(@RequestParam Integer paperId, @RequestParam Integer questionId,
                                 @RequestParam String question, @RequestParam String answer) {
-        Paper paper = new Paper(paperId, questionId, question, answer);
+        UpdateWrapper<Paper> wrapper = new UpdateWrapper<Paper>();
+        wrapper.eq("paper_id", paperId);
+        wrapper.eq("question_id", questionId);
+        wrapper.set("question", question);
+        wrapper.set("answer", answer);
         try {
-            paperService.updateById(paper);     // 根据ID更新，ID永远不变
+            paperService.update(wrapper);   // paper表双主键，无法根据单ID更新
         } catch (Exception e) {
             e.printStackTrace();
             return new Response(ResponseEnum.Modify_Paper_Failure);

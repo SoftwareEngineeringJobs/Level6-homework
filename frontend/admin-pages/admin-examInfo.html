@@ -37,6 +37,9 @@
   <script src="../js/var.js"></script>
   <script src="../js/examInfo.js"></script>
 
+  <link rel="stylesheet" type="text/css" href="../assets/css/sweetalert.css">
+  <script type="text/javascript" src="../assets/js/sweetalert-dev.js"></script>
+
 </head>
 
 <body>
@@ -155,7 +158,7 @@
             <th>Paper A</th>
             <th>Paper B</th>
             <th>Paper C</th>
-            <th>Action</th>
+            <th style="width: 200px;">Action</th>
           </tr>
           </thead>
           <tbody id="examTable">
@@ -168,7 +171,7 @@
               <td><input id="paperB" type="text" style="width:100%;height:100%"/></td>
               <td><input id="paperC" type="text" style="width:100%;height:100%"/></td>
               <td>
-                <button>Publish New Exam</button>
+                <button onclick="publishExam();">Publish New Exam</button>
               </td>
             </tr>
           </tbody>

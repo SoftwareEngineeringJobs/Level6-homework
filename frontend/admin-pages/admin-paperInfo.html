@@ -37,6 +37,9 @@
   <script src="../js/var.js"></script>
   <script src="../js/paperInfo.js"></script>
 
+  <link rel="stylesheet" type="text/css" href="../assets/css/sweetalert.css">
+  <script type="text/javascript" src="../assets/js/sweetalert-dev.js"></script>
+
 </head>
 
 <body>
@@ -159,11 +162,11 @@
             <tr>
               <td><input id="paperId" type="text" style="width:100%;height:100%"/></td>
               <td><input id="questionId" type="text" style="width:100%;height:100%"/></td>
-              <td></td>
-              <td></td>
+              <td><input id="question" type="text" style="width:100%;height:100%"/></td>
+              <td><input id="answer" type="text" style="width:100%;height:100%"/></td>
               <td>
                 <button onclick="search();">Search</button>
-                <button style="margin-left: 20px;">Upload New Question</button>
+                <button style="margin-left: 20px;" onclick="uploadPaper();">Upload New Question</button>
               </td>
             </tr>
           </tbody>

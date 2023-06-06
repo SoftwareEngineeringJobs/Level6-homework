@@ -44,6 +44,8 @@ Delete_Teacher_Success = new ResponseEnum(200141, "删除教师成功");
 Reset_Passwd_Failure = new ResponseEnum(200150, "重置密码失败");
 Reset_Passwd_Success = new ResponseEnum(200151, "重置密码成功");
 Admin_Info = new ResponseEnum(200161, "管理员信息");
+Delete_Admin_Failure = new ResponseEnum(200170, "删除管理员失败");
+Delete_Admin_Success = new ResponseEnum(200171, "删除管理员成功");
 
 // ============================================= StudentController ============================================ //
 Student_Not_Login = new ResponseEnum(2001010, "学生没有登录");

@@ -41,7 +41,7 @@ window.onload = function () {
                 tableStr += "<td contentEditable=\"true\">" + paper.questionId + "</td>";
                 tableStr += "<td contentEditable=\"true\" style=\"width:100px;\">" + paper.question + "</td>";
                 tableStr += "<td contentEditable=\"true\">" + paper.answer + "</td>";
-                tableStr += "<td><button>Edit Question</button></td>"
+                tableStr += "<td><button onclick='modifyPaper(" + (i+1) + ")'>Edit Question</button></td>"
                 tableStr += "</tr>";
             }
             // 将拼接的字符串放进tbody里
@@ -84,7 +84,7 @@ function search () {
                 tableStr += "<td contentEditable=\"true\">" + paper.questionId + "</td>";
                 tableStr += "<td contentEditable=\"true\" style=\"width:100px;\">" + paper.question + "</td>";
                 tableStr += "<td contentEditable=\"true\">" + paper.answer + "</td>";
-                tableStr += "<td><button>Edit Question</button></td>"
+                tableStr += "<td><button onclick='modifyPaper(" + (i+1) + ")'>Edit Question</button></td>"
                 tableStr += "</tr>";
             }
             // 将拼接的字符串放进tbody里
@@ -96,6 +96,64 @@ function search () {
             setTimeout(() => {
                 location.href = "admin-paperInfo.html";
             }, 1000)
+        }
+    });
+}
+
+function modifyPaper(rowId) {
+    let table = document.getElementById("paperTable");
+    let row = table.rows[rowId];
+    let result = {
+        path: "/modifyPaper",
+        method: "POST",
+        data: {
+            paperId: parseInt(row.cells[0].innerHTML),
+            questionId: parseInt(row.cells[1].innerHTML),
+            question: row.cells[2].innerHTML,
+            answer: row.cells[3].innerHTML,
+        }
+    }
+    admin_requests(result).then((data) => {
+        if (data.code === Modify_Paper_Success.code) {
+            swal('更改试卷信息成功', '更改试卷信息成功！', 'success');
+            setTimeout(() => {
+                location.href = "admin-paperInfo.html";
+            }, 1000)
+        }
+        else if (data.code === Modify_Paper_Failure.code) {
+            swal('更改试卷信息失败', '更改试卷信息失败！', 'error');
+        }
+    });
+}
+
+function uploadPaper() {
+    let paperId = document.getElementById("paperId");
+    let questionId = document.getElementById("questionId");
+    let question = document.getElementById("question");
+    let answer = document.getElementById("answer");
+    if (paperId === "" || questionId === "" || question === "") {
+        swal('上传试卷信息失败', '试卷信息不能为空！', 'error');
+        return;
+    }
+    let result = {
+        path: "/uploadPaper",
+        method: "POST",
+        data: {
+            paperId: parseInt(paperId.value),
+            questionId: parseInt(questionId.value),
+            question: question.value,
+            answer: answer.value,
+        }
+    }
+    admin_requests(result).then((data) => {
+        if (data.code === Upload_Paper_Success.code) {
+            swal('上传试卷信息成功', '上传试卷信息成功！', 'success');
+            setTimeout(() => {
+                location.href = "admin-paperInfo.html";
+            }, 1000)
+        }
+        else if (data.code === Upload_Paper_Failure.code) {
+            swal('上传试卷信息失败', '上传试卷信息失败！', 'error');
         }
     });
 }

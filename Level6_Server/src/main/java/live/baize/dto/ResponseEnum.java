@@ -37,8 +37,8 @@ public class ResponseEnum {
     public static final ResponseEnum Paper_Info = new ResponseEnum(200091, "试卷信息");
     public static final ResponseEnum Upload_Paper_Failure = new ResponseEnum(200100, "上传试卷信息失败");
     public static final ResponseEnum Upload_Paper_Success = new ResponseEnum(200101, "上传试卷信息成功");
-    public static final ResponseEnum Modify_Paper_Failure = new ResponseEnum(200110, "上传试卷信息失败");
-    public static final ResponseEnum Modify_Paper_Success = new ResponseEnum(200111, "上传试卷信息成功");
+    public static final ResponseEnum Modify_Paper_Failure = new ResponseEnum(200110, "修改试卷信息失败");
+    public static final ResponseEnum Modify_Paper_Success = new ResponseEnum(200111, "修改试卷信息成功");
     public static final ResponseEnum Teacher_Info = new ResponseEnum(200121, "教师信息");
     public static final ResponseEnum Add_Teacher_Failure = new ResponseEnum(200130, "添加教师失败");
     public static final ResponseEnum Add_Teacher_Success = new ResponseEnum(200131, "添加教师成功");
@@ -47,6 +47,8 @@ public class ResponseEnum {
     public static final ResponseEnum Reset_Passwd_Failure = new ResponseEnum(200150, "重置密码失败");
     public static final ResponseEnum Reset_Passwd_Success = new ResponseEnum(200151, "重置密码成功");
     public static final ResponseEnum Admin_Info = new ResponseEnum(200161, "管理员信息");
+    public static final ResponseEnum Delete_Admin_Failure = new ResponseEnum(200170, "删除管理员失败");
+    public static final ResponseEnum Delete_Admin_Success = new ResponseEnum(200171, "删除管理员成功");
 
     // ============================================= StudentController ============================================ //
     public static final ResponseEnum Student_Not_Login = new ResponseEnum(2001010, "学生没有登录");
