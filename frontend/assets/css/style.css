@@ -527,7 +527,7 @@ textarea {
   border-radius: 4px;
   background-color: #ffffff;
   margin-bottom: 0;
-  padding: 10px 5px;
+  padding: 10px 25px;
   max-width: 100%;
   width: 100%;
   font-size: 13px;
@@ -630,6 +630,18 @@ textarea:-ms-input-placeholder {
   box-shadow: none;
   transition: all 0.3s ease 0s;
   cursor: pointer;
+}
+
+.my-btn {
+  background-color: #3780f5;
+  border-color: transparent;
+  color: #ffffff;
+  border-radius: 4px;
+  font-size: 16px;
+  font-family: "Outfit", sans-serif;
+  padding: 10px 20px;
+  border-width: 0;
+  border-style: solid;
 }
 
 .btn:focus, .btn:focus:active {

@@ -25,7 +25,7 @@ window.onload = function () {
                         swal(data.msg, data.msg + ' 等待跳转', 'success');
                         // 跳转到另一个界面
                         setTimeout(() => {
-                            location.reload();
+                            location.href = "../index.html";
                         }, 1000)
                     } else {
                         swal('错误', '错误', 'error');

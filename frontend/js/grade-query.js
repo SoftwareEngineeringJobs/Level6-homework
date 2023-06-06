@@ -53,7 +53,7 @@ window.onload = function () {
             let label_h4 = document.getElementById('sum-score')
             label_h4.innerHTML = "您本次CET-6考试总成绩为: " + (data.data.scoreWrite + data.data.scoreListen + data.data.scoreRead)
         } else {
-            swal('错误', '错误', 'error');
+            swal('查询失败', '您还没有成绩！', 'warning');
             setTimeout(() => {
                 location.href = "./index.html";
             }, 1000);
