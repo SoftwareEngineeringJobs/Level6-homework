@@ -47,7 +47,7 @@ window.onload = function () {
                 else
                     gender = "男";
                 tableStr += "<td>" + gender + "</td>";
-                tableStr += "<td><button>Reset Password</button><button style=\"margin-left:20px\">Delete Teacher</button></td>"
+                tableStr += "<td><button onclick='resetTeacher(" + teacher.teacherId + ");'>Reset Password</button><button style=\"margin-left:20px\">Delete Teacher</button></td>"
                 tableStr += "</tr>";
             }
             // 将拼接的字符串放进tbody里
@@ -104,7 +104,7 @@ function search () {
                 else
                     gender = "男";
                 tableStr += "<td>" + gender + "</td>";
-                tableStr += "<td><button>Reset Password</button><button style=\"margin-left:20px\">Delete Teacher</button></td>"
+                tableStr += "<td><button onclick='resetTeacher(" + teacher.teacherId + ");'>Reset Password</button><button style=\"margin-left:20px\">Delete Teacher</button></td>"
                 tableStr += "</tr>";
             }
             // 将拼接的字符串放进tbody里
@@ -116,6 +116,24 @@ function search () {
             setTimeout(() => {
                 location.href = "admin-teacherInfo.html";
             }, 1000)
+        }
+    });
+}
+
+function resetTeacher(resetId) {
+    let result = {
+        path: "/resetTeacher",
+        method: "GET",
+        data: {
+            teacherId: parseInt(resetId),
+        }
+    }
+    admin_requests(result).then((data) => {
+        if (data.code === Reset_Passwd_Success.code) {
+            swal('重整密码成功', '重置密码成功！', 'success');
+        }
+        else if (data.code === Reset_Passwd_Failure.code) {
+            swal('重整密码失败', '重置密码失败！', 'warning');
         }
     });
 }

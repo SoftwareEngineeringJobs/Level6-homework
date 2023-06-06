@@ -51,7 +51,7 @@ window.onload = function () {
                 tableStr += "<td>" + stu.school + "</td>";
                 tableStr += "<td>" + stu.cet4 + "</td>";
                 tableStr += "<td>" + (stu.cet6 === undefined ? "" : stu.cet6) + "</td>";
-                tableStr += "<td><button>Reset Password</button></td>"
+                tableStr += "<td><button onclick='resetStudent(" + stu.stuId + ");'>Reset Password</button></td>"
                 tableStr += "</tr>";
             }
             // 将拼接的字符串放进tbody里
@@ -113,7 +113,7 @@ function search () {
                 tableStr += "<td>" + stu.school + "</td>";
                 tableStr += "<td>" + stu.cet4 + "</td>";
                 tableStr += "<td>" + (stu.cet6 === undefined ? "" : stu.cet6) + "</td>";
-                tableStr += "<td><button>Reset Password</button></td>"
+                tableStr += "<td><button onclick='resetStudent(" + stu.stuId + ");'>Reset Password</button></td>"
                 tableStr += "</tr>";
             }
             // 将拼接的字符串放进tbody里
@@ -125,6 +125,24 @@ function search () {
             setTimeout(() => {
                 location.href = "admin-stuInfo.html";
             }, 1000)
+        }
+    });
+}
+
+function resetStudent(resetId) {
+    let result = {
+        path: "/resetStudent",
+        method: "GET",
+        data: {
+            stuId: parseInt(resetId),
+        }
+    }
+    admin_requests(result).then((data) => {
+        if (data.code === Reset_Passwd_Success.code) {
+            swal('重整密码成功', '重置密码成功！', 'success');
+        }
+        else if (data.code === Reset_Passwd_Failure.code) {
+            swal('重整密码失败', '重置密码失败！', 'warning');
         }
     });
 }

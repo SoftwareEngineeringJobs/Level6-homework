@@ -48,7 +48,7 @@ window.onload = function () {
                     gender = "男";
                 tableStr += "<td>" + gender + "</td>";
                 tableStr += "<td>" + admin.authority + "</td>";
-                tableStr += "<td><button>Reset Password</button><button style=\"margin-left:20px\">Delete Admin</button></td>"
+                tableStr += "<td><button onclick='resetAdmin(" + admin.adminId + ");'>Reset Password</button><button style=\"margin-left:20px\">Delete Admin</button></td>"
                 tableStr += "</tr>";
             }
             // 将拼接的字符串放进tbody里
@@ -110,7 +110,7 @@ function search () {
                     gender = "男";
                 tableStr += "<td>" + gender + "</td>";
                 tableStr += "<td>" + admin.authority + "</td>";
-                tableStr += "<td><button>Reset Password</button><button style=\"margin-left:20px\">Delete Admin</button></td>"
+                tableStr += "<td><button onclick='resetAdmin(" + admin.adminId + ");'>Reset Password</button><button style=\"margin-left:20px\">Delete Admin</button></td>"
                 tableStr += "</tr>";
             }
             // 将拼接的字符串放进tbody里
@@ -122,6 +122,23 @@ function search () {
             setTimeout(() => {
                 location.href = "admin-all.html";
             }, 1000)
+        }
+    });
+}
+
+function resetAdmin(resetId) {
+    let result = {
+        path: "/resetAdmin",
+        method: "GET",
+        data: {
+            adminId: parseInt(resetId),
+        }
+    }
+    admin_requests(result).then((data) => {
+        if (data.code === Reset_Passwd_Success.code) {
+            swal('重整密码成功', '重置密码成功！', 'success');
+        } else if (data.code === Reset_Passwd_Failure.code) {
+            swal('重整密码失败', '重置密码失败！', 'warning');
         }
     });
 }
