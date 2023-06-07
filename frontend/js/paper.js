@@ -44,11 +44,11 @@ student_requests(getPaperInfo).then((data) => {
                         }
                         let num = j + 1;
                         label_option.innerHTML +=
-                            '<li className="option">' +
-                            '<input type="radio" className="radioOrCheck" name="answer' + questionId + '" value="' + alphabet[j] + '" id="0_answer_' + questionId + '_option_' + j + '"/>' +
+                            '<li class="option">' +
+                            '<input type="radio" class="radioOrCheck" onclick="setHasAnswer(' + questionId + ')" name="answer' + questionId + '" value="' + alphabet[j] + '" id="0_answer_' + questionId + '_option_' + j + '"/>' +
                             '<label htmlFor="0_answer_' + questionId + '_option_' + num + '">' +
                             alphabet[j] + '.' +
-                            '<p className="ue" style="display: inline;">' + option[alphabet[j]] + '</p>' +
+                            '<p class="ue" style="display: inline;">' + option[alphabet[j]] + '</p>' +
                             '</label> </li>';
                     }
                 }
@@ -114,3 +114,19 @@ UploadAnswer.addEventListener("submit", (event) => {
     });
 
 });
+
+function setHasAnswer(questionId) {
+    let sheet = document.getElementById(questionId.toString());
+    sheet.style.backgroundColor = "#5d9cec";
+    sheet.querySelector("a").style.color = "#ffffff";
+}
+
+function playListening() {
+    let audio = document.getElementById('music');
+    if (audio.paused) {
+        // Todo: 优化可以在播放时禁止页面刷新
+        // 点击一次后就将该按钮删去，不能重复播放听力
+        document.getElementById("play").remove();
+        audio.play();
+    }
+}

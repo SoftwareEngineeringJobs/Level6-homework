@@ -1,0 +1,32 @@
+@font-face {
+    font-family: "iconfont"; /* Project id 4109895 */
+    src:
+            url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAATcAAsAAAAACeQAAASNAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHFQGYACDMgqGZIV3ATYCJAMUCwwABCAFhGcHVxuoCMgekiSIQAGFsuA4JgBRPHzNVe+nO9lZBnVIHqg8IWXlEatTgpREBSzk/PCe9gY5PWEwg0HxsiK5NAe3Z7rt+RPwtLMeiyDUFyTALiqOC2w/8K8b9uB0YvvjXtXMaR/kWQBgjm0DvwVz0QAlNGbHngS9ekW9C+wcArXqxEME2iySyXpNYTkK7idJRQfBbAXdQV0dJwWeBEfdJM9wQ0NbSQ/M4gmwo7iLrgF4nP98/IbYcKRQJsGl1h4uYODUM6dnw5Lhr0H6CIbDNeHGBUokzLswS5yfd51kU6bmsdE2ttrWCqBNQ6E46Kj4Z9w32/wPatmtadrCf3gUspCISqDqIOKKdOabU8yj4Fu8aEzNoUGgehiqvWh8eUAbBkBMAMQlCBjT7Jg0VNKon2uAv5+fp224Q3cX27bOzpzTjSnovRwhDjMVJBCWhnjcXB3mHp4aPNExBGzc4NAl36r2L1gH1nUXQC808lOcL5jNVlaTy9TNAHUxFbxcvGids8u9fsnSgIsWi1OY7+Xfa5iyxfdXc+Erf52NfudNJoB6dB+IN0vR6/Wbgr7n7t1D9WDVtbh4rBxq1HlYdV1zbnfGdcpmZTe5u7jdX8F6nY3xuuHseu85Bbb1eZ1vf/fNnLcOX+C/JHjJwu7ru3fHUJxomD81gFho9O+DthrmCR3JuFDUEdHGDQgP6NrBYwyOYoiNQbf2bOoxfXqPpp6ttyJ+xq/4zd6tPW+NLLcfuw3l05nUVCad/xTxMz2TyuifzFXNJvrTctLzi+dJS/EyCJwmsu1/al2SPkdy6xLcxU2K7dNYnuly1kRMOI9wDiVMlyvxu4lYyc07ZGbrnCQ9WfPf9jhz93ZrXxYSTu19tx7TrnCLFO2CKqrm/dVybKNg0FF74pSuMMSSfMJtWYZsQx+bk0MNcJx8H40Lkmj/78Fdg+ZOvKBykFTvVJKDiitvHxpox408OeJjefmKOvXgAwkvF797W7P2+Ve9dmetl71XYWEiz/dXrCJd3jrPIG/93qX2d/ibmOKcpPLFNWHteIg/NMHr8ewSHPd2qyVs4CpA05CtUp0rUijAze+kLTgSgLTL+vn/8W90tn1427rTvzq6ZPB1Q5d9KN0u+j+piUX/vvGaM9D8b2ulC1Cdf7TWeB2B0h2OtqrQhNj0d/P1eXoYTb+YS2j6ayi0GIekYQo2E+dAqd0SqDQshTZzFRzerp/ERuRWzDAWIPTYDIUubyHpcRGbiRYoDXkOlR5/oc3mcDtZuxlB58ksqbAMQg1FBFrUcZFWyQetZfmBGlIeiuOsrBcwisRERnezRayOlffYRT+Ij1UUDuFkUYsUqpdjNRoRkWSxk6WVyA5FkVKjorixd4mkRS3kkbFIChYDQRkKIaCJdLgUXWn/vlos3kAaJFmIxR0yPQtpcESMSNECbJFKJ2p7Iav1BuHFUig43owjE2khCl0HSxOmRAhpfL1OLJoiUseGhCRVFKFxUlXk6TXaN7gP2gQ7l1FEihxlVDquCTopuhslcqSOd2RIsVPQdwgODKkIAwTSabA4lBQbRgAAAAA=') format('woff2'),
+            url('iconfont.woff?t=1686139444869') format('woff'),
+            url('iconfont.ttf?t=1686139444869') format('truetype');
+}
+
+.iconfont {
+    font-family: "iconfont" !important;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-yinpinbofang:before {
+    content: "\e666";
+}
+
+.icon-daojishi:before {
+    content: "\e609";
+}
+
+.icon-datiqia:before {
+    content: "\e67a";
+}
+
+.icon-woyaodati:before {
+    content: "\e634";
+}
+
