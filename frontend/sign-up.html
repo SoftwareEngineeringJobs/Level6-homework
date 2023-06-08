@@ -30,10 +30,12 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/custom.css">
 
+    <script src="./js/http.js"></script>
+    <script src="./js/var.js"></script>
 
     <!--====== Use the minified version files listed below for better performance and remove the files listed above ======-->
     <!-- <link rel="stylesheet" href="assets/css/vendor/plugins.min.css">
-    <link rel="stylesheet" href="assets/css/style.min.css"> -->
+    <link rel="stylesheet" href="assets/css/style.min.css"> -->\
 
 </head>
 
@@ -99,7 +101,7 @@
                                     </ul>
                                 </li>
                                 <li><a href="#contact-us">联系我们</a></li>
-                                <div class="login-btn" style="margin-top: 20px; margin-left: 40px;">
+                                <div id="student-login-div" class="login-btn" style="margin-top: 20px; margin-left: 40px;">
                                     <a class="btn" href="login-register.html">登录/注册</a>
                                 </div>
                             </ul>
@@ -163,31 +165,15 @@
                         <!-- Section Title End -->
 
                         <div class="login-register-form">
-                            <form form action="pay.html">
-                                <h5 class="title" style="text-align: center;margin-bottom: 20px">报名时间：2023年6月5日~2023年6月7日</h5>
-                                <h5 class="title" style="text-align: center;margin-bottom: 20px">考试时间：2023年6月18日</h5>
+                            <form form id="form" action="pay.html">
+                                <h5 class="title" id="registerTime" style="text-align: center;margin-bottom: 20px">报名时间：</h5>
+                                <h5 class="title" id="testTime" style="text-align: center;margin-bottom: 20px">考试时间：</h5>
                                 <h5 class="title" style="text-align: center;margin-bottom: 20px">考试方式：在线考试</h5>
                                 <div class="text" style="text-align: center;margin-bottom: 20px">请您再次核实个人信息，有问题请联系管理员。</div>
                                 <div class="form-btn">
                                     <button type="submit" class="btn">点击报名</button>
                                 </div>
                             </form>
-                            <script>
-                                // 设置报名截止日期为2023年6月7日
-                                var deadline = new Date("2023-06-07");
-                                // 获取表单元素
-                                var form = document.querySelector("form");
-                                // 监听表单提交事件
-                                form.addEventListener("submit", function(event) {
-                                    // 获取当前日期
-                                    var today = new Date();
-                                    // 如果当前日期晚于截止日期，阻止表单提交并跳转到错误界面
-                                    if (today > deadline) {
-                                        event.preventDefault();
-                                        window.location.href = "error.html";
-                                    }
-                                });
-                            </script>
                         </div>
                     </div>
                     <!-- Login & Register Box End -->
@@ -369,6 +355,84 @@
 
 <!-- Main JS -->
 <script src="assets/js/main.js"></script>
+
+<script>
+    window.onload = function () {
+        let lookupExam = {
+            path: "/lookupExam",
+            method: "GET",
+        }
+        student_requests(lookupExam).then((data) => {
+            if (data.code === Lookup_Exam_Success.code) {
+                // 修改右上角
+                let div = document.getElementById("student-login-div")
+                div.innerHTML = "<button id='student-logout-btn' class='btn'>退出登录</button>"
+                // 注册点击事件
+                const student_logout_btn = document.getElementById("student-logout-btn");
+                student_logout_btn.addEventListener("click", (event) => {
+                    // 阻止默认行为，如刷新页面
+                    event.preventDefault();
+
+                    // 数据
+                    let logout = {
+                        path: "/logout",
+                        method: "GET",
+                    }
+
+                    student_requests(logout).then((data) => {
+                        if (data.code === Student_Logout_Success.code) {
+                            swal(data.msg, data.msg + ' 等待跳转', 'success');
+                            // 跳转到另一个界面
+                            setTimeout(() => {
+                                location.href = "./index.html";
+                            }, 1000)
+                        } else {
+                            swal('错误', '错误', 'error');
+                        }
+                    });
+                });
+                // 获取当前日期
+                var today = new Date();
+                var registerTime, testTime;
+                if (data.data.length !== 0) {
+                    testTime = new Date(data.data[data.data.length - 1].testTime);
+                    registerTime = new Date(data.data[data.data.length - 1].registerTime);
+                    // 报名时间为两天
+                    var deadline = new Date(data.data[data.data.length - 1].registerTime);  // 直接相等是浅拷贝
+                    deadline = deadline.setDate(registerTime.getDate() + 2);
+                    // 如果当前日期晚于截止日期，弹窗提示
+                    if (today > deadline) {
+                        swal('报名失败', '当前无法报名！', 'error');
+                        setTimeout(() => {
+                            location.href = "./index.html";
+                        }, 1000);
+                    }
+                    // 设置报名时间和考试时间
+                    let str = "";
+                    str += registerTime.getFullYear() + "年" + (registerTime.getMonth()+1) + "月" + registerTime.getDate() + "日";
+                    str += "~"
+                    deadline = new Date(deadline);
+                    str += deadline.getFullYear() + "年" + (deadline.getMonth()+1) + "月" + deadline.getDate() + "日";
+                    document.getElementById("registerTime").innerHTML += str;
+                    str = testTime.getFullYear() + "年" + (testTime.getMonth()+1) + "月" + testTime.getDate() + "日";
+                    document.getElementById("testTime").innerHTML += str;
+                }
+                else {
+                    swal('报名失败', '当前无法报名！', 'error');
+                    setTimeout(() => {
+                        location.href = "./index.html";
+                    }, 1000);
+                }
+            } else {
+                swal('报名失败', '当前无法报名！', 'error');
+                setTimeout(() => {
+                    location.href = "./index.html";
+                }, 1000);
+            }
+        });
+    }
+</script>
+
 </body>
 
 </html>

@@ -57,12 +57,25 @@
     <script src="./js/var.js"></script>
 
     <script>
+        let curExamId;
+        window.onload = function () {
+            let lookupExam = {
+                path: "/lookupExam",
+                method: "GET",
+            }
+            student_requests(lookupExam).then((data) => {
+                curExamId = data.data[data.data.length - 1].examId;
+                console.log(curExamId);
+                let testTime = new Date(data.data[data.data.length - 1].testTime);
+                document.getElementById("testTime").innerHTML += testTime.getFullYear() + "年" + (testTime.getMonth()+1) + "月" + testTime.getDate() + "日";
+            });
+        }
         function paySuccess() {
             let object = {
                 path: "/registration",
                 method: "POST",
                 data: {
-                    examId: 1,
+                    examId: curExamId,
                 }
             }
 
@@ -142,7 +155,7 @@
                                 </li>
                                 <li><a href="#contact-us">联系我们</a></li>
                                 <div class="login-btn" style="margin-top: 20px; margin-left: 40px;">
-                                    <a class="btn" href="login-register.html">登录/注册</a>
+                                    <a class="my-btn" href="login-register.html">登录/注册</a>
                                 </div>
                             </ul>
                         </div>
@@ -208,7 +221,7 @@
                             <!-- /head -->
                             <div class="main">
                                 <ul class="clearfix">
-                                    <h5>考试场次：2023年6月18日</h5>
+                                    <h5 id="testTime">考试时间：</h5>
                                     <h5>考试方式：在线答题</h5>
                                     <h5>应缴金额：人民币50元（¥50）</h5>
                                 </ul>
