@@ -4,6 +4,53 @@ let getPaperInfo = {
 }
 let alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
 
+function UploadAnswer_function() {
+    // 拿到所有题答案
+    let writing = document.querySelector("#qu_0_0 > div.test_content_nr_main > label > textarea").value
+    let translation = document.querySelector("#qu_0_56 > div.test_content_nr_main > label > textarea").value
+    let choice = ""
+
+    for (let i = 1; i < 56; i++) {
+        let radio = document.getElementsByName("answer" + i)
+        let answer = '_'
+        for (let j = 0; j < radio.length; j++) {
+            if (radio[j].checked) {
+                answer = radio[j].value;
+                break;
+            }
+        }
+        choice += answer;
+    }
+
+    // 数据
+    let uploadAnswer = {
+        path: "/uploadAnswer",
+        method: "POST",
+        data: {
+            translation: translation,
+            writing: writing,
+            choice: choice
+        }
+    }
+
+    student_requests(uploadAnswer).then((data) => {
+        if (data.code === Save_Answer_Success.code) {
+            swal(data.msg, data.msg + ' 等待跳转', 'success');
+            // 跳转到另一个界面
+            setTimeout(() => {
+                location.href = "./index.html";
+            }, 1000)
+        } else {
+            swal(data.msg, data.msg + ' 等待跳转', 'error');
+            // 跳转到另一个界面
+            setTimeout(() => {
+                location.href = "./index.html";
+            }, 1000)
+        }
+    });
+
+}
+
 student_requests(getPaperInfo).then((data) => {
     if (data.code === Get_PaperInfo_Success.code) {
         // 获取成功 渲染试卷
@@ -96,50 +143,7 @@ const UploadAnswer = document.getElementById("upload-answer");
 UploadAnswer.addEventListener("submit", (event) => {
     // 阻止默认行为，如刷新页面
     event.preventDefault();
-    // 拿到所有题答案
-    let writing = document.querySelector("#qu_0_0 > div.test_content_nr_main > label > textarea").value
-    let translation = document.querySelector("#qu_0_56 > div.test_content_nr_main > label > textarea").value
-    let choice = ""
-
-    for (let i = 1; i < 56; i++) {
-        let radio = document.getElementsByName("answer" + i)
-        let answer = '_'
-        for (let j = 0; j < radio.length; j++) {
-            if (radio[j].checked) {
-                answer = radio[j].value;
-                break;
-            }
-        }
-        choice += answer;
-    }
-
-    // 数据
-    let uploadAnswer = {
-        path: "/uploadAnswer",
-        method: "POST",
-        data: {
-            translation: translation,
-            writing: writing,
-            choice: choice
-        }
-    }
-
-    student_requests(uploadAnswer).then((data) => {
-        if (data.code === Save_Answer_Success.code) {
-            swal(data.msg, data.msg + ' 等待跳转', 'success');
-            // 跳转到另一个界面
-            setTimeout(() => {
-                location.href = "./index.html";
-            }, 1000)
-        } else {
-            swal(data.msg, data.msg + ' 等待跳转', 'error');
-            // 跳转到另一个界面
-            setTimeout(() => {
-                location.href = "./index.html";
-            }, 1000)
-        }
-    });
-
+    UploadAnswer_function()
 });
 
 function setHasAnswer(questionId) {
