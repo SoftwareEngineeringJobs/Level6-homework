@@ -45,6 +45,7 @@ window.onload = function () {
                 tableStr += "<td contentEditable=\"true\">" + exam.paperA + "</td>";
                 tableStr += "<td contentEditable=\"true\">" + exam.paperB + "</td>";
                 tableStr += "<td contentEditable=\"true\">" + exam.paperC + "</td>";
+                tableStr += "<td contentEditable=\"true\">" + exam.listening + "</td>";
                 tableStr += "<td><button onclick='modifyExam(" + (i+1) + ")'>Edit Exam</button></td>";
                 tableStr += "</tr>";
             }
@@ -68,6 +69,7 @@ function modifyExam(rowId) {
             paperA: parseInt(row.cells[4].innerHTML),
             paperB: parseInt(row.cells[5].innerHTML),
             paperC: parseInt(row.cells[6].innerHTML),
+            listening: row.cells[7].innerHTML,
         }
     }
     admin_requests(result).then((data) => {
@@ -98,6 +100,7 @@ function publishExam() {
     let paperA = document.getElementById("paperA");
     let paperB = document.getElementById("paperB");
     let paperC = document.getElementById("paperC");
+    let listening = document.getElementById("listening");
     if (paperA === "" || paperB === "" || paperC === "") {
         swal('发布考试信息失败', '考试信息不能为空！', 'error');
         return;
@@ -112,6 +115,7 @@ function publishExam() {
             paperA: parseInt(paperA.value),
             paperB: parseInt(paperB.value),
             paperC: parseInt(paperC.value),
+            listening: listening.value,
         }
     }
     admin_requests(result).then((data) => {

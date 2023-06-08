@@ -39,9 +39,10 @@ public class Exam implements Serializable {
     private Integer paperA;
     private Integer paperB;
     private Integer paperC;
+    private String listening;
 
     public Exam(Date registerTime, Date testTime, Date scoreTime,
-                Integer paperA, Integer paperB, Integer paperC) {
+                Integer paperA, Integer paperB, Integer paperC, String listening) {
         this.examId = 0;
         this.registerTime = registerTime;
         this.testTime = testTime;
@@ -49,6 +50,7 @@ public class Exam implements Serializable {
         this.paperA = paperA;
         this.paperB = paperB;
         this.paperC = paperC;
+        this.listening = listening;
     }
 
 }

@@ -50,9 +50,9 @@
                 <form id="upload-answer" action="" method="post">
                     <div class="test_title">
                         <p class="test_time">
-                            <i class="iconfont icon-daojishi"></i><b class="alt-1">01:40</b>
+                            <i class="iconfont icon-daojishi"></i><b id="countdown1" class="alt-1"></b>
                         </p>
-                        <input type="submit" name="test_jiaojuan" value="交卷" style="background: #389fc3; color: #ffffff; padding: 0px 20px;border-color: transparent;border-radius: 4px;padding: 10px 20px;border-width: 0;border-style: solid;">
+                        <input type="submit" id="submitPaper" value="交卷" style="background: #389fc3; color: #ffffff; padding: 0px 20px;border-color: transparent;border-radius: 4px;padding: 10px 20px;border-width: 0;border-style: solid;">
                     </div>
 
                     <div class="test_content">
@@ -91,7 +91,7 @@
                         <ul>
                             <div class="test_content_nr_tt">
                                 <i style="background: #f48c27;" id="play" class="iconfont icon-yinpinbofang" onclick="playListening();"></i>
-                                <audio id="music" src="music/1.mp3"></audio>
+                                <audio id="music"></audio>
                                 <label style="color: #666;">点击播放听力（只能播放一次！）</label>
                             </div>
                         </ul>
@@ -630,7 +630,7 @@
                             <i class="iconfont icon-datiqia"></i>答题卡
                         </h1>
                         <p class="test_time">
-                            <i class="iconfont icon-daojishi"></i><b class="alt-1">01:40</b>
+                            <i class="iconfont icon-daojishi"></i><b id="countdown2" class="alt-1"></b>
                         </p>
                     </div>
                     <div class="rt_content">
@@ -743,20 +743,6 @@
 <!--时间js-->
 <script src="time/jquery.countdown.js"></script>
 <script>
-    window.jQuery(function ($) {
-        "use strict";
-
-        $('time').countDown({
-            with_separators: false
-        });
-        $('.alt-1').countDown({
-            css_class: 'countdown-alt-1'
-        });
-        $('.alt-2').countDown({
-            css_class: 'countdown-alt-2'
-        });
-
-    });
 </script>
 
 

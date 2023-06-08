@@ -18,6 +18,7 @@ import live.baize.utils.PasswdUtil;
 import live.baize.utils.SessionUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.json.JSONObject;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -200,13 +201,28 @@ public class StudentController {
             return new Response(ResponseEnum.Not_Test_Time_Range);
         }
 
+        // 计算考试剩余时间
+        Date date1 = new Date();
+        Date date2 = Cal.getTime();
+        long remainTime = 0;
+        remainTime = date2.getTime() - date1.getTime();
+        long remainHour = remainTime / (60 * 60 * 1000) % 24;
+        long remainMin = remainTime / (60 * 1000) % 60;
+        long remainSec = remainTime / 1000 % 60;
+
         // 试卷列表
         List<Paper> list = paperService.list(
                 new LambdaQueryWrapper<Paper>()
                         .eq(Paper::getPaperId, registration.getPaperId())
                         .select(Paper::getQuestionId, Paper::getQuestion)
         );
-        return new Response(ResponseEnum.Get_PaperInfo_Success, list);
+
+        HashMap<String, Object> js = new HashMap<>();
+        js.put("paper", list);
+        js.put("remainTime", new long[] {remainHour, remainMin, remainSec});
+        js.put("listening", exam.getListening());
+
+        return new Response(ResponseEnum.Get_PaperInfo_Success, js);
     }
 
     /**

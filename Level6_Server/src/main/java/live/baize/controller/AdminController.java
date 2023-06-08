@@ -229,8 +229,9 @@ public class AdminController {
                                 @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") Date scoreTime,
                                 @RequestParam Integer paperA,
                                 @RequestParam Integer paperB,
-                                @RequestParam Integer paperC) {
-        Exam exam = new Exam(registerTime, testTime, scoreTime, paperA, paperB, paperC);
+                                @RequestParam Integer paperC,
+                                @RequestParam String listening) {
+        Exam exam = new Exam(registerTime, testTime, scoreTime, paperA, paperB, paperC, listening);
         try {
             examService.save(exam);
         } catch (Exception e) {
@@ -250,8 +251,9 @@ public class AdminController {
                                @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") Date scoreTime,
                                @RequestParam Integer paperA,
                                @RequestParam Integer paperB,
-                               @RequestParam Integer paperC) {
-        Exam exam = new Exam(examId, registerTime, testTime, scoreTime, paperA, paperB, paperC);
+                               @RequestParam Integer paperC,
+                               @RequestParam String listening) {
+        Exam exam = new Exam(examId, registerTime, testTime, scoreTime, paperA, paperB, paperC, listening);
         try {
             examService.updateById(exam);   // 根据ID更新，ID永远不变
         } catch (Exception e) {

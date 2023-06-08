@@ -7,7 +7,7 @@ let alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
 student_requests(getPaperInfo).then((data) => {
     if (data.code === Get_PaperInfo_Success.code) {
         // 获取成功 渲染试卷
-        let arr = data.data;
+        let arr = data.data["paper"];
         for (let i = 0; i < arr.length; i++) {
             // 获得DOM
             let questionId = arr[i].questionId;
@@ -54,6 +54,33 @@ student_requests(getPaperInfo).then((data) => {
                 }
             }
         }
+        // 设置剩余时间
+        let remainTime = data.data["remainTime"];
+        let remainMin, remainSec;
+        if (remainTime[1] < 10)
+            remainMin = "0" + remainTime[1];
+        else
+            remainMin = remainTime[1];
+        if (remainTime[2] < 10)
+            remainSec = "0" + remainTime[2];
+        else
+            remainSec = remainTime[2];
+        document.getElementById("countdown1").innerHTML = "0" + remainTime[0] + ":" + remainMin + ":" + remainSec;
+        document.getElementById("countdown2").innerHTML = "0" + remainTime[0] + ":" + remainMin + ":" + remainSec;
+        // 设置听力文件
+        document.getElementById("music").src = "music/" + data.data["listening"];
+        // 开始倒计时
+        let t = $('time');
+        t.countDown({
+            with_separators: false,
+            onTimeElapsed: document.getElementById("upload-answer").submit()
+        });
+        $('.alt-1').countDown({
+            css_class: 'countdown-alt-1'
+        });
+        $('.alt-2').countDown({
+            css_class: 'countdown-alt-2'
+        });
     } else {
         swal(data.msg, data.msg + ' 等待跳转', 'error');
         // 跳转到另一个界面
