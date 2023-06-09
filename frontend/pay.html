@@ -43,7 +43,7 @@
           rel="stylesheet">
 
     <!-- BASE CSS -->
-    <link href="assets/css/paycss/vendors.min.css" rel="stylesheet">
+    <!-- <link href="assets/css/paycss/vendors.min.css" rel="stylesheet"> -->
     <link href="assets/css/paycss/style.css" rel="stylesheet">
 
     <!-- SPECIFIC CSS -->
@@ -55,6 +55,7 @@
 
     <script src="./js/http.js"></script>
     <script src="./js/var.js"></script>
+    <script src="./js/index.js"></script>
 
     <script>
         let curExamId;
@@ -64,6 +65,7 @@
                 method: "GET",
             }
             student_requests(lookupExam).then((data) => {
+                getStudentInfo();
                 curExamId = data.data[data.data.length - 1].examId;
                 console.log(curExamId);
                 let testTime = new Date(data.data[data.data.length - 1].testTime);
@@ -85,7 +87,7 @@
                         swal("成功", '缴费成功, 等待跳转', 'success');
                         // 跳转到另一个界面
                         setTimeout(() => {
-                            location.href = "./confirm.html";
+                            location.href = "./index.html";
                         }, 1000)
                     } else {
                         swal('错误', data.msg, 'error');
@@ -154,7 +156,7 @@
                                     </ul>
                                 </li>
                                 <li><a href="#contact-us">联系我们</a></li>
-                                <div class="login-btn" style="margin-top: 20px; margin-left: 40px;">
+                                <div id="login-btn" class="login-btn" style="margin-top: 20px; margin-left: 40px;">
                                     <a class="my-btn" href="login-register.html">登录/注册</a>
                                 </div>
                             </ul>

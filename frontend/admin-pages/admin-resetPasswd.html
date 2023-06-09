@@ -1,0 +1,440 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>修改密码</title>
+  <meta name="robots" content="noindex, follow"/>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="../assets/images/counter-8.png">
+
+  <!-- CSS
+  ============================================ -->
+
+  <!-- Icon Font CSS -->
+  <link rel="stylesheet" href="../assets/css/plugins/all.min.css">
+  <link rel="stylesheet" href="../assets/css/plugins/flaticon.css">
+
+  <!-- Plugins CSS -->
+  <link rel="stylesheet" href="../assets/css/plugins/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/plugins/swiper-bundle.min.css">
+  <link rel="stylesheet" href="../assets/css/plugins/aos.css">
+  <link rel="stylesheet" href="../assets/css/plugins/nice-select.css">
+  <link rel="stylesheet" href="../assets/css/plugins/jquery.powertip.min.css">
+  <link rel="stylesheet" href="../assets/css/plugins/magnific-popup.css">
+  <script defer src="../assets/scripts/main.js"></script>
+  <script defer src="../assets/scripts/demo.js"></script>
+  <script defer src="../assets/scripts/toastr.js"></script>
+  <script defer src="../assets/scripts/maps.js"></script>
+  <script defer src="../assets/scripts/chart_js.js"></script>
+
+  <!-- Main Style CSS -->
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/admin.css">
+
+  <link rel="stylesheet" type="text/css" href="../assets/css/sweetalert.css">
+  <script type="text/javascript" src="../assets/js/sweetalert-dev.js"></script>
+
+  <!--====== Use the minified version files listed below for better performance and remove the files listed above ======-->
+  <!-- <link rel="stylesheet" href="../assets/css/vendor/plugins.min.css">
+  <link rel="stylesheet" href="../assets/css/style.min.css"> -->
+
+</head>
+
+<body>
+
+<div class="main-wrapper">
+  <!-- Preloader start -->
+  <div id="preloader">
+    <div class="preloader">
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+  <!-- Preloader End -->
+
+  <!-- Header Start  -->
+  <div class="section header">
+    <div class="header-top-section">
+      <div class="container">
+        <div class="header-top-wrap">
+          <div class="header-top-content text-center">
+            <p>如有问题或改进建议， <span> <a href="#contact-us">请联系我们</a></span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="header-bottom-section">
+
+      <div class="container-fluid custom-container">
+        <div class="header-bottom-wrap">
+
+          <div class="header-logo-menu">
+
+            <!--  Header Logo Start  -->
+            <div class="header-logo">
+              <a href="../index.html"><img src="../assets/images/cet6_logo.png" alt="logo"></a>
+            </div>
+            <!--  Header Logo End  -->
+
+            <!--  Header Menu Start  -->
+            <div class="header-menu d-none d-lg-block">
+              <ul class="main-menu">
+                <li><a href="admin-index.html">首页</a></li>
+                <li><a href="#">用户信息管理</a>
+                  <ul class="sub-menu">
+                    <li><a href="admin-stuInfo.html">考生信息</a></li>
+                    <li><a href="admin-teacherInfo.html">教师信息</a></li>
+                    <li><a href="admin-all.html">管理员信息</a></li>
+                  </ul>
+                </li>
+                <li><a href="#">考试信息管理</a>
+                  <ul class="sub-menu">
+                    <li><a href="admin-examInfo.html">考试信息</a></li>
+                    <li><a href="admin-paperInfo.html">试卷信息</a></li>
+                  </ul>
+                </li>
+                <li><a href="#contact-us">联系我们</a></li>
+                <div id="login-btn" class="login-btn" style="margin-top: 20px; margin-left: 40px;">
+                  <a class="my-btn">修改密码</a>
+                </div>
+              </ul>
+            </div>
+            <!--  Header Menu End  -->
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Header End -->
+
+  <!-- Page Banner Start -->
+  <div class="section page-banner-section" style="background-image: url(assets/images/bg/page-banner.jpg);">
+    <div class="shape-1">
+      <img src="../assets/images/shape/shape-7.png" alt="">
+    </div>
+    <div class="shape-2">
+      <img src="../assets/images/shape/shape-1.png" alt="">
+    </div>
+    <div class="shape-3"></div>
+    <div class="container">
+      <div class="page-banner-wrap">
+        <div class="row">
+          <div class="col-lg-12">
+            <!-- Page Banner Content Start -->
+            <div class="page-banner text-center">
+              <h2 class="title">修改密码</h2>
+              <ul class="breadcrumb justify-content-center">
+                <li class="breadcrumb-item active" aria-current="page">请在下方修改密码</li>
+              </ul>
+            </div>
+            <!-- Page Banner Content End -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Page Banner End -->
+
+  <!-- Login & Register Start -->
+  <!-- 登录对话窗口 -->
+  <div class="row">
+    <div class="login-tab-window">
+      <!-- 登录版面 Begin -->
+      <div class="row">
+        <div class="tab-content">
+          <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
+            <div class="card-body">
+              <div class="section login-register-section section-padding">
+                <div class="container">
+                  <!-- Login & Register Wrapper Start -->
+                  <div class="login-register-wrap"
+                       style="display: flex; justify-content: center; align-items: center">
+                    <!--div class="row gx-5" -->
+                    <div class="col-lg-6">
+                      <!-- Login & Register Box Start -->
+                      <div class="login-register-box">
+                        <!-- Section Title Start -->
+                        <div class="section-title">
+                          <h2 class="title" style="text-align: center">修改密码</h2>
+                        </div>
+                        <!-- Section Title End -->
+                        <div class="login-register-form">
+                          <form id="reset-passwd" action="#">
+                            <div class="single-form">
+                              <input id="old-passwd" type="password"
+                                     class="form-control" placeholder="请输入原始密码">
+                            </div>
+                            <div class="single-form">
+                              <input id="new-passwd" type="password"
+                                     class="form-control" placeholder="请输入新密码" onblur="passwdRule();">
+                              <span id="new-passwd-span" style="color: red;"></span></p>
+                            </div>
+                            <div class="single-form">
+                              <input id="confirm-passwd" type="password"
+                                     class="form-control" placeholder="请再次输入新密码" onblur="passwdConfirm();">
+                              <span id="confirm-passwd-span" style="color: red;"></span></p>
+                            </div>
+                            <div class="form-btn">
+                              <button type="submit" onclick="resetPasswd();" class="my-btn" style="padding: 10px 40px;margin-left: 175px;">确认修改</button>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                      <!-- Login & Register Box End -->
+                    </div>
+                  </div>
+                </div>
+                <!-- Login & Register Wrapper End -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Login & Register End -->
+
+  <!-- Footer Start -->
+  <div class="footer-section section">
+    <div class="container">
+
+      <!-- Footer Widget Wrapper Start -->
+      <div class="footer-widget-wrap">
+        <div class="row">
+
+          <div class="col-lg-3 col-sm-6">
+            <!-- Footer Widget Start -->
+            <div class="widget-info">
+              <div class="info-icon" id="about-info">
+                <i class="flaticon-user-1"></i>
+              </div>
+              <p class="info-text"><a id="contact-us">我们是软工工人，<br>有问题或建议请随时联系我们！</a>
+              </p>
+            </div>
+            <div class="widget-info">
+              <div class="info-icon">
+                <i class="flaticon-phone-call"></i>
+              </div>
+              <div class="info-text">
+                <p class="call-text">Call Us Free</p>
+                <a href="tel:+1234567">+1234567</a>
+              </div>
+            </div>
+            <!-- Footer Widget End -->
+          </div>
+
+          <div class="col-lg-3 col-sm-6">
+            <!-- Footer Widget Start -->
+            <div class="footer-widget">
+              <h4 class="footer-widget-title">考试动态</h4>
+              <div class="widget-link">
+                <ul class="link">
+                  <li><a href="./grade-query.html">成绩查询</a></li>
+                  <li><a href="./sign-up.html">报名方式</a></li>
+                  <li><a href="./exam-pages/exam-news.html">报名提示</a></li>
+                  <li><a href="./exam-pages/exam-news.html">考试时间</a></li>
+                </ul>
+              </div>
+            </div>
+            <!-- Footer Widget End -->
+          </div>
+
+          <div class="col-lg-3 col-sm-6">
+            <!-- Footer Widget Start -->
+            <div class="footer-widget">
+              <h4 class="footer-widget-title">Contact Us
+              </h4>
+              <div class="widget-link">
+                <ul class="link">
+                  <li><a href="mailto: seworker@mail.nankai.edu.cn?subject = Feedback&body = Message">
+                    Mail </a></li>
+                  <li><a href="#">Feishu</a></li>
+                  <li><a href="#">Wechat</a></li>
+                  <li><a href="#">QQ</a></li>
+                </ul>
+              </div>
+            </div>
+            <!-- Footer Widget End -->
+          </div>
+          <div class="col-lg-3 col-sm-6">
+            <!-- Footer Widget Start -->
+            <div class="footer-widget">
+              <h4 class="footer-widget-title">项目情况
+              </h4>
+              <div class="widget-link">
+                <ul class="link">
+                  <li>
+                    <a href="https://github.com/SoftwareEngineeringJobs/Level6-homework">项目概览</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/SoftwareEngineeringJobs/Level6-homework">需求文档</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/SoftwareEngineeringJobs/Level6-homework">网站说明</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/SoftwareEngineeringJobs/Level6-homework">工作总结</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <!-- Footer Widget End -->
+          </div>
+        </div>
+        <!-- Footer Widget Wrapper End -->
+
+        <!-- Footer Copyright Start -->
+        <div class="footer-copyright">
+          <div class="copyright-wrapper">
+            <div class="row align-items-center">
+              <div class="col-lg-6 col-md-6">
+                <!-- Footer Copyright Text Start -->
+                <div class="copyright-text">
+                  <p>© Copyright 2023 软工工人 All Rights Reserved</a>. </p>
+                </div>
+                <!-- Footer Copyright Text End -->
+              </div>
+              <div class="col-lg-6 col-md-6">
+                <!-- Footer Copyright Social Start -->
+                <div class="copyright-social">
+                  <ul class="social">
+                    <li><a href="#"><i class="fab fa-github"></i></a></li>
+                    <li><a href="#"><i class="fab fa-weixin"></i></a></li>
+                  </ul>
+                </div>
+                <!-- Footer Copyright Social End -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Footer Copyright End -->
+
+      </div>
+    </div>
+    <!-- Footer End -->
+
+    <!-- back to top start -->
+    <div class="progress-wrap">
+      <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+      </svg>
+    </div>
+    <!-- back to top end -->
+
+
+    <!-- course hover Start -->
+    <div id="course-hover">
+      <div class="course-hover">
+        <div class="courses-content">
+          <div class="top-meta"><a class="tag" href="#">Beginner</a></div>
+          <h3 class="title"><a href="course-details.html">Design 101: Product & Web Design Course</a></h3>
+        </div>
+        <div class="rating">
+          <div class="rating-star">
+            <div class="rating-active" style="width: 60%;"></div>
+          </div>
+          <span>(4.5)</span>
+        </div>
+        <p class="price">Free</p>
+        <p>World-class training and programs developed by top teachers Lorem ipsum dolor sit amet consectur adip
+          iscing elit sed eiusmod tempor.</p>
+        <div class="courses-meta">
+          <p class="student"><i class="flaticon-google-docs"></i> 10 Lessons</p>
+          <p class="student"><i class="far fa-clock"></i> 03 Hours</p>
+        </div>
+        <div class="courses-btn"><a class="btn" href="course-details.html">Course Full Details</a></div>
+      </div>
+    </div>
+    <!-- course hover End -->
+
+  </div>
+
+  <!-- JS ============================================ -->
+  <script src="../js/http.js"></script>
+  <script src="../js/var.js"></script>
+
+  <script src="../assets/js/vendor/jquery-1.12.4.min.js"></script>
+  <script src="../assets/js/vendor/modernizr-3.11.2.min.js"></script>
+
+  <!-- Bootstrap JS -->
+  <script src="../assets/js/plugins/popper.min.js"></script>
+  <script src="../assets/js/plugins/bootstrap.min.js"></script>
+
+  <!-- Plugins JS -->
+  <script src="../assets/js/plugins/swiper-bundle.min.js"></script>
+  <script src="../assets/js/plugins/aos.js"></script>
+  <script src="../assets/js/plugins/waypoints.min.js"></script>
+  <script src="../assets/js/plugins/jquery.counterup.min.js"></script>
+  <script src="../assets/js/plugins/jquery.nice-select.min.js"></script>
+  <script src="../assets/js/plugins/back-to-top.js"></script>
+  <script src="../assets/js/plugins/jquery.powertip.min.js"></script>
+  <script src="../assets/js/plugins/jquery.magnific-popup.min.js"></script>
+
+  <!--====== Use the minified version files listed below for better performance and remove the files listed above ======-->
+
+  <!-- Main JS -->
+  <script src="../assets/js/main.js"></script>
+  <script>
+    function passwdRule() {
+      let newPasswd = document.getElementById("new-passwd").value;
+      let rule =/^(?=.*[a-z])(?=.*\d)[^]{8,16}$/;
+      let result =  rule.test(newPasswd);
+      if (!result) {
+        document.getElementById("new-passwd-span").innerHTML = "密码必须包含数字、字母，且不少于8位！";
+        return false;
+      }
+      else {
+        document.getElementById("new-passwd-span").innerHTML = "";
+        return true;
+      }
+    }
+    function passwdConfirm() {
+      let newPasswd = document.getElementById("new-passwd").value;
+      let confirmPasswd = document.getElementById("confirm-passwd").value;
+      if (newPasswd === confirmPasswd){
+        document.getElementById("confirm-passwd-span").innerHTML = "";
+        return true;
+      }
+      else {
+        document.getElementById("confirm-passwd-span").innerHTML = "两次输入的密码不一致！";
+        return false;
+      }
+    }
+    function resetPasswd() {
+      let oldPasswd = document.getElementById("old-passwd").value;
+      let newPasswd = document.getElementById("new-passwd").value;
+      if (passwdRule() && passwdConfirm()) {
+        let object = {
+          path: "/resetAdminPasswd",
+          method: "POST",
+          data: {
+            oldPasswd: oldPasswd,
+            newPasswd: newPasswd,
+          }
+        }
+        admin_requests(object).then((data) => {
+          if (data.code === Reset_Passwd_Success.code) {
+            swal(data.msg, data.msg + ' 等待跳转', 'success');
+            setTimeout(() => {
+              location.href = "../index.html";
+            }, 1000)
+          } else if (data.code === Reset_Passwd_Failure.code) {
+            swal('修改失败', '旧密码不正确！', 'error');
+          }
+        });
+      }
+      else {
+        swal("修改失败", "新密码不符合要求！", "error");
+      }
+    }
+  </script>
+</div>
+
+</body>
+
+</html>

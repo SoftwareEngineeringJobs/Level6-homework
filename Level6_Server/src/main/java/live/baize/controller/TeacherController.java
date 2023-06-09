@@ -1,11 +1,14 @@
 package live.baize.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import live.baize.dto.Response;
 import live.baize.dto.ResponseEnum;
 import live.baize.entity.Registration;
+import live.baize.entity.Student;
 import live.baize.entity.Teacher;
 import live.baize.service.RegistrationService;
 import live.baize.service.TeacherService;
@@ -101,6 +104,32 @@ public class TeacherController {
                         .set(Registration::getScoreWrite, scores)
         );
         return new Response(ResponseEnum.Scoring_Success);
+    }
+
+    @GetMapping(value = "/getTeacherInfo")
+    public Response getTeacherInfo() {
+        Teacher teacher = sessionUtil.getTeacherFromSession();
+        teacher.setPassword(null);
+        return new Response(ResponseEnum.Get_Person_Info, teacher);
+    }
+
+    @PostMapping(value = "/resetTeacherPasswd")
+    public Response resetTeacherPasswd(@RequestParam String oldPasswd, @RequestParam String newPasswd) {
+        Integer teacherId = sessionUtil.getTeacherFromSession().getTeacherId();
+        Teacher teacher = teacherService.getOne(
+                new QueryWrapper<Teacher>().eq("teacher_id", teacherId)
+                        .eq("password", PasswdUtil.generatePassword(oldPasswd)));
+        if (teacher == null) {
+            return new Response(ResponseEnum.Reset_Passwd_Failure);
+        }
+        teacher.setPassword(PasswdUtil.generatePassword(newPasswd));
+        try {
+            teacherService.updateById(teacher);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Response(ResponseEnum.Reset_Passwd_Failure);
+        }
+        return new Response(ResponseEnum.Reset_Passwd_Success);
     }
 
 

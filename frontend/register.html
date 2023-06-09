@@ -175,7 +175,7 @@
                                         <div class="single-form">
                                             <div style="display: flex; align-items: center;">
                                                 <label for="gender">性别</label>
-                                                <select id="gender" name="gender" required style="margin-left: 20px">
+                                                <select id="gender" name="gender" class="nice-select" required style="margin-left: 20px">
                                                     <option value="0">男</option>
                                                     <option value="1">女</option>
                                                 </select>
@@ -185,7 +185,8 @@
                                             <input id = "school" type="text" class="form-control" placeholder="学校" required>
                                         </div>
                                         <div class="single-form">
-                                            <input id = "password" type="password" class="form-control" placeholder="密码" required>
+                                            <input id = "password" type="password" class="form-control" placeholder="密码" onblur="passwdRule();" required>
+                                            <span id="passwd-span" style="color: red;"></span></p>
                                         </div>
                                         <div class="form-btn">
                                             <button type="submit" class="btn">注册</button>

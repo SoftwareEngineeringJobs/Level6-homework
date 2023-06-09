@@ -70,7 +70,7 @@ public class ResponseEnum {
     public static final ResponseEnum Save_Answer_Success = new ResponseEnum(2001081, "保存答案成功");
     public static final ResponseEnum Not_Score_Time_Range = new ResponseEnum(2001090, "不在查分时间段");
     public static final ResponseEnum Lookup_Score_Success = new ResponseEnum(2001091, "查询分数成功");
-    public static final ResponseEnum Get_Student_Info = new ResponseEnum(2001101, "获取用户信息成功");
+    public static final ResponseEnum Get_Person_Info = new ResponseEnum(2001101, "获取用户信息成功");
 
     // ============================================= TeacherController ============================================= //
     public static final ResponseEnum Teacher_Not_Login = new ResponseEnum(2002010, "老师没有登录");

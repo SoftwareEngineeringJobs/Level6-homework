@@ -51,7 +51,7 @@ public class AdminController {
                 new LambdaQueryWrapper<Admin>()
                         .eq(Admin::getEmail, email)
                         .eq(Admin::getPassword, PasswdUtil.generatePassword(password))
-                        .select(Admin::getAdminId, Admin::getEmail, Admin::getAuthority)
+                        .select(Admin::getAdminId, Admin::getEmail, Admin::getName, Admin::getAuthority)
         );
 
         // 登录失败
@@ -382,6 +382,32 @@ public class AdminController {
         teacher.setPassword(PasswdUtil.generatePassword("12345678"));
         try {
             teacherService.updateById(teacher);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Response(ResponseEnum.Reset_Passwd_Failure);
+        }
+        return new Response(ResponseEnum.Reset_Passwd_Success);
+    }
+
+    @GetMapping(value = "/getAdminInfo")
+    public Response getAdminInfo() {
+        Admin admin = sessionUtil.getAdminFromSession();
+        admin.setPassword(null);
+        return new Response(ResponseEnum.Get_Person_Info, admin);
+    }
+
+    @PostMapping(value = "/resetAdminPasswd")
+    public Response resetAdminPasswd(@RequestParam String oldPasswd, @RequestParam String newPasswd) {
+        Integer adminId = sessionUtil.getAdminFromSession().getAdminId();
+        Admin admin = adminService.getOne(
+                new QueryWrapper<Admin>().eq("admin_id", adminId)
+                        .eq("password", PasswdUtil.generatePassword(oldPasswd)));
+        if (admin == null) {
+            return new Response(ResponseEnum.Reset_Passwd_Failure);
+        }
+        admin.setPassword(PasswdUtil.generatePassword(newPasswd));
+        try {
+            adminService.updateById(admin);
         } catch (Exception e) {
             e.printStackTrace();
             return new Response(ResponseEnum.Reset_Passwd_Failure);

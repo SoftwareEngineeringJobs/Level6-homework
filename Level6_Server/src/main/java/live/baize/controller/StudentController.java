@@ -18,7 +18,6 @@ import live.baize.utils.PasswdUtil;
 import live.baize.utils.SessionUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
-import org.json.JSONObject;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -368,8 +367,27 @@ public class StudentController {
 
         student.setPassword(null);
 
-        return new Response(ResponseEnum.Get_Student_Info, student);
+        return new Response(ResponseEnum.Get_Person_Info, student);
 
+    }
+
+    @PostMapping(value = "/resetStudentPasswd")
+    public Response resetStudentPasswd(@RequestParam String oldPasswd, @RequestParam String newPasswd) {
+        Integer stuId = sessionUtil.getStudentFromSession().getStuId();
+        Student student = studentService.getOne(
+                new QueryWrapper<Student>().eq("stu_id", stuId)
+                        .eq("password", PasswdUtil.generatePassword(oldPasswd)));
+        if (student == null) {
+            return new Response(ResponseEnum.Reset_Passwd_Failure);
+        }
+        student.setPassword(PasswdUtil.generatePassword(newPasswd));
+        try {
+            studentService.updateById(student);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Response(ResponseEnum.Reset_Passwd_Failure);
+        }
+        return new Response(ResponseEnum.Reset_Passwd_Success);
     }
 //    - 注册
 //    - 登录

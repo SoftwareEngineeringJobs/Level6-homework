@@ -6,10 +6,29 @@ const gender = document.getElementById("gender");
 const school = document.getElementById("school");
 const password = document.getElementById("password");
 
+function passwdRule() {
+    let passwd = document.getElementById("password").value;
+    let rule =/^(?=.*[a-z])(?=.*\d)[^]{8,16}$/;
+    let result =  rule.test(passwd);
+    if (!result) {
+        document.getElementById("passwd-span").innerHTML = "密码必须包含数字、字母，且不少于8位！";
+        return false;
+    }
+    else {
+        document.getElementById("passwd-span").innerHTML = "";
+        return true;
+    }
+}
+
 // 添加表单提交事件监听器
 form.addEventListener("submit", (event) => {
     // 阻止默认行为，如刷新页面
     event.preventDefault();
+
+    if (!passwdRule()) {
+        swal("注册失败", "密码不符合要求！", "error");
+        return;
+    }
 
     // 创建一个对象，包含表单中的数据
     const data = {
