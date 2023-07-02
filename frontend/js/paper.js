@@ -120,7 +120,7 @@ student_requests(getPaperInfo).then((data) => {
         let t = $('time');
         t.countDown({
             with_separators: false,
-            onTimeElapsed: document.getElementById("upload-answer").submit()
+            // onTimeElapsed: document.getElementById("upload-answer").submit()
         });
         $('.alt-1').countDown({
             css_class: 'countdown-alt-1'
